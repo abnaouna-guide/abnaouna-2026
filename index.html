@@ -249,6 +249,43 @@ footer a{color:#fff}
 .wa-row{margin-top:14px;display:flex;flex-wrap:wrap;gap:10px}
 .pr-only{display:none}
 
+/* لمسات الجوال والحالات: أخضر للمسموح، أحمر للمرفوض، وأخضر/أحمر/كهرماني بشارات واضحة */
+:root{--bad:light-dark(#b3261e,#ff9a93);--badbg:light-dark(#fde7e5,#3a1614);--okbg:light-dark(#d5eedb,#12331f)}
+.yes{color:var(--ok);font-weight:700}.no{color:var(--bad);font-weight:700}
+.result.bad{color:var(--bad)}
+.addkid .err{color:var(--bad)}.kbtn.del{color:var(--bad);border-color:var(--bad)}
+.sheet .chk{font-weight:500;margin:0}
+.always,.why,.refdate,.how{line-height:1.6}
+.next .cd-t{text-wrap:balance}
+.stat{display:block}.stat b{display:block}.stat span{display:block}
+.tl li{display:block}.tl b{display:block;line-height:1.45;font-size:17px}
+.tl .tm{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:4px}
+.tl small{font-size:15px}.tl .chip2{grid-column:auto;grid-row:auto}
+.qa{display:grid;gap:8px;margin-top:12px}
+.dates div:nth-child(n+3){box-shadow:none;border-inline-start:5px solid var(--acc);padding-top:14px}
+#ageNote{margin-top:10px}
+@media(max-width:599px){
+ .content{padding:14px 14px 8px}
+ .dash{gap:14px}
+ .w{padding:16px}.w-main{padding:16px 14px}
+ .blk{padding:16px 14px;margin-bottom:14px}
+ .sheet{padding:30px 12px 14px}
+ .refdate{margin-bottom:14px}
+ .fold summary{line-height:1.5;padding:10px 14px}
+ .more-nav{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+ .more-nav a{justify-content:center;text-align:center;min-height:48px;line-height:1.3}
+ .tabs{display:grid;grid-template-columns:1fr 1fr}.tabs button{width:100%;line-height:1.3}
+ #ics{width:100%}
+ #ageBody tr{grid-template-columns:minmax(0,1fr) auto;gap:4px 12px;align-items:center;padding:12px 14px;margin:0 0 8px;border:1px solid var(--line);border-radius:14px;background:var(--bg)}
+ #ageBody td{padding:0!important;border:0}
+ #ageBody td::before{display:none!important}
+ #ageBody td:nth-child(1){grid-column:1;grid-row:1;font-weight:700;line-height:1.45}
+ #ageBody td:nth-child(2){grid-column:1/-1;grid-row:2;color:var(--mute);font-size:14px}
+ #ageBody td:nth-child(2)::before{display:inline!important;content:attr(data-l) ": ";float:none;width:auto;margin:0}
+ #ageBody td:nth-child(3){grid-column:2;grid-row:1;align-self:start;border-radius:999px;padding:4px 10px!important;font-size:13px;white-space:nowrap;text-align:center}
+ #ageBody td.yes{background:var(--okbg)}#ageBody td.warn{background:var(--accbg);color:var(--accink)}#ageBody td.no{background:var(--badbg)}
+}
+
 /* طباعة A4: الترويسة وقائمة المستندات وطريقة الإرسال فقط */
 @page{size:A4;margin:16mm}
 @media print{
@@ -290,7 +327,7 @@ body{background:#fff;color:#000;font-size:13pt;line-height:1.6;padding:0}
 </section>
 <section class="w w-kids no-print"><h2>أبنائي</h2><div id="kids"></div><div id="addkid"></div><div class="kact" id="kact"></div></section>
 <section class="w w-time no-print"><h2>المواعيد القادمة</h2><ul class="tl" id="tl"></ul></section>
-<section class="w w-quick no-print"><h2>اختصارات</h2><div class="quick"><a href="#age">حاسبة السن</a><a href="#faq">الأسئلة الشائعة</a><a href="#refund">الاسترداد والرسوم</a><a href="#contact">التواصل مع مشرف الصف</a><button type="button" class="js-ics">أضف المواعيد إلى التقويم</button><a id="waTop" href="https://wa.me/?text=" target="_blank" rel="noopener" aria-label="شارك الدليل على واتساب (يفتح في نافذة جديدة)">شارك الدليل على واتساب</a></div></section>
+<section class="w w-quick no-print"><h2>اختصارات</h2><div class="quick"><a href="#age">حاسبة السن</a><a href="#faq">الأسئلة الشائعة</a><a href="#refund">الاسترداد والرسوم</a><a href="#contact">التواصل مع مشرف الصف</a></div><div class="qa"><button type="button" class="btn sec js-ics">أضف المواعيد إلى التقويم</button><a class="btn sec" id="waTop" href="https://wa.me/?text=" target="_blank" rel="noopener" aria-label="شارك الدليل على واتساب (يفتح في نافذة جديدة)">شارك الدليل على واتساب</a></div></section>
 </div></div>
 
 <div class="view" id="v-age" hidden><section class="blk" id="age">
@@ -485,6 +522,7 @@ const DL=[["2026-12-31","آخر موعد لاسترداد رسوم الفصل ا
 const DL_END="انتهت مواعيد العام 2026/2027";
 const PR={title:"دليل أبناؤنا في الخارج 2026/2027",src:"المصدر: كتيّب أبناؤنا في الخارج 2026/2027 — المنصة:",site:"sabroad.emis.gov.eg"};
 const BC="أصل شهادة الميلاد (الرقم القومي)";
+const ARNOTE="بحسب الكتيّب (ص4): الالتزام بتسلسل رياض الأطفال (KG1 وKG2) يخص الطلاب المتقدمين على نظام اللغات، ويُرسل طالب الصف الأول الابتدائي الجديد (عربي أو لغات) كل مستنداته بالبريد (ص11). وقائمة المستندات في ص12 تذكر شهادة KG دون تمييز بين النظامين، فإن لم تكن متأكداً من حالة ابنك فاسأل مشرف الصف: s.prim01@support.emis.edu.eg";
 const UP={t:"up",x:"يكفي الرفع على المنصة، ولا تُرسل أوراق بالبريد."};
 const UPM={t:"up",x:"يكفي الرفع على المنصة. إن اختلفت نتيجة العام الماضي على موقع الوزارة عن المرفوع، ستُطلب منك المستندات ورقياً بالبريد."};
 const MAIL={t:"mail",x:"تُرسل كل الأصول بالبريد إلى الإدارة المركزية للامتحانات مع الاستمارة المطبوعة، بعد الانتهاء من التسجيل على المنصة."};
@@ -497,6 +535,7 @@ function cats(g){
   ["مصري: اجتاز "+k+" بمدرسة داخل مصر ومسجّل له نتيجة",[BC,"أصل بيان اجتياز "+k+" منهج مصري مسجّل على موقع الوزارة"],UPM],
   ["مصري: اجتاز "+k+" في مدارس المسار المصري أو أبناؤنا في الخارج",["صورة من نتيجة العام الماضي فقط"],UP],
   ["مصري: شهادة أجنبية أو أزهر أو دمج",[BC,"أصل بيان اجتياز "+k+" معتمد وموثق","استمارة التقدم المطبوعة"],MAIL],
+  ...(g==="p1"?[["مصري: طالب جديد بالنظام العربي (لا يُشترط اجتياز KG1 وKG2)",[BC,"استمارة التقدم المطبوعة من المنصة"],MAIL,ARNOTE]]:[]),
   ["غير مصري",["أصل شهادة الميلاد غير المصرية معتمدة وموثقة من السفارة (تُسترد نهاية العام)","بيان اجتياز "+k+" (منهج مصري أو أجنبي معتمد وموثق)","استمارة التقدم المطبوعة"],MAIL]];}
  const i=G.findIndex(x=>x[0]===g);const L=[
   ["آخر صف درسه كان داخل مصر",["أصل بيان نجاح آخر صف، معتمد من شئون الطلبة بالإدارة أو المديرية (مدرسة رسمية أو خاصة مرخصة)",BC,...s2x(g),"مدارس دولية داخل مصر: صورة ترخيص المدرسة المعادلة، وإلا شهادة اجتياز تحديد مستوى","مدارس لغات: البيان يوضح اسم المدرسة ونوعها ودرجة المستوى الرفيع واللغة الثانية ومسماها"],UPM],
@@ -539,7 +578,7 @@ function printList(){stampDate();window.print()}
 window.addEventListener("beforeprint",stampDate);
 function curURL(){return location.href.split(/[?#]/)[0]+"?g="+gS.value+"&m="+mS.value+"&c="+(+cS.value||0)+"#docs"}
 function render(){const c=catsFor(gS.value,mS.value)[+cS.value||0];const mn=MODES.find(m=>m[0]===mS.value)[1];const gn=G.find(x=>x[0]===gS.value)[1];const done=new Set(ldChecks()[ckKey()]||[]);const many=kids.list.length>1,nm=esc(kid().name);
- sh.innerHTML=`<div class="bar" aria-hidden="true"><i></i></div><div class="stamp" aria-hidden="true">مكتمل</div><div class="pr-only ph"><h1>${PR.title}</h1>${many||kid().name!=="ابني"?`<p>الطالب: <b>${nm}</b></p>`:""}<p>الصف: <b>${gn}</b></p><p>نوع التقدم: <b>${mn}</b></p><p>الحالة: <b>${c[0]}</b></p><p>تاريخ الطباعة: <b id="pDate"></b></p><p class="pp" id="pProg"></p></div><p class="always no-print">في كل الحالات: صورة شخصية حديثة، ومستندات كل طالب في ملف PDF مستقل لا يزيد حجمه عن 2 ميجا، وطباعة استمارة التقدم.</p><p class="note no-print" style="margin:0">علّم على كل مستند جهّزته، ويُحفظ ذلك على هذا الجهاز.</p><ol>${c[1].map((d,i)=>`<li><label class="chk"><input type="checkbox" data-i="${i}"${done.has(i)?" checked":""}><span>${d}</span></label></li>`).join("")}</ol><p class="note no-print" id="prog" role="status"></p><div class="acts no-print"><button type="button" class="reset prt" id="prt">${many?"طباعة قائمة "+nm:"طباعة قائمة مستندات ابني"}</button><button type="button" class="reset" id="rst">مسح العلامات</button><button type="button" class="reset" id="cpl">نسخ رابط هذه الحالة</button><a class="reset" id="wsl" target="_blank" rel="noopener" href="https://wa.me/" aria-label="إرسال هذه الحالة على واتساب (يفتح في نافذة جديدة)">إرسال هذه الحالة على واتساب</a></div><p class="note no-print" id="lnk" style="word-break:break-all"></p><div class="how ${c[2].t}">${{mail:"✉",up:"⇪"}[c[2].t]||"ℹ"}<span>${c[2].x}</span></div><p class="note no-print">بعد التسجيل: تابع المنصة لرقم الجلوس وأي طلب لمستندات إضافية.</p><p class="pr-only pf">${PR.src} <span class="ltr">${PR.site}</span></p>`;prog();stampDate();$("wsl").href="https://wa.me/?text="+encodeURIComponent("قائمة مستندات "+gn+" ("+mn+")، "+c[0]+"\n"+curURL())}
+ sh.innerHTML=`<div class="bar" aria-hidden="true"><i></i></div><div class="stamp" aria-hidden="true">مكتمل</div><div class="pr-only ph"><h1>${PR.title}</h1>${many||kid().name!=="ابني"?`<p>الطالب: <b>${nm}</b></p>`:""}<p>الصف: <b>${gn}</b></p><p>نوع التقدم: <b>${mn}</b></p><p>الحالة: <b>${c[0]}</b></p><p>تاريخ الطباعة: <b id="pDate"></b></p><p class="pp" id="pProg"></p></div><p class="always no-print">في كل الحالات: صورة شخصية حديثة، ومستندات كل طالب في ملف PDF مستقل لا يزيد حجمه عن 2 ميجا، وطباعة استمارة التقدم.</p><p class="note no-print" style="margin:0">علّم على كل مستند جهّزته، ويُحفظ ذلك على هذا الجهاز.</p><ol>${c[1].map((d,i)=>`<li><label class="chk"><input type="checkbox" data-i="${i}"${done.has(i)?" checked":""}><span>${d}</span></label></li>`).join("")}</ol><p class="note no-print" id="prog" role="status"></p><div class="acts no-print"><button type="button" class="reset prt" id="prt">${many?"طباعة قائمة "+nm:"طباعة قائمة مستندات ابني"}</button><button type="button" class="reset" id="rst">مسح العلامات</button><button type="button" class="reset" id="cpl">نسخ رابط هذه الحالة</button><a class="reset" id="wsl" target="_blank" rel="noopener" href="https://wa.me/" aria-label="إرسال هذه الحالة على واتساب (يفتح في نافذة جديدة)">إرسال هذه الحالة على واتساب</a></div><p class="note no-print" id="lnk" style="word-break:break-all"></p><div class="how ${c[2].t}">${{mail:"✉",up:"⇪"}[c[2].t]||"ℹ"}<span>${c[2].x}</span></div>${c[3]?`<p class="always no-print">${c[3]}</p>`:""}<p class="note no-print">بعد التسجيل: تابع المنصة لرقم الجلوس وأي طلب لمستندات إضافية.</p><p class="pr-only pf">${PR.src} <span class="ltr">${PR.site}</span></p>`;prog();stampDate();$("wsl").href="https://wa.me/?text="+encodeURIComponent("قائمة مستندات "+gn+" ("+mn+")، "+c[0]+"\n"+curURL())}
 sh.addEventListener("change",e=>{if(!e.target.matches(".chk input"))return;const o=ldChecks();
  o[ckKey()]=[...sh.querySelectorAll(".chk input")].filter(x=>x.checked).map(x=>+x.dataset.i);svChecks(o);prog()});
 sh.addEventListener("click",e=>{const cp=e.target.closest("#cpl");if(cp){const u=curURL(),fb=()=>{cp.textContent="انسخه يدوياً";$("lnk").innerHTML='<span class="ltr" style="white-space:normal">'+u+'</span>'};try{navigator.clipboard.writeText(u).then(()=>{cp.textContent="تم نسخ الرابط";setTimeout(()=>cp.textContent="نسخ رابط هذه الحالة",1800)}).catch(fb)}catch(err){fb()}return}if(e.target.closest("#prt")){printList();return}if(!e.target.closest("#rst"))return;const o=ldChecks();delete o[ckKey()];svChecks(o);render();$("rst").focus()});
@@ -557,7 +596,7 @@ function paintKids(){paintKidRows();
  $("addkid").innerHTML=addOpen?`<form class="addkid" id="addform" novalidate><label for="kn">اسم الابن (مثل: أحمد)</label><input id="kn" maxlength="20" autocomplete="off"><button class="btn" type="submit">إضافة</button><button type="button" class="btn sec" data-act="addcancel">إلغاء</button><p class="err" id="knerr" role="alert" hidden>أدخل اسم الابن لإضافته.</p></form>`:""}
 function paintWidgets(){paintKidRows();let N=0,T=0;kids.list.forEach(k=>{const s=kidStat(k);if(s.known){N+=s.n;T+=s.t}});const p=T?Math.round(100*N/T):0;
  $("wReady").innerHTML=`<div class="donut" style="--p:${p}" aria-hidden="true"><span>${p}%</span></div><div><h2>جاهزية الأوراق</h2><p>${T?N+" من "+T+" مستنداً جاهزاً"+(kids.list.length>1?" لكل الأبناء":""):"اختر صف ابنك وحالته لتبدأ."}</p></div>`;
- const today=ksaToday();$("tl").innerHTML=DL.filter(e=>e[0]>=today).slice(0,4).map(e=>{const n=Math.round((Date.parse(e[0])-Date.parse(today))/864e5),chip=e[2]?"فبراير 2027":n===0?"اليوم":n===1?"غداً":"باقي "+n+(n<=10?" أيام":" يوماً");return `<li><b>${e[1]}</b><small>${e[2]||dtxt(e[0])}</small><span class="chip2${n<=14&&!e[2]?" hot":""}">${chip}</span></li>`}).join("")||`<li><small>${DL_END}</small></li>`}
+ const today=ksaToday();$("tl").innerHTML=DL.filter(e=>e[0]>=today).slice(0,4).map(e=>{const n=Math.round((Date.parse(e[0])-Date.parse(today))/864e5),chip=e[2]?"فبراير 2027":n===0?"اليوم":n===1?"غداً":"باقي "+n+(n<=10?" أيام":" يوماً");return `<li><b>${e[1]}</b><span class="tm"><small>${e[2]||dtxt(e[0])}</small><span class="chip2${n<=14&&!e[2]?" hot":""}">${chip}</span></span></li>`}).join("")||`<li><small>${DL_END}</small></li>`}
 function paint(keep){const k=kid(),gn=k.g?G.find(x=>x[0]===k.g)[1]:"",mn=MODES.find(m=>m[0]===k.m)[1];
  paintKids();
  const labs=["الصف","الحالة","المستندات"],vals=[gn,k.done?catsFor(k.g,k.m)[k.c][0]:"",k.done?"جاهزة":""];
@@ -596,7 +635,7 @@ function age(){const v=dob.value;const body=document.getElementById("ageBody"),r
  if(!v){res.textContent="أدخل تاريخ الميلاد";body.innerHTML="";return}
  let best=null;body.innerHTML=G.map(g=>{const lim=(!eg&&g[3])?g[3]:g[2];const ok=v<=lim;const soft=eg&&g[3]&&ok&&v>g[3];if(ok)best=g;
   return `<tr><td>${g[1]}</td><td><span class="ltr">${fmt(lim)}</span></td><td class="${ok?(soft?"warn":"yes"):"no"}">${ok?(soft?"مسموح بتخفيض السن":"مسموح"):"السن لا يسمح"}</td></tr>`}).join("");
- res.textContent=best?best[1]:"أصغر من سن القبول لرياض الأطفال";
+ res.textContent=best?best[1]:"أصغر من سن القبول لرياض الأطفال";res.classList.toggle("bad",!best);
  const wy=document.getElementById("ageWhy");let wt="";
  {const ref=new Date(Date.UTC(2026,9,1)),db=new Date(v+"T00:00:00Z");let y=ref.getUTCFullYear()-db.getUTCFullYear(),m=ref.getUTCMonth()-db.getUTCMonth();if(ref.getUTCDate()<db.getUTCDate())m--;if(m<0){y--;m+=12}
   if(y>=0){const yt=y===0?"":y===1?"سنة":y===2?"سنتان":y<=10?y+" سنوات":y+" سنة",mt=m===0?"":m===1?"شهر":m===2?"شهران":m+" أشهر";
