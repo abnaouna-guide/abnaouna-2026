@@ -845,8 +845,8 @@ function initBoard(){const b=$("board");if(!b||!SBOK)return;b.hidden=false;
  b.addEventListener("input",e=>{if(e.target.name==="body"){const c=e.target.closest("form").querySelector(".cnt");if(c)c.textContent=e.target.value.length}});
  b.addEventListener("click",async e=>{const x=e.target.closest("[data-bact]");if(!x)return;const a=x.dataset.bact,id=x.dataset.id;
   if(a==="reload")loadPosts();
-  else if(a==="fs"||a==="fk"){if(a==="fs"){fStage=x.dataset.v;const sel=$("pst");if(sel&&fStage)sel.value=fStage}else fKind=x.dataset.v;paintFilters();paintList();const nb=document.querySelector("#flt [data-v=\""+x.dataset.v+"\"][data-bact="+a+"]");nb&&nb.focus()}
-  else if(a==="fclear"){fStage="";fKind="";paintFilters();paintList()}
+  else if(a==="fs"||a==="fk"){if(a==="fs"){const prev=fStage,sel=$("pst");fStage=x.dataset.v;if(sel){if(fStage)sel.value=fStage;else if(sel.value===prev)sel.value="all"}}else fKind=x.dataset.v;paintFilters();paintList();const nb=document.querySelector("#flt [data-v=\""+x.dataset.v+"\"][data-bact="+a+"]");nb&&nb.focus()}
+  else if(a==="fclear"){const sel=$("pst");if(sel&&sel.value===fStage)sel.value="all";fStage="";fKind="";paintFilters();paintList()}
   else if(a==="reply"){replyTo=replyTo===id?null:id;paintList();if(replyTo){const f=document.querySelector("#p-"+CSS.escape(id)+" .rform [name=body]");f&&f.focus()}}
   else if(a==="cancel"){const pid=replyTo;replyTo=null;paintList();const bt=document.querySelector("#p-"+CSS.escape(pid)+" [data-bact=reply]");bt&&bt.focus()}
   else if(a==="report"){x.disabled=true;x.textContent="جارٍ الإبلاغ…";try{await sb("rpc/submit_report",{method:"POST",body:JSON.stringify({p_post:id})});const s=reportedSet();s.add(id);lsSet(LS_REP,JSON.stringify([...s]));x.textContent="تم الإبلاغ";$("pstatus").textContent="شكراً، سنراجع هذه المشاركة."}catch(err){x.disabled=false;x.textContent="إبلاغ";$("pstatus").textContent="تعذّر الإبلاغ الآن."}}});
