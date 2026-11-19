@@ -317,6 +317,22 @@ footer a{color:#fff}
 .rules2{padding-inline-start:1.2em;margin:0 0 14px}.rules2 li{margin:0 0 10px}
 @media(max-width:599px){.talk-cta .btn{justify-self:stretch}.notice{padding:10px 12px;font-size:14px;margin-bottom:14px}.notice::before{width:22px;height:22px;font-size:14px}}
 
+/* أداة تجهيز PDF */
+.pdfpick{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 14px}
+.pdfpick label.btn{cursor:pointer}.pdfpick label.btn:focus-within,.pdfpick label.btn:has(+ input:focus-visible){outline:3px solid var(--brand);outline-offset:2px}
+#pdfList{list-style:none;margin:0 0 14px;padding:0;display:grid;gap:8px}
+.prow{display:grid;grid-template-columns:64px minmax(0,1fr);gap:6px 12px;align-items:center;padding:10px;border:1px solid var(--line);border-radius:14px;background:var(--bg)}
+.pth{width:64px;height:64px;object-fit:contain;background:#fff;border-radius:8px;border:1px solid var(--line)}
+.pinfo b{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.pinfo span{color:var(--mute);font-size:14px}
+.pbtns{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:6px}
+.pbtns button{min-height:44px;min-width:56px;padding:4px 14px;border-radius:999px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);font:700 14px var(--fb);cursor:pointer}
+.pbtns button.del{border-color:var(--bad);color:var(--bad)}
+.pbtns button[disabled]{opacity:.5;cursor:default}
+#pdfErr{color:var(--bad);font-weight:700;margin:0 0 12px}
+.pres{margin:12px 0;padding:14px;border-radius:14px;display:grid;gap:8px;justify-items:start}
+.pres.ok{background:var(--okbg);color:var(--ok)}.pres.warn{background:var(--accbg);color:var(--accink)}
+.pres p{margin:0;font-weight:700}
+@media(max-width:599px){.pres .btn,#pdfActions .btn{width:100%}}
 /* لوحة النقاش داخل الموقع */
 .board{margin:0 0 22px}
 .pform{display:grid;gap:4px;background:var(--bg);border:1px solid var(--line);border-radius:16px;padding:16px;margin:0 0 18px}
@@ -415,7 +431,7 @@ body{background:#fff;color:#000;font-size:13pt;line-height:1.6;padding:0}
 </section>
 <section class="w w-kids no-print"><h2>أبنائي</h2><div id="kids"></div><div id="addkid"></div><div class="kact" id="kact"></div></section>
 <section class="w w-time no-print"><h2>المواعيد القادمة</h2><ul class="tl" id="tl"></ul></section>
-<section class="w w-quick no-print"><h2>اختصارات</h2><div class="quick"><a href="#age">حاسبة السن</a><a href="#faq">الأسئلة الشائعة</a><a href="#refund">الاسترداد والرسوم</a><a href="#talk">اقتراحات ونقاش</a><a href="#contact">التواصل مع مشرف الصف</a></div><div class="qa"><button type="button" class="btn sec js-ics">أضف المواعيد إلى التقويم</button><a class="btn sec" id="waTop" href="https://wa.me/?text=" target="_blank" rel="noopener" aria-label="شارك الدليل على واتساب (يفتح في نافذة جديدة)">شارك الدليل على واتساب</a></div></section>
+<section class="w w-quick no-print"><h2>اختصارات</h2><div class="quick"><a href="#pdftool">جهّز ملف PDF للمستندات</a><a href="#age">حاسبة السن</a><a href="#faq">الأسئلة الشائعة</a><a href="#refund">الاسترداد والرسوم</a><a href="#talk">اقتراحات ونقاش</a><a href="#contact">التواصل مع مشرف الصف</a></div><div class="qa"><button type="button" class="btn sec js-ics">أضف المواعيد إلى التقويم</button><a class="btn sec" id="waTop" href="https://wa.me/?text=" target="_blank" rel="noopener" aria-label="شارك الدليل على واتساب (يفتح في نافذة جديدة)">شارك الدليل على واتساب</a></div></section>
 </div></div>
 
 <div class="view" id="v-age" hidden><section class="blk" id="age">
@@ -511,7 +527,22 @@ body{background:#fff;color:#000;font-size:13pt;line-height:1.6;padding:0}
 </ul>
 <p class="note">للأسئلة الرسمية تواصل مع مشرف الصف: <a href="#contact">بريد مشرفي الصفوف</a>.</p>
 </section></div>
-<div class="view" id="v-more" hidden><nav class="more-nav" aria-label="أقسام صفحة المزيد"><a href="#subjects">المواد ونظام الامتحان</a><a href="#secondary">الثانوي: عام أم بكالوريا</a><a href="#national">المواد القومية للدولية</a><a href="#return">العودة إلى مصر</a><a href="#contact">التواصل</a><a href="#news">مستجدات السعودية</a></nav><section class="blk" id="subjects">
+<div class="view" id="v-more" hidden><nav class="more-nav" aria-label="أقسام صفحة المزيد"><a href="#pdftool">جهّز ملف PDF</a><a href="#subjects">المواد ونظام الامتحان</a><a href="#secondary">الثانوي: عام أم بكالوريا</a><a href="#national">المواد القومية للدولية</a><a href="#return">العودة إلى مصر</a><a href="#contact">التواصل</a><a href="#news">مستجدات السعودية</a></nav>
+<section class="blk" id="pdftool"><h2>جهّز ملف PDF من صور مستنداتك</h2>
+<p class="lede">تشترط المنصة ملف PDF لكل طالب لا يزيد حجمه عن 2 ميجا (ص16). صوّر المستند بجوالك، واختر الصور هنا، فتحصل على ملف واحد جاهز للرفع.</p>
+<p class="note"><b>خصوصيتك:</b> الصور تُعالَج على جهازك فقط ولا تُرفع إلى أي خادم. وهذه الأداة تُنشئ PDF من <b>الصور</b> (JPG أو PNG)، ولا تدمج ملفات PDF جاهزة.</p>
+<div id="pdfApp">
+<div class="pdfpick"><label class="btn" for="pdfIn">اختر صور المستند</label><input id="pdfIn" class="sr" type="file" accept="image/*" multiple><button type="button" class="reset" id="pdfClear" hidden>ابدأ من جديد</button></div>
+<p class="err" id="pdfErr" role="alert" hidden></p>
+<ol id="pdfList" aria-label="الصور المختارة"></ol>
+<div id="pdfActions" hidden><button type="button" class="btn" id="pdfBuild">جهّز ملف PDF</button></div>
+<p id="pdfStatus" class="note" role="status"></p>
+<div class="pres" id="pdfRes" hidden></div>
+</div>
+<p class="note" id="pdfNo" hidden>متصفحك لا يدعم هذه الأداة. جرّب Chrome أو Safari حديثاً.</p>
+<p class="note">راجع الملف بعد تحميله وتأكد من وضوح الكتابة قبل رفعه على المنصة. وإن لم يكفِ حجم 2 ميجا لكل الصور فاجعلها ملفين.</p>
+</section>
+<section class="blk" id="subjects">
 <h2>المواد وطريقة الامتحان لكل مرحلة</h2>
 <p style="max-width:70ch">من الرابع الابتدائي حتى الثاني الثانوي: الامتحان إلكتروني تفاعلي على المنصة. الصفوف الأولى من الابتدائي: تحميل ورقة الأسئلة، حلها، ثم رفع الإجابة PDF. الطلاب معفون من أعمال السنة والأنشطة.</p>
 <div class="tabs" role="tablist" id="tabs"></div>
@@ -698,7 +729,7 @@ function printList(){stampDate();window.print()}
 window.addEventListener("beforeprint",stampDate);
 function curURL(){return location.href.split(/[?#]/)[0]+"?g="+gS.value+"&m="+mS.value+"&c="+(+cS.value||0)+"#docs"}
 function render(){const c=catsFor(gS.value,mS.value)[+cS.value||0];const mn=MODES.find(m=>m[0]===mS.value)[1];const gn=G.find(x=>x[0]===gS.value)[1];const done=new Set(ldChecks()[ckKey()]||[]);const many=kids.list.length>1,nm=esc(kid().name);
- sh.innerHTML=`<div class="bar" aria-hidden="true"><i></i></div><div class="stamp" aria-hidden="true">مكتمل</div><div class="pr-only ph"><h1>${PR.title}</h1>${many||kid().name!=="ابني"?`<p>الطالب: <b>${nm}</b></p>`:""}<p>الصف: <b>${gn}</b></p><p>نوع التقدم: <b>${mn}</b></p><p>الحالة: <b>${c[0]}</b></p><p>تاريخ الطباعة: <b id="pDate"></b></p><p class="pp" id="pProg"></p></div><p class="always no-print">في كل الحالات: صورة شخصية حديثة، ومستندات كل طالب في ملف PDF مستقل لا يزيد حجمه عن 2 ميجا، وطباعة استمارة التقدم.</p><p class="note no-print" style="margin:0">علّم على كل مستند جهّزته، ويُحفظ ذلك على هذا الجهاز.</p><ol>${c[1].map((d,i)=>`<li><label class="chk"><input type="checkbox" data-i="${i}"${done.has(i)?" checked":""}><span>${d}</span></label></li>`).join("")}</ol><p class="note no-print" id="prog" role="status"></p><div class="acts no-print"><button type="button" class="reset prt" id="prt">${many?"طباعة قائمة "+nm:"طباعة قائمة مستندات ابني"}</button><button type="button" class="reset" id="rst">مسح العلامات</button><button type="button" class="reset" id="cpl">نسخ رابط هذه الحالة</button><a class="reset" id="wsl" target="_blank" rel="noopener" href="https://wa.me/" aria-label="إرسال هذه الحالة على واتساب (يفتح في نافذة جديدة)">إرسال هذه الحالة على واتساب</a></div><p class="note no-print" id="lnk" style="word-break:break-all"></p><div class="how ${c[2].t}">${{mail:"✉",up:"⇪"}[c[2].t]||"ℹ"}<span>${c[2].x}</span></div>${c[3]?`<p class="always no-print">${c[3]}</p>`:""}<p class="note no-print">بعد التسجيل: تابع المنصة لرقم الجلوس وأي طلب لمستندات إضافية.</p>${corrHtml("الحالة: "+gn+" / "+mn+" / "+c[0])}<p class="pr-only pf">${PR.src} <span class="ltr">${PR.site}</span></p>`;prog();stampDate();$("wsl").href="https://wa.me/?text="+encodeURIComponent("قائمة مستندات "+gn+" ("+mn+")، "+c[0]+"\n"+curURL())}
+ sh.innerHTML=`<div class="bar" aria-hidden="true"><i></i></div><div class="stamp" aria-hidden="true">مكتمل</div><div class="pr-only ph"><h1>${PR.title}</h1>${many||kid().name!=="ابني"?`<p>الطالب: <b>${nm}</b></p>`:""}<p>الصف: <b>${gn}</b></p><p>نوع التقدم: <b>${mn}</b></p><p>الحالة: <b>${c[0]}</b></p><p>تاريخ الطباعة: <b id="pDate"></b></p><p class="pp" id="pProg"></p></div><p class="always no-print">في كل الحالات: صورة شخصية حديثة، ومستندات كل طالب في ملف PDF مستقل لا يزيد حجمه عن 2 ميجا، وطباعة استمارة التقدم.</p><p class="note no-print" style="margin:0">علّم على كل مستند جهّزته، ويُحفظ ذلك على هذا الجهاز.</p><ol>${c[1].map((d,i)=>`<li><label class="chk"><input type="checkbox" data-i="${i}"${done.has(i)?" checked":""}><span>${d}</span></label></li>`).join("")}</ol><p class="note no-print" id="prog" role="status"></p><div class="acts no-print"><button type="button" class="reset prt" id="prt">${many?"طباعة قائمة "+nm:"طباعة قائمة مستندات ابني"}</button><button type="button" class="reset" id="rst">مسح العلامات</button><button type="button" class="reset" id="cpl">نسخ رابط هذه الحالة</button><a class="reset" id="wsl" target="_blank" rel="noopener" href="https://wa.me/" aria-label="إرسال هذه الحالة على واتساب (يفتح في نافذة جديدة)">إرسال هذه الحالة على واتساب</a></div><p class="note no-print" id="lnk" style="word-break:break-all"></p><div class="how ${c[2].t}">${{mail:"✉",up:"⇪"}[c[2].t]||"ℹ"}<span>${c[2].x}</span></div>${c[3]?`<p class="always no-print">${c[3]}</p>`:""}<p class="note no-print">بعد التسجيل: تابع المنصة لرقم الجلوس وأي طلب لمستندات إضافية.</p><p class="note no-print">ملفك أكبر من 2 ميجا؟ <a href="#pdftool">جهّز ملف PDF من الصور</a></p>${corrHtml("الحالة: "+gn+" / "+mn+" / "+c[0])}<p class="pr-only pf">${PR.src} <span class="ltr">${PR.site}</span></p>`;prog();stampDate();$("wsl").href="https://wa.me/?text="+encodeURIComponent("قائمة مستندات "+gn+" ("+mn+")، "+c[0]+"\n"+curURL())}
 sh.addEventListener("change",e=>{if(!e.target.matches(".chk input"))return;const o=ldChecks();
  o[ckKey()]=[...sh.querySelectorAll(".chk input")].filter(x=>x.checked).map(x=>+x.dataset.i);svChecks(o);prog()});
 sh.addEventListener("click",e=>{const cp=e.target.closest("#cpl");if(cp){const u=curURL(),fb=()=>{cp.textContent="انسخه يدوياً";$("lnk").innerHTML='<span class="ltr" style="white-space:normal">'+u+'</span>'};try{navigator.clipboard.writeText(u).then(()=>{cp.textContent="تم نسخ الرابط";setTimeout(()=>cp.textContent="نسخ رابط هذه الحالة",1800)}).catch(fb)}catch(err){fb()}return}if(e.target.closest("#prt")){printList();return}if(!e.target.closest("#rst"))return;const o=ldChecks();delete o[ckKey()];svChecks(o);render();$("rst").focus()});
@@ -828,7 +859,7 @@ document.querySelectorAll("#ics,.js-ics").forEach(el=>el.addEventListener("click
 
 
 const VIEWS=["docs","age","dates","faq","talk","more"];
-const SEC2V={docs:"docs",age:"age",dates:"dates",steps:"dates",refund:"dates",faq:"faq",rules:"faq",talk:"talk",more:"more",subjects:"more",secondary:"more",national:"more","return":"more",contact:"more",news:"more"};
+const SEC2V={docs:"docs",age:"age",dates:"dates",steps:"dates",refund:"dates",faq:"faq",rules:"faq",talk:"talk",more:"more",subjects:"more",pdftool:"more",secondary:"more",national:"more","return":"more",contact:"more",news:"more"};
 function route(first){const id=decodeURIComponent(location.hash.slice(1))||"docs",v=SEC2V[id]||"docs";
  VIEWS.forEach(x=>{$("v-"+x).hidden=x!==v});document.body.dataset.view=v;
  document.querySelectorAll(".menu a").forEach(a=>{if(a.dataset.v===v)a.setAttribute("aria-current","page");else a.removeAttribute("aria-current")});
@@ -926,7 +957,61 @@ function initFont(){const btn=$("fsBtn"),pn=$("fsPanel");if(!btn||!pn)return;
  pn.addEventListener("click",e=>{const b=e.target.closest("[data-fs]");if(!b)return;cur=+b.dataset.fs;fsApply(cur);lsSet(LS_FS,String(cur))});
  document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!pn.hidden){open(false);btn.focus()}});
  document.addEventListener("click",e=>{if(!pn.hidden&&!e.target.closest(".tools"))open(false)})}
-paintTalk();initBoard();initCounter();initCorr();initFont();
+
+/* ===== أداة تجهيز PDF من الصور (تعمل كلها على الجهاز) ===== */
+const PDF_MAX=1900000,PDF_FILES=20,PDF_PLANS=[[1800,.82],[1800,.7],[1800,.6],[1500,.72],[1500,.6],[1250,.65],[1250,.55],[1000,.6],[1000,.5],[800,.5]];
+let pItems=[],pBusy=false,pUrl=null,pSeq=0;
+const pTick=()=>new Promise(r=>setTimeout(r,0));
+function pdfThumb(bm){const s=128/Math.max(bm.width,bm.height),c=document.createElement("canvas");c.width=Math.max(1,Math.round(bm.width*s));c.height=Math.max(1,Math.round(bm.height*s));c.getContext("2d").drawImage(bm,0,0,c.width,c.height);return c.toDataURL("image/jpeg",.7)}
+function pdfErr(m){const e=$("pdfErr");e.textContent=m||"";e.hidden=!m}
+function pdfReset(){pItems.forEach(i=>{try{i.bm.close()}catch(e){}});pItems=[];if(pUrl){URL.revokeObjectURL(pUrl);pUrl=null}$("pdfRes").hidden=true;$("pdfRes").innerHTML="";pdfErr("");$("pdfStatus").textContent="";pdfPaint()}
+function pdfPaint(focus){const L=$("pdfList"),n=pItems.length;
+ L.innerHTML=pItems.map((it,i)=>`<li class="prow"><img class="pth" alt="" src="${it.thumb}" style="transform:rotate(${it.rot}deg)"><div class="pinfo"><b>${i+1}. ${esc(it.name)}</b><span class="ltr">${it.w}×${it.h}</span></div><div class="pbtns"><button type="button" data-pa="up" data-i="${i}" aria-label="أعلى: الصورة ${i+1}"${i===0?" disabled":""}>أعلى</button><button type="button" data-pa="down" data-i="${i}" aria-label="أسفل: الصورة ${i+1}"${i===n-1?" disabled":""}>أسفل</button><button type="button" data-pa="rot" data-i="${i}" aria-label="تدوير: الصورة ${i+1}">تدوير</button><button type="button" class="del" data-pa="del" data-i="${i}" aria-label="حذف: الصورة ${i+1}">حذف</button></div></li>`).join("");
+ $("pdfActions").hidden=!n;$("pdfClear").hidden=!n;
+ if(focus){const b=document.querySelector('#pdfList [data-pa="'+focus[0]+'"][data-i="'+focus[1]+'"]');b&&!b.disabled?b.focus():$("pdfBuild").hidden||$("pdfActions").hidden?$("pdfIn").focus():$("pdfBuild").focus()}}
+async function pdfAdd(files){pdfErr("");const bad=[];let skippedMax=false;
+ for(const f of files){if(pItems.length>=PDF_FILES){skippedMax=true;break}
+  if(!/^image\/(jpeg|png|webp|gif|bmp)$/i.test(f.type)){bad.push(f.name);continue}
+  try{const bm=await createImageBitmap(f);pItems.push({id:++pSeq,name:f.name,bm,w:bm.width,h:bm.height,rot:0,thumb:pdfThumb(bm)})}catch(e){bad.push(f.name)}}
+ let m="";if(bad.length)m="تعذّر فتح: "+bad.slice(0,3).join("، ")+(bad.length>3?" وغيرها":"")+". استخدم صوراً بصيغة JPG أو PNG.";
+ if(skippedMax)m+=(m?" ":"")+"الحد الأقصى "+PDF_FILES+" صورة في الملف الواحد.";
+ pdfErr(m);$("pdfRes").hidden=true;pdfPaint()}
+async function pdfJpeg(it,side,q){const swap=it.rot%180!==0,rw=swap?it.h:it.w,rh=swap?it.w:it.h,k=Math.min(1,side/Math.max(rw,rh)),cw=Math.max(1,Math.round(rw*k)),ch=Math.max(1,Math.round(rh*k)),c=document.createElement("canvas");c.width=cw;c.height=ch;
+ const x=c.getContext("2d");x.fillStyle="#fff";x.fillRect(0,0,cw,ch);x.translate(cw/2,ch/2);x.rotate(it.rot*Math.PI/180);x.imageSmoothingQuality="high";x.drawImage(it.bm,-it.w*k/2,-it.h*k/2,it.w*k,it.h*k);
+ const blob=await new Promise(r=>c.toBlob(r,"image/jpeg",q));if(!blob)throw new Error("encode");return{buf:new Uint8Array(await blob.arrayBuffer()),w:cw,h:ch}}
+function pdfWrite(pages){const enc=new TextEncoder(),chunks=[],offs=[];let len=0;const push=u=>{chunks.push(u);len+=u.length},str=s=>push(enc.encode(s));
+ str("%PDF-1.4\n%âãÏÓ\n");const n=pages.length,obj=(id,fn)=>{offs[id]=len;str(id+" 0 obj\n");fn();str("endobj\n")};
+ obj(1,()=>str("<< /Type /Catalog /Pages 2 0 R >>\n"));
+ obj(2,()=>str("<< /Type /Pages /Count "+n+" /Kids ["+pages.map((_,i)=>(3+3*i)+" 0 R").join(" ")+"] >>\n"));
+ pages.forEach((p,i)=>{const land=p.w>p.h,PW=land?842:595,PH=land?595:842,M=24,sc=Math.min((PW-2*M)/p.w,(PH-2*M)/p.h),w=p.w*sc,h=p.h*sc,x=(PW-w)/2,y=(PH-h)/2,cs="q "+w.toFixed(2)+" 0 0 "+h.toFixed(2)+" "+x.toFixed(2)+" "+y.toFixed(2)+" cm /Im0 Do Q\n";
+  obj(3+3*i,()=>str("<< /Type /Page /Parent 2 0 R /MediaBox [0 0 "+PW+" "+PH+"] /Resources << /XObject << /Im0 "+(5+3*i)+" 0 R >> >> /Contents "+(4+3*i)+" 0 R >>\n"));
+  obj(4+3*i,()=>{str("<< /Length "+enc.encode(cs).length+" >>\nstream\n");str(cs);str("endstream\n")});
+  obj(5+3*i,()=>{str("<< /Type /XObject /Subtype /Image /Width "+p.w+" /Height "+p.h+" /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length "+p.buf.length+" >>\nstream\n");push(p.buf);str("\nendstream\n")})});
+ const total=2+3*n,xr=len;str("xref\n0 "+(total+1)+"\n0000000000 65535 f \n");for(let id=1;id<=total;id++)str(String(offs[id]).padStart(10,"0")+" 00000 n \n");
+ str("trailer\n<< /Size "+(total+1)+" /Root 1 0 R >>\nstartxref\n"+xr+"\n%%EOF\n");
+ const out=new Uint8Array(len);let o=0;chunks.forEach(c=>{out.set(c,o);o+=c.length});return out}
+async function pdfBuild(){if(!pItems.length||pBusy)return;pBusy=true;pdfErr("");const btn=$("pdfBuild"),st=$("pdfStatus"),res=$("pdfRes");btn.disabled=true;res.hidden=true;
+ try{let best=null,tried=0;
+  for(const [side,q] of PDF_PLANS){tried++;st.textContent="جارٍ التجهيز… (المحاولة "+tried+" من "+PDF_PLANS.length+")";await pTick();
+   const pages=[];for(const it of pItems)pages.push(await pdfJpeg(it,side,q));const pdf=pdfWrite(pages);best={pdf,side,q};if(pdf.length<=PDF_MAX)break}
+  st.textContent="";const mb=(best.pdf.length/1048576).toFixed(2).replace(".",",");
+  if(best.pdf.length>PDF_MAX){pdfErr("تعذّر ضغط الصور تحت 2 ميجا ("+mb+" ميجا بأقصى ضغط). قسّم الصور على ملفين أو صوّر المستند بإضاءة أوضح وبدون خلفية مزدحمة.");return}
+  if(pUrl)URL.revokeObjectURL(pUrl);pUrl=URL.createObjectURL(new Blob([best.pdf],{type:"application/pdf"}));
+  const heavy=best.side<=1000;res.className="pres "+(heavy?"warn":"ok");
+  res.innerHTML="<p>الملف جاهز: "+mb+" ميجا من 2 ميجا، و"+pItems.length+(pItems.length===1?" صفحة":pItems.length===2?" صفحتان":" صفحات")+".</p>"+(heavy?"<p>ضُغطت الصور بشدة وقد تقل وضوح الكتابة. افتح الملف وتأكد من قراءتها قبل الرفع.</p>":"")+'<a class="btn" id="pdfDl" href="'+pUrl+'" download="abnaouna-documents.pdf">تحميل الملف</a>';res.hidden=false;res.querySelector("#pdfDl").focus()}
+ catch(e){st.textContent="";pdfErr("تعذّر تجهيز الملف على هذا الجهاز. جرّب صوراً أقل أو أصغر.")}
+ finally{btn.disabled=false;pBusy=false}}
+function initPdf(){if(!$("pdfApp"))return;
+ if(typeof createImageBitmap!=="function"||!HTMLCanvasElement.prototype.toBlob||typeof TextEncoder==="undefined"){$("pdfApp").hidden=true;$("pdfNo").hidden=false;return}
+ $("pdfIn").addEventListener("change",async e=>{const f=[...e.target.files];e.target.value="";if(f.length)await pdfAdd(f)});
+ $("pdfBuild").addEventListener("click",pdfBuild);$("pdfClear").addEventListener("click",()=>{pdfReset();$("pdfIn").focus()});
+ $("pdfList").addEventListener("click",e=>{const b=e.target.closest("[data-pa]");if(!b||pBusy)return;const a=b.dataset.pa,i=+b.dataset.i;
+  if(a==="up"&&i>0){[pItems[i-1],pItems[i]]=[pItems[i],pItems[i-1]];pdfPaint(["up",i-1])}
+  else if(a==="down"&&i<pItems.length-1){[pItems[i+1],pItems[i]]=[pItems[i],pItems[i+1]];pdfPaint(["down",i+1])}
+  else if(a==="rot"){pItems[i].rot=(pItems[i].rot+90)%360;pdfPaint(["rot",i])}
+  else if(a==="del"){try{pItems[i].bm.close()}catch(x){}pItems.splice(i,1);pdfPaint(pItems.length?["del",Math.min(i,pItems.length-1)]:null);if(!pItems.length)$("pdfIn").focus()}
+  $("pdfRes").hidden=true})}
+paintTalk();initBoard();initCounter();initCorr();initFont();initPdf();
 }
 </script>
 </body>
