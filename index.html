@@ -326,6 +326,11 @@ footer a{color:#fff}
 .reps{margin:10px 0 0;padding-inline-start:14px;border-inline-start:3px solid var(--acc);display:grid;gap:8px}
 .reps .post{margin:0;background:var(--card)}
 .rform{margin-top:10px}
+.flt{display:grid;gap:8px;margin:0 0 14px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.fchip{min-height:44px;padding:4px 14px;border-radius:999px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);font:700 15px var(--fb);cursor:pointer}
+.fchip[aria-pressed=true]{background:var(--fill);border-color:var(--fill);color:#fff}
+.post .pin{background:var(--accbg);color:var(--accink);border-radius:999px;padding:1px 10px;font-size:13px;font-weight:700}
 .bnote{color:var(--mute);font-size:15px}
 @media(max-width:599px){.pform{padding:14px 12px}.post{padding:12px}.pform .btn{justify-self:stretch}}
 
@@ -361,7 +366,7 @@ body{background:#fff;color:#000;font-size:13pt;line-height:1.6;padding:0}
 <div class="view" id="v-docs"><div class="notice no-print" role="note"><span><b>مجهود فردي للمساعدة فقط</b>، وليست تابعة لأي جهة حكومية ولا علاقة لها بوزارة التربية والتعليم أو السفارة. المرجع الرسمي: الكتيّب والمنصة.</span></div><div class="dash">
 <div class="w w-next next" id="cd" role="status" aria-label="الموعد القادم"></div>
 <section class="w w-ready" id="wReady" aria-label="جاهزية الأوراق"></section>
-<section class="w w-stats"><h2>أرقام أساسية</h2><div class="stat"><b>نوفمبر 2026</b><span>فتح التسجيل على المنصة</span></div><div class="stat"><b>150 دولار</b><span>رسوم كل طالب، لأي صف</span></div><div class="stat vis" hidden><b></b><span>زائراً زار هذه الصفحة</span></div></section>
+<section class="w w-stats"><h2>أرقام أساسية</h2><div class="stat"><b>نوفمبر 2026</b><span>فتح التسجيل على المنصة</span></div><div class="stat"><b>150 دولار</b><span>رسوم كل طالب، لأي صف</span></div><div class="stat vis" hidden><b></b><span>زيارة لهذه الصفحة</span></div></section>
 <section class="w w-main" id="docs"><h2>مستندات ابنك المطلوبة</h2>
 <div class="restore no-print" id="restore" hidden></div>
 <ol class="stepper no-print" id="stepper" aria-label="خطوات اختيار حالة ابنك"></ol>
@@ -528,7 +533,7 @@ body{background:#fff;color:#000;font-size:13pt;line-height:1.6;padding:0}
 المصدر الأساسي: إعلان "تعليمات وشروط التقدم لأداء امتحانات أبناؤنا في الخارج 2026/2027"، الإدارة المركزية للامتحانات، وزارة التربية والتعليم والتعليم الفني. هذه الصفحة تبسيط للتيسير؛ عند أي اختلاف يُرجع إلى الكتيّب الرسمي والمنصة <a href="https://sabroad.emis.gov.eg" class="ltr">sabroad.emis.gov.eg</a>.
 <p class="foot-note"><b>تنويه:</b> هذه الصفحة مجهود فردي للمساعدة فقط، وليست تابعة لأي جهة حكومية ولا علاقة لها بوزارة التربية والتعليم أو السفارة أو الإدارة المركزية للامتحانات.</p>
 <p class="foot-note">تُحمَّل الخطوط من Google Fonts، وقد تسجّل Google عنوان اتصال الزائر عند تحميلها. ولا يحفظ هذا الموقع أي بيانات عنك خارج جهازك.</p>
-<p class="vis foot-note" hidden>عدد الزوار: <b></b>. يُحصى الزوار بعدّاد مجهول (GoatCounter) بلا ملفات تعريف ارتباط ولا بيانات شخصية.</p>
+<p class="vis foot-note" hidden>عدد الزيارات: <b></b>. تُحصى الزيارات بعدّاد مجهول (GoatCounter) بلا ملفات تعريف ارتباط ولا بيانات شخصية.</p>
 <div class="wa-row"><a class="btn sec" id="waFoot" href="https://wa.me/?text=" target="_blank" rel="noopener" aria-label="شارك الدليل على واتساب (يفتح في نافذة جديدة)">شارك الدليل على واتساب</a></div>
 </div></footer>
 </div>
@@ -788,39 +793,46 @@ function paintTalk(){const c=$("talkCta");if(!c)return;c.hidden=false;const re=/
  c.innerHTML=L.length?L.map(g=>`<div class="grp"><p><b>${esc(g[0])}</b></p><p class="note">شاركنا اقتراحك أو ما وجدته ناقصاً أو خاطئاً في الموقع.</p><a class="btn" href="${g[1]}" target="_blank" rel="noopener noreferrer" aria-label="انضم إلى المجموعة: ${esc(g[0])} (يفتح في نافذة جديدة)">انضم إلى المجموعة</a></div>`).join(""):(SBOK?"":`<p><b>مجموعة الاقتراحات والنقاش</b></p><p class="note">سيُضاف رابط الانضمام قريباً.</p>`);if(!L.length&&SBOK)c.hidden=true}
 function initCounter(){if(!GC_CODE||!/^[a-z0-9-]+$/.test(GC_CODE))return;
  const s=document.createElement("script");s.async=true;s.src="https://gc.zgo.at/count.js";s.dataset.goatcounter="https://"+GC_CODE+".goatcounter.com/count";document.head.appendChild(s);
- fetch("https://"+GC_CODE+".goatcounter.com/counter/TOTAL.json").then(r=>r.ok?r.json():null).then(j=>{if(j&&j.count)document.querySelectorAll(".vis").forEach(e=>{e.querySelector("b").textContent=j.count;e.hidden=false})}).catch(()=>{})}
+ fetch("https://"+GC_CODE+".goatcounter.com/counter/%2F.json").then(r=>r.ok?r.json():null).then(j=>{if(j&&j.count)document.querySelectorAll(".vis").forEach(e=>{e.querySelector("b").textContent=j.count;e.hidden=false})}).catch(()=>{})}
 
 /* ===== النقاش داخل الموقع ===== */
 const SBOK=/^https:\/\/[a-z0-9]{20}\.supabase\.co$/.test(SB_URL)&&/^[A-Za-z0-9._-]{20,}$/.test(SB_KEY);
 const LS_NICK="abnaouna2026.nick.v1",LS_LAST="abnaouna2026.last.v1",LS_REP="abnaouna2026.reported.v1";
 const KINDS={idea:"اقتراح",question:"سؤال",tip:"تجربة أو نصيحة"};
-let posts=[],bState="idle",replyTo=null;
+const TSTAGES=[["all","عام للجميع"],["kg","رياض الأطفال"],["pri","الابتدائي"],["prep","الإعدادي"],["sec","الثانوي"]];
+const TKIND=[["","كل الأنواع"],["idea","اقتراحات"],["question","أسئلة"],["tip","تجارب ونصائح"]];
+let posts=[],bState="idle",replyTo=null,fStage="",fKind="";
 const lsGet=k=>{try{return localStorage.getItem(k)}catch(e){return null}};
 const lsSet=(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}};
 async function sb(path,opt){const r=await fetch(SB_URL+"/rest/v1/"+path,Object.assign({headers:{apikey:SB_KEY,"Content-Type":"application/json"}},opt||{}));if(!r.ok)throw new Error("http "+r.status);return r.status===204?null:r.json()}
 function reportedSet(){try{return new Set(JSON.parse(lsGet(LS_REP)||"[]"))}catch(e){return new Set()}}
 function pdate(s){try{return new Date(s).toLocaleDateString("ar-EG",{day:"numeric",month:"long"})}catch(e){return ""}}
 function postHtml(p,isReply,rep){const done=rep.has(p.id);
- return `<article class="post" id="p-${esc(p.id)}"><div class="ph2"><span class="nick">${esc(p.nickname)}</span>${isReply?"":`<span class="pk">${esc(KINDS[p.kind]||"اقتراح")}</span>`}<span class="pd">${pdate(p.created_at)}</span></div><p class="pb">${esc(p.body)}</p><div class="pa">${isReply?"":`<button type="button" data-bact="reply" data-id="${esc(p.id)}" aria-expanded="${replyTo===p.id}">رد</button>`}<button type="button" data-bact="report" data-id="${esc(p.id)}"${done?" disabled":""}>${done?"تم الإبلاغ":"إبلاغ"}</button></div>`+(isReply?"":"")+`</article>`}
+ return `<article class="post" id="p-${esc(p.id)}"><div class="ph2"><span class="nick">${esc(p.nickname)}</span>${p.pinned&&!isReply?`<span class="pin">مثبّتة</span>`:""}${isReply?"":`<span class="pk">${esc(KINDS[p.kind]||"اقتراح")}</span>`}${!isReply&&p.stage&&p.stage!=="all"?`<span class="pk">${esc((TSTAGES.find(s=>s[0]===p.stage)||[0,""])[1])}</span>`:""}<span class="pd">${pdate(p.created_at)}</span></div><p class="pb">${esc(p.body)}</p><div class="pa">${isReply?"":`<button type="button" data-bact="reply" data-id="${esc(p.id)}" aria-expanded="${replyTo===p.id}">رد</button>`}<button type="button" data-bact="report" data-id="${esc(p.id)}"${done?" disabled":""}>${done?"تم الإبلاغ":"إبلاغ"}</button></div>`+(isReply?"":"")+`</article>`}
 function formHtml(parent){const nick=esc(lsGet(LS_NICK)||""),id=parent?"r":"p";
- return `<form class="pform${parent?" rform":""}" data-form="${parent||"new"}" novalidate>${parent?"":`<h3>شاركنا اقتراحك أو سؤالك</h3>`}<label for="${id}n">الاسم المستعار (لا تكتب اسمك الحقيقي)</label><input id="${id}n" name="nick" maxlength="20" autocomplete="off" value="${nick}">${parent?"":`<label for="pk">نوع المشاركة</label><select id="pk" name="kind"><option value="idea">اقتراح لتطوير الموقع</option><option value="question">سؤال</option><option value="tip">تجربة أو نصيحة</option></select>`}<label for="${id}b">${parent?"ردّك":"مشاركتك"}</label><textarea id="${id}b" name="body" maxlength="600" rows="${parent?3:4}"></textarea><div class="meta"><span>لا تكتب بياناتك الشخصية أو روابط أو أرقام هواتف</span><span><span class="cnt">0</span>/600</span></div><div class="hp" aria-hidden="true"><input name="hp" tabindex="-1" autocomplete="off"></div><p class="err" role="alert" hidden></p><p class="okmsg" role="status" hidden></p><div class="pa"><button class="btn" type="submit">${parent?"إرسال الرد":"إرسال"}</button>${parent?`<button class="btn sec" type="button" data-bact="cancel">إلغاء</button>`:""}</div></form>`}
+ return `<form class="pform${parent?" rform":""}" data-form="${parent||"new"}" novalidate>${parent?"":`<h3>شاركنا اقتراحك أو سؤالك</h3>`}<label for="${id}n">الاسم المستعار (لا تكتب اسمك الحقيقي)</label><input id="${id}n" name="nick" maxlength="20" autocomplete="off" value="${nick}">${parent?"":`<label for="pk">نوع المشاركة</label><select id="pk" name="kind"><option value="idea">اقتراح لتطوير الموقع</option><option value="question">سؤال</option><option value="tip">تجربة أو نصيحة</option></select><label for="pst">المرحلة المعنيّة</label><select id="pst" name="stage">${TSTAGES.map(s=>`<option value="${s[0]}"${s[0]===(fStage||"all")?" selected":""}>${s[1]}</option>`).join("")}</select>`}<label for="${id}b">${parent?"ردّك":"مشاركتك"}</label><textarea id="${id}b" name="body" maxlength="600" rows="${parent?3:4}"></textarea><div class="meta"><span>لا تكتب بياناتك الشخصية أو روابط أو أرقام هواتف</span><span><span class="cnt">0</span>/600</span></div><div class="hp" aria-hidden="true"><input name="hp" tabindex="-1" autocomplete="off"></div><p class="err" role="alert" hidden></p><p class="okmsg" role="status" hidden></p><div class="pa"><button class="btn" type="submit">${parent?"إرسال الرد":"إرسال"}</button>${parent?`<button class="btn sec" type="button" data-bact="cancel">إلغاء</button>`:""}</div></form>`}
+function paintFilters(){const f=$("flt");if(!f)return;
+ f.innerHTML=`<div class="chips" role="group" aria-label="تصفية حسب المرحلة">${[["","كل المراحل"]].concat(TSTAGES.slice(1)).map(s=>`<button type="button" class="fchip" data-bact="fs" data-v="${s[0]}" aria-pressed="${fStage===s[0]}">${s[1]}</button>`).join("")}</div><div class="chips" role="group" aria-label="تصفية حسب النوع">${TKIND.map(k=>`<button type="button" class="fchip" data-bact="fk" data-v="${k[0]}" aria-pressed="${fKind===k[0]}">${k[1]}</button>`).join("")}</div>`}
 function paintList(){const L=$("plist");if(!L)return;
  if(bState==="loading"){L.innerHTML='<p class="bnote">جارٍ تحميل المشاركات…</p>';return}
  if(bState==="error"){L.innerHTML='<p class="bnote">تعذّر تحميل المشاركات الآن.</p><button type="button" class="reset" data-bact="reload">إعادة المحاولة</button>';return}
- const top=posts.filter(p=>!p.parent_id);if(!top.length){L.innerHTML='<p class="bnote">لا توجد مشاركات بعد. كن أول من يشارك.</p>';return}
+ const all=posts.filter(p=>!p.parent_id);if(!all.length){L.innerHTML='<p class="bnote">لا توجد مشاركات بعد. كن أول من يشارك.</p>';return}
+ const stg=p=>p.stage||"all",vis=p=>p.pinned||((!fStage||stg(p)===fStage||stg(p)==="all")&&(!fKind||p.kind===fKind));
+ const top=all.filter(vis).sort((x,y)=>(y.pinned?1:0)-(x.pinned?1:0));
+ if(!top.length){L.innerHTML='<p class="bnote">لا توجد مشاركات بهذا التصنيف بعد.</p><button type="button" class="reset" data-bact="fclear">عرض كل المشاركات</button>';return}
  const rep=reportedSet();
  L.innerHTML=top.map(p=>{const rs=posts.filter(r=>r.parent_id===p.id).reverse();
   return postHtml(p,false,rep).replace(/<\/article>$/,(rs.length?`<div class="reps">${rs.map(r=>postHtml(r,true,rep)).join("")}</div>`:"")+(replyTo===p.id?formHtml(p.id):"")+"</article>")}).join("")}
-async function loadPosts(){if(bState!=="ok"){bState="loading";paintList()}try{posts=await sb("posts?select=id,parent_id,kind,nickname,body,created_at&status=eq.approved&order=created_at.desc&limit=300");bState="ok"}catch(e){bState="error"}paintList()}
+async function loadPosts(){if(bState!=="ok"){bState="loading";paintList()}try{try{posts=await sb("posts?select=id,parent_id,kind,nickname,body,created_at,stage,pinned&status=eq.approved&order=pinned.desc,created_at.desc&limit=300")}catch(e0){posts=await sb("posts?select=id,parent_id,kind,nickname,body,created_at&status=eq.approved&order=created_at.desc&limit=300")}bState="ok"}catch(e){bState="error"}paintList()}
 async function submitForm(form){const parent=form.dataset.form==="new"?null:form.dataset.form,q=n=>form.querySelector("[name="+n+"]"),err=form.querySelector(".err"),ok=form.querySelector(".okmsg"),btn=form.querySelector("button[type=submit]");
- err.hidden=true;ok.hidden=true;const nick=q("nick").value.trim(),body=q("body").value.trim(),kind=q("kind")?q("kind").value:"idea";let m="";
+ err.hidden=true;ok.hidden=true;const nick=q("nick").value.trim(),body=q("body").value.trim(),kind=q("kind")?q("kind").value:"idea",stage=q("stage")?q("stage").value:"all";let m="";
  if(nick.length<2||nick.length>20)m="اكتب اسماً مستعاراً من حرفين إلى 20 حرفاً (وليس اسمك الحقيقي).";
  else if(body.length<3||body.length>600)m="اكتب مشاركة من 3 إلى 600 حرف.";
  else if(Date.now()-(+lsGet(LS_LAST)||0)<30000)m="انتظر نصف دقيقة قبل إرسال مشاركة أخرى.";
  if(m){err.textContent=m;err.hidden=false;return}
  if(q("hp")&&q("hp").value){ok.textContent="تم استلام مشاركتك.";ok.hidden=false;q("body").value="";return}
  btn.disabled=true;
- try{const st=await sb("rpc/submit_post",{method:"POST",body:JSON.stringify({p_nickname:nick,p_body:body,p_kind:kind,p_parent:parent})});
+ try{const pl={p_nickname:nick,p_body:body,p_kind:kind,p_parent:parent};let st;try{st=await sb("rpc/submit_post",{method:"POST",body:JSON.stringify(parent?pl:Object.assign({p_stage:stage},pl))})}catch(e1){if(parent||e1.message!=="http 404")throw e1;st=await sb("rpc/submit_post",{method:"POST",body:JSON.stringify(pl)})}
   lsSet(LS_NICK,nick);lsSet(LS_LAST,String(Date.now()));
   const msg=st==="approved"?"تم نشر مشاركتك. شكراً لك.":"تم استلام مشاركتك وستظهر بعد مراجعتها.";
   if(parent){replyTo=null;$("pstatus").textContent=msg}else{q("body").value="";form.querySelector(".cnt").textContent="0";ok.textContent=msg;ok.hidden=false;$("pstatus").textContent=msg}
@@ -828,11 +840,13 @@ async function submitForm(form){const parent=form.dataset.form==="new"?null:form
  catch(e){err.textContent="تعذّر الإرسال الآن. حاول بعد قليل.";err.hidden=false}
  btn.disabled=false}
 function initBoard(){const b=$("board");if(!b||!SBOK)return;b.hidden=false;
- b.innerHTML=`<h3>ما يقوله أولياء الأمور</h3><p class="bnote">تُراجَع بعض المشاركات قبل ظهورها. وما يُكتب هنا رأي شخصي وليس معلومة رسمية.</p><p class="sr" id="pstatus" role="status"></p>${formHtml(null)}<div id="plist" aria-live="polite"></div>`;
+ b.innerHTML=`<h3>ما يقوله أولياء الأمور</h3><p class="bnote">تُراجَع بعض المشاركات قبل ظهورها. وما يُكتب هنا رأي شخصي وليس معلومة رسمية.</p><p class="sr" id="pstatus" role="status"></p>${formHtml(null)}<div class="flt" id="flt"></div><div id="plist" aria-live="polite"></div>`;paintFilters();
  b.addEventListener("submit",e=>{e.preventDefault();submitForm(e.target)});
  b.addEventListener("input",e=>{if(e.target.name==="body"){const c=e.target.closest("form").querySelector(".cnt");if(c)c.textContent=e.target.value.length}});
  b.addEventListener("click",async e=>{const x=e.target.closest("[data-bact]");if(!x)return;const a=x.dataset.bact,id=x.dataset.id;
   if(a==="reload")loadPosts();
+  else if(a==="fs"||a==="fk"){if(a==="fs"){fStage=x.dataset.v;const sel=$("pst");if(sel&&fStage)sel.value=fStage}else fKind=x.dataset.v;paintFilters();paintList();const nb=document.querySelector("#flt [data-v=\""+x.dataset.v+"\"][data-bact="+a+"]");nb&&nb.focus()}
+  else if(a==="fclear"){fStage="";fKind="";paintFilters();paintList()}
   else if(a==="reply"){replyTo=replyTo===id?null:id;paintList();if(replyTo){const f=document.querySelector("#p-"+CSS.escape(id)+" .rform [name=body]");f&&f.focus()}}
   else if(a==="cancel"){const pid=replyTo;replyTo=null;paintList();const bt=document.querySelector("#p-"+CSS.escape(pid)+" [data-bact=reply]");bt&&bt.focus()}
   else if(a==="report"){x.disabled=true;x.textContent="جارٍ الإبلاغ…";try{await sb("rpc/submit_report",{method:"POST",body:JSON.stringify({p_post:id})});const s=reportedSet();s.add(id);lsSet(LS_REP,JSON.stringify([...s]));x.textContent="تم الإبلاغ";$("pstatus").textContent="شكراً، سنراجع هذه المشاركة."}catch(err){x.disabled=false;x.textContent="إبلاغ";$("pstatus").textContent="تعذّر الإبلاغ الآن."}}});
