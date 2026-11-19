@@ -133,7 +133,12 @@ footer .btn.sec{border-color:rgba(255,255,255,.75);color:#fff}
 .quick a,.quick button{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:48px;padding:8px 14px;border-radius:12px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);font:700 15px var(--fb);text-decoration:none;cursor:pointer;text-align:start}
 .quick a::after{content:"\203A";font-size:22px;line-height:1;color:var(--brand)}
 .quick a[target]::after{content:none}
-.w-next{order:1}.w-ready{order:2}.w-kids{order:3}.w-main{order:4}.w-time{order:5}.w-stats{order:6}.w-quick{order:7}
+.w-next{order:1}.w-ready{order:2}.w-kids{order:3}.w-main{order:4}.w-join{order:5}.w-time{order:6}.w-stats{order:7}.w-quick{order:8}
+.w-join{background:var(--accbg);border-color:var(--acc)}.w-join h2{color:var(--ink);font-size:18px}.w-join p{margin:0 0 12px;font-size:16px;line-height:1.7}.jact{display:grid;gap:10px}
+.live{position:sticky;top:68px;z-index:20;display:flex;align-items:center;gap:12px;margin:0 0 12px;padding:8px 12px;border:1px solid var(--line);border-radius:16px;background:var(--card);box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.live .donut{width:56px;height:56px}.live .donut::before{inset:7px}.live .donut span{font-size:14px}
+.live b{display:block;font:700 16px var(--fh);color:var(--ink)}.live small{font-size:14px;color:var(--mute)}
+.live.done{border-color:var(--ok);background:var(--okbg)}
 .w-main{padding:20px}
 .lf{display:none}
 .w-main>h2{font-size:clamp(18px,3.2vw,25px);color:var(--ink);margin-bottom:.8em}
@@ -160,7 +165,7 @@ footer .btn.sec{border-color:rgba(255,255,255,.75);color:#fff}
  .content{padding:22px 28px 8px}
  .dash{grid-template-columns:repeat(12,minmax(0,1fr));gap:16px}
  .w-next{grid-column:span 5}.w-ready{grid-column:span 4}.w-stats{grid-column:span 3}
- .w-main{grid-column:span 8;grid-row:span 3}.w-kids{grid-column:span 4}.w-time{grid-column:span 4}.w-quick{grid-column:span 4}}
+ .w-main{grid-column:span 8;grid-row:span 4}.w-join{grid-column:span 4;order:9}.live{top:78px}.w-kids{grid-column:span 4}.w-time{grid-column:span 4}.w-quick{grid-column:span 4}}
 
 /* الصفحات الداخلية */
 .blk{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:20px;margin:0 0 16px;scroll-margin-top:84px}
@@ -449,12 +454,13 @@ body{background:#fff;color:#000;font-size:13pt;line-height:1.6;padding:0}
 <div class="restore no-print" id="restore" hidden></div>
 <ol class="stepper no-print" id="stepper" aria-label="خطوات اختيار حالة ابنك"></ol>
 <div id="wiz" class="no-print"></div>
-<div id="resultwrap" hidden><div class="resum no-print" id="resum"></div><div class="sheet" id="sheet"></div></div>
+<div id="resultwrap" hidden><div class="live no-print" id="live" role="status" aria-live="polite"></div><div class="resum no-print" id="resum"></div><div class="sheet" id="sheet"></div></div>
 <div hidden><select id="grade"></select><select id="mode"></select><select id="cat"></select></div>
 </section>
 <section class="w w-kids no-print"><h2>أبنائي</h2><div id="kids"></div><div id="addkid"></div><div class="kact" id="kact"></div></section>
 <section class="w w-time no-print"><h2>المواعيد القادمة</h2><ul class="tl" id="tl"></ul></section>
 <section class="w w-quick no-print"><h2>اختصارات</h2><div class="quick"><a href="#pdftool">جهّز ملف PDF للمستندات</a><a href="#age">حاسبة السن</a><a href="#faq">الأسئلة الشائعة</a><a href="#refund">الاسترداد والرسوم</a><a href="#talk">اقتراحات ونقاش</a><a href="#contact">التواصل مع مشرف الصف</a></div><div class="qa"><button type="button" class="btn sec js-ics">أضف المواعيد إلى التقويم</button><a class="btn sec" id="waTop" href="https://wa.me/?text=" target="_blank" rel="noopener" aria-label="شارك الدليل على واتساب (يفتح في نافذة جديدة)">شارك الدليل على واتساب</a></div></section>
+<section class="w w-join no-print" id="wJoin"><h2>شارك في تطوير الموقع</h2><p>هذا الدليل مجهود فردي يتحسن بمشاركتكم. اقترح ميزة، أو انقل خبرتك لبقية الأهالي، أو بلّغ عن معلومة تخالف الكتيّب الرسمي، أو شارك الدليل مع أولياء أمور آخرين.</p><div class="jact"><a class="btn" href="#talk">اقترح فكرة أو شارك خبرتك</a><a class="btn sec" id="waJoin" href="https://wa.me/?text=" target="_blank" rel="noopener" aria-label="شارك الدليل مع أولياء الأمور على واتساب (يفتح في نافذة جديدة)">شارك الدليل مع أهالٍ آخرين</a></div></section>
 </div></div>
 
 <div class="view" id="v-age" hidden><section class="blk" id="age">
@@ -751,7 +757,7 @@ function prog(){const b=sh.querySelectorAll(".chk input"),n=[...b].filter(x=>x.c
  b.forEach(x=>x.closest(".chk").dataset.done=x.checked?"1":"0");
  if(p)p.textContent=n===b.length?"جهّزت كل المستندات ("+n+" من "+b.length+").":"جهّزت "+n+" من "+b.length+" مستندات.";
  if(q)q.textContent="جهّزت "+n+" من "+b.length;
- sh.style.setProperty("--p",(b.length?100*n/b.length:0)+"%");sh.classList.toggle("done",b.length>0&&n===b.length);paintWidgets()}
+ sh.style.setProperty("--p",(b.length?100*n/b.length:0)+"%");{const L=$("live"),pc=b.length?Math.round(100*n/b.length):0;if(L){L.classList.toggle("done",b.length>0&&n===b.length);L.innerHTML=`<div class="donut" style="--p:${pc}" aria-hidden="true"><span>${pc}%</span></div><div><b>جاهزية أوراق ${esc(kid().name)}</b><small>${n} من ${b.length} مستنداً جاهزاً</small></div>`}}sh.classList.toggle("done",b.length>0&&n===b.length);paintWidgets()}
 function stampDate(){const d=$("pDate");if(d)d.textContent=new Date().toLocaleDateString("ar-EG",{day:"numeric",month:"long",year:"numeric"})}
 function printList(){stampDate();window.print()}
 window.addEventListener("beforeprint",stampDate);
@@ -899,7 +905,7 @@ document.querySelectorAll("#ics,.js-ics").forEach(el=>el.addEventListener("click
  if(!ics){b.textContent="انتهت مواعيد العام";return}
  const u=URL.createObjectURL(new Blob([ics],{type:"text/calendar;charset=utf-8"})),a=document.createElement("a");a.href=u;a.download="mawaeed-abnaouna-2026-2027.ics";document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),1000);
  b.textContent="تم تنزيل ملف المواعيد";setTimeout(()=>b.textContent="أضف المواعيد إلى التقويم",2500)}));
-["waTop","waFoot"].forEach(id=>{document.getElementById(id).href="https://wa.me/?text="+encodeURIComponent(WA+"\n"+location.href.split(/[?#]/)[0])});
+["waTop","waFoot","waJoin"].forEach(id=>{document.getElementById(id).href="https://wa.me/?text="+encodeURIComponent(WA+"\n"+location.href.split(/[?#]/)[0])});
 
 
 const VIEWS=["docs","age","dates","faq","talk","more"];
