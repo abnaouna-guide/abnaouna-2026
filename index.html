@@ -163,6 +163,8 @@ a.reset,.reset{display:inline-flex;align-items:center;justify-content:center;min
 @media(min-width:800px){.finder{grid-template-columns:minmax(0,340px) minmax(0,1fr);align-items:start}}
 label{display:block;font-weight:600;margin:14px 0 6px}
 select,input[type=date]{width:100%;font:inherit;font-size:16px;padding:10px 12px;min-height:48px;border:1.5px solid var(--line);border-radius:12px;background:var(--card);color:var(--ink)}
+.refdate{background:var(--soft);border-inline-start:5px solid var(--acc);padding:10px 14px;border-radius:10px;margin:0 0 18px;max-width:70ch}
+.why{background:var(--accbg);color:var(--accink);border-radius:12px;padding:10px 14px;font-size:15px;margin:0 0 12px}.why:empty{display:none}
 .result{font:700 clamp(22px,3.6vw,30px) "Readex Pro",sans-serif;color:var(--brand);margin:6px 0 10px}
 table{border-collapse:collapse;width:100%;font-size:15px}
 th,td{padding:10px;border-bottom:1px solid var(--line);text-align:start}th{font-weight:600;color:var(--mute)}
@@ -241,10 +243,12 @@ header.top,.tabbar,footer,.skip,.view:not(#v-docs),#docs>h2,.kids,#addkid,.stepp
 <div class="view" id="v-age" hidden><section class="blk" id="age">
 <h2>هل يسمح سن ابنك بالصف الذي تريده؟</h2>
 <p class="note" style="max-width:70ch">بحسب جدول الكتيّب: يُقبل الطالب في الصف إذا كان مولوداً في التاريخ المذكور أو قبله. التسجيل المخالف لشرط السن لا يحق معه استرداد أي مصروفات.</p>
+<p class="refdate"><b>يُحسب سن الطالب كما في 1/10/2026</b> (أول أكتوبر من العام الدراسي)، وليس بتاريخ اليوم.</p>
 <div class="finder">
 <div>
 <label for="dob">تاريخ ميلاد الطالب</label>
 <input type="date" id="dob" value="2019-09-15">
+<p class="note" style="margin:6px 0 0">سنحسب عمره كما في 1/10/2026.</p>
 <label id="natl">الجنسية</label>
 <div class="seg" role="group" aria-labelledby="natl">
 <button type="button" id="nEg" aria-pressed="true">مصري</button>
@@ -255,6 +259,7 @@ header.top,.tabbar,footer,.skip,.view:not(#v-docs),#docs>h2,.kids,#addkid,.stepp
 <div class="sheet" style="padding-top:18px">
 <div class="tag">أعلى صف يسمح به السن</div>
 <div class="result" id="ageRes" aria-live="polite"></div>
+<p class="why" id="ageWhy" aria-live="polite"></p>
 <table class="stack"><thead><tr><th>الصف</th><th>مولود في أو قبل</th><th>الحالة</th></tr></thead><tbody id="ageBody"></tbody></table>
 </div>
 </div>
@@ -526,6 +531,12 @@ function age(){const v=dob.value;const body=document.getElementById("ageBody"),r
  let best=null;body.innerHTML=G.map(g=>{const lim=(!eg&&g[3])?g[3]:g[2];const ok=v<=lim;const soft=eg&&g[3]&&ok&&v>g[3];if(ok)best=g;
   return `<tr><td>${g[1]}</td><td><span class="ltr">${fmt(lim)}</span></td><td class="${ok?(soft?"warn":"yes"):"no"}">${ok?(soft?"مسموح بتخفيض السن":"مسموح"):"السن لا يسمح"}</td></tr>`}).join("");
  res.textContent=best?best[1]:"أصغر من سن القبول لرياض الأطفال";
+ const wy=document.getElementById("ageWhy");let wt="";
+ {const ref=new Date(Date.UTC(2026,9,1)),db=new Date(v+"T00:00:00Z");let y=ref.getUTCFullYear()-db.getUTCFullYear(),m=ref.getUTCMonth()-db.getUTCMonth();if(ref.getUTCDate()<db.getUTCDate())m--;if(m<0){y--;m+=12}
+  if(y>=0){const yt=y===0?"":y===1?"سنة":y===2?"سنتان":y<=10?y+" سنوات":y+" سنة",mt=m===0?"":m===1?"شهر":m===2?"شهران":m+" أشهر";
+   wt="عمر ابنك كما في 1/10/2026: "+([yt,mt].filter(Boolean).join(" و")||"أقل من شهر")+".";
+   if(best&&G.indexOf(best)<=2&&eg&&best[3]&&v>best[3])wt+=" هذا أقل من السن الأساسي للصف ("+[4,5,6][G.indexOf(best)]+" سنوات)، لذلك تظهر «مسموح بتخفيض السن»: يجوز للمصريين فقط النزول بنصف عام."}}
+ wy.textContent=wt;
  nt.textContent=eg?"للمصريين فقط: يجوز النزول بالسن نصف عام في KG1 و KG2 والأول الابتدائي، مع إقرار من ولي الأمر بإلحاق الطالب بمدارس خاصة عند العودة لمصر.":"لغير المصريين يُطبّق السن الأساسي: 4 سنوات لـ KG1، و5 لـ KG2، و6 للأول الابتدائي في أول أكتوبر 2026.";}
 age();
 
