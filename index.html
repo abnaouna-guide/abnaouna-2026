@@ -388,6 +388,29 @@ footer a{color:#fff}
 .ttl{min-width:0}.ttl h1{margin:0}
 .vis-top{display:inline-flex;align-items:baseline;gap:8px;margin:4px 0 0;padding:2px 14px;border-radius:999px;background:var(--accbg);color:var(--accink);font:700 15px var(--fb)}
 .vis-top b{font:700 20px var(--fh)}
+/* مواعيد منتهية، نسخ بضغطة، بحث الأسئلة، بطاقة المحظورات، صف السن */
+table,.dates b,.tl .chip2,.vis b{font-variant-numeric:tabular-nums}
+.past b,.past td:last-child{color:var(--mute);text-decoration:line-through;text-decoration-thickness:1.5px}
+.dates .past{background:var(--soft);box-shadow:none;border-inline-start-color:var(--line)}
+.gone{display:inline-block;margin-inline-start:8px;padding:1px 10px;border-radius:999px;background:var(--line);color:var(--ink);font-size:13px;font-weight:700;text-decoration:none;white-space:nowrap}
+.dates .gone{display:block;width:max-content;margin:6px 0 0}
+.cprow{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 0}
+.toast{position:fixed;inset-inline:16px;bottom:calc(84px + env(safe-area-inset-bottom));z-index:60;margin:0 auto;max-width:360px;padding:12px 16px;border-radius:14px;background:var(--ink);color:var(--bg);font-weight:700;text-align:center;box-shadow:0 12px 28px -10px rgba(0,0,0,.5)}
+@media(min-width:1000px){.toast{bottom:24px}}
+.faqsearch{max-width:560px;margin:0 0 14px}
+.faqsearch label{margin:0 0 6px}
+.faqsearch input{width:100%;font:inherit;font-size:17px;padding:10px 14px;min-height:48px;border:1.5px solid var(--line);border-radius:12px;background:var(--card);color:var(--ink)}
+.faqsearch .note{margin:6px 0 0}
+mark{background:#ffe08a;color:#1b1b1b;border-radius:3px;padding:0 2px}
+.danger{background:var(--badbg);border:1.5px solid var(--bad);border-radius:16px;padding:14px 16px;margin:0 0 18px}
+.danger h3{color:var(--bad);margin:0 0 8px}
+.danger ul{margin:0;padding-inline-start:1.2em}.danger li{margin:0 0 8px}.danger li:last-child{margin:0}
+.danger .pg{color:var(--mute);white-space:nowrap}
+.danger .more{margin:10px 0 0;font-size:15px;color:var(--mute)}
+#ageBody tr.cur{background:var(--accbg)}
+#ageBody tr.cur td:first-child{font-weight:700}
+.here{display:inline-block;margin-inline-start:8px;padding:1px 10px;border-radius:999px;background:var(--acc);color:var(--onacc);font-size:13px;font-weight:700;white-space:nowrap}
+@media(max-width:599px){#ageBody tr.cur{border-color:var(--acc);box-shadow:inset 0 0 0 1.5px var(--acc)}}
 /* طباعة A4: الترويسة وقائمة المستندات وطريقة الإرسال فقط */
 @page{size:A4;margin:16mm}
 @media print{
@@ -463,19 +486,19 @@ body{background:#fff;color:#000;font-size:13pt;line-height:1.6;padding:0}
 <div class="dates">
 <div><b>نوفمبر 2026</b><span>فتح التسجيل على المنصة</span></div>
 <div><b>150 دولار</b><span>رسوم كل طالب، لأي صف</span></div>
-<div><b>السبت 9 يناير 2027</b><span>امتحانات الفصل الدراسي الأول</span></div>
-<div><b>السبت 22 مايو 2027</b><span>امتحانات الفصل الدراسي الثاني</span></div>
-<div><b>السبت 17 يوليو 2027</b><span>الدور الثاني وتحديد المستوى</span></div>
+<div data-end="2027-01-09"><b>السبت 9 يناير 2027</b><span>امتحانات الفصل الدراسي الأول</span></div>
+<div data-end="2027-05-22"><b>السبت 22 مايو 2027</b><span>امتحانات الفصل الدراسي الثاني</span></div>
+<div data-end="2027-07-17"><b>السبت 17 يوليو 2027</b><span>الدور الثاني وتحديد المستوى</span></div>
 </div>
 <p><button type="button" class="btn" id="ics">أضف المواعيد إلى التقويم</button></p>
 </section><section class="blk" id="refund">
 <h2>استرداد الرسوم: لا يُقبل أي طلب بعد هذه المواعيد</h2>
 <table class="stack" style="max-width:720px"><thead><tr><th>الامتحان</th><th>آخر موعد لطلب الاسترداد</th></tr></thead><tbody>
-<tr><td>الفصل الدراسي الأول</td><td>31 ديسمبر 2026</td></tr>
-<tr><td>الفصل الدراسي الثاني</td><td>30 أبريل 2027</td></tr>
-<tr><td>الدور الثاني</td><td>9 يوليو 2027</td></tr>
+<tr data-end="2026-12-31"><td>الفصل الدراسي الأول</td><td>31 ديسمبر 2026</td></tr>
+<tr data-end="2027-04-30"><td>الفصل الدراسي الثاني</td><td>30 أبريل 2027</td></tr>
+<tr data-end="2027-07-09"><td>الدور الثاني</td><td>9 يوليو 2027</td></tr>
 </tbody></table>
-<p style="max-width:70ch">النموذج موجود على المنصة. يُرسل بعد استيفاء بياناته ومرفقاته مع كل إيصالات السداد إلى <code class="ltr">Financial@moe.edu.eg</code> فقط. طلب الاسترداد يُلغي تقدم الطالب للامتحان.</p>
+<p style="max-width:70ch">النموذج موجود على المنصة. يُرسل بعد استيفاء بياناته ومرفقاته مع كل إيصالات السداد إلى <code class="ltr">Financial@moe.edu.eg</code> <button type="button" class="copy" data-copy="Financial@moe.edu.eg" data-copy-name="بريد الاسترداد">نسخ</button> فقط. طلب الاسترداد يُلغي تقدم الطالب للامتحان.</p>
 </section><section class="blk" id="steps">
 <h2>خطوات التسجيل: حساب واحد لولي الأمر لكل الأبناء</h2>
 <ol class="steps">
@@ -493,9 +516,11 @@ body{background:#fff;color:#000;font-size:13pt;line-height:1.6;padding:0}
 <div class="view" id="v-faq" hidden><section class="blk" id="faq">
 <h2>أسئلة شائعة وإجاباتها من الكتيّب</h2>
 <p class="note" style="max-width:70ch">رقم الصفحة بين قوسين بحسب ترقيم الكتيّب المطبوع، لتتحقق من الإجابة بنفسك.</p>
+<div class="faqsearch"><label for="faqQ">ابحث في الأسئلة</label><input id="faqQ" type="search" autocomplete="off" placeholder="مثال: تحديد مستوى، الأزهر، الاسترداد"><p class="note" id="faqCount" role="status"></p></div>
 <div id="faqList"></div>
 </section><section class="blk" id="rules">
 <h2>تنبيهات مهمة قبل التقديم</h2>
+<div class="danger" id="danger" role="note"></div>
 <ol class="rules">
 <li>المتقدمون يُعتبرون "طلاب منازل"، وتُطبق عليهم شروط القبول بالمدارس المصرية عند العودة.</li>
 <li>لا يجوز أداء الامتحان من أكثر من جهة في نفس العام، ويُلغى الامتحان الأخير إن ثبت ذلك.</li>
@@ -583,7 +608,8 @@ body{background:#fff;color:#000;font-size:13pt;line-height:1.6;padding:0}
 <div class="cols" id="mails"></div>
 <div class="card" style="margin-top:16px">
 <h3>عنوان إرسال الأصول بالبريد (للطلاب الجدد فقط)</h3>
-<p style="margin:0">الإدارة المركزية للامتحانات، إدارة أبناؤنا في الخارج: 16 ش أمين سامي، متفرع من شارع قصر العيني، بجوار عمارات العرايس، المنيرة، السيدة زينب، القاهرة.</p>
+<p style="margin:0" id="adr">الإدارة المركزية للامتحانات، إدارة أبناؤنا في الخارج: 16 ش أمين سامي، متفرع من شارع قصر العيني، بجوار عمارات العرايس، المنيرة، السيدة زينب، القاهرة.</p>
+<div class="cprow"><button type="button" class="copy" data-copy-el="adr" data-copy-name="العنوان">نسخ العنوان</button><button type="button" class="copy" data-copy="sonsabroad@moe.edu.gov" data-copy-name="بريد الإدارة">نسخ بريد الإدارة</button></div>
 <p class="note" style="margin:.4em 0 0">هاتف <span class="ltr">27940016</span> · فاكس <span class="ltr">27920041</span> · بريد الإدارة <span class="ltr">sonsabroad@moe.edu.gov</span> (كما ورد في الكتيّب؛ للاستفسار يُفضّل بريد مشرف الصف) · يُفضّل الاحتفاظ برقم تتبع الشحنة.</p>
 </div>
 </section><section class="blk" id="news">
@@ -621,6 +647,8 @@ const LS_KIDS="abnaouna2026.kids.v1";
 const LS_FS="abnaouna2026.fs.v1";
 /* تاريخ آخر مراجعة للمعلومات مقابل الكتيّب (YYYY-MM-DD): حدّثه كلما راجعت الكتيّب أو صدر بيان جديد */
 const REVIEWED="2026-11-19";
+/* محظورات تُلغي الامتحان أو تحجب النتيجة أو تمنع الاسترداد: [النص، الصفحة في الكتيّب]. مأخوذة مما ورد في الكتيّب فقط. */
+const DANGER=[["أداء الامتحان من داخل مصر: يُصرف النظر عن النتيجة ولا يُعتد بها.","18"],["اختلاف صور المستندات المرفوعة عن الأصول المرسلة، أو عدم اتباع شروط التقدم: يحق للإدارة إلغاء التقدم والامتحان.","16 و18"],["عدم إرسال أصول المستندات المطلوبة بالبريد: تُحجب النتيجة.","16 و18"],["أداء الامتحان من أكثر من جهة في العام نفسه: يُلغى الامتحان الأخير.","18"],["التقدم المخالف لشرط السن: لا يحق المطالبة باسترداد أي مصروفات.","17"],["تقديم طلب الاسترداد: يُلغي تقدم الطالب للامتحان.","16"]];
 /* عدّاد الزوار (GoatCounter): اكتب كود موقعك هنا (مثل "abnaouna") بعد إنشائه في goatcounter.com. فارغ = بلا عدّاد. */
 const GC_CODE="abnaouna";
 /* مجموعة الاقتراحات والنقاش الخاصة بالموقع: [اسم المجموعة، رابط الدعوة]. رابط واتساب https://chat.whatsapp.com/... أو تيليجرام https://t.me/... بلا معلمات بعد الرابط. فارغة = يظهر "سيُضاف قريباً". */
@@ -792,8 +820,8 @@ nE.addEventListener("click",()=>setN(true));nO.addEventListener("click",()=>setN
 function fmt(d){const [y,m,dd]=d.split("-");return `${+dd}/${+m}/${y}`}
 function age(){const v=dob.value;const body=document.getElementById("ageBody"),res=document.getElementById("ageRes"),nt=document.getElementById("ageNote");
  if(!v){res.textContent="أدخل تاريخ الميلاد";body.innerHTML="";return}
- let best=null;body.innerHTML=G.map(g=>{const lim=(!eg&&g[3])?g[3]:g[2];const ok=v<=lim;const soft=eg&&g[3]&&ok&&v>g[3];if(ok)best=g;
-  return `<tr><td>${g[1]}</td><td><span class="ltr">${fmt(lim)}</span></td><td class="${ok?(soft?"warn":"yes"):"no"}">${ok?(soft?"مسموح بتخفيض السن":"مسموح"):"السن لا يسمح"}</td></tr>`}).join("");
+ let best=null,bi=-1;G.forEach((g,i)=>{const lim=(!eg&&g[3])?g[3]:g[2];if(v<=lim)bi=i});body.innerHTML=G.map((g,i)=>{const lim=(!eg&&g[3])?g[3]:g[2];const ok=v<=lim;const soft=eg&&g[3]&&ok&&v>g[3];if(ok)best=g;
+  return `<tr${i===bi?' class="cur"':""}><td>${g[1]}${i===bi?'<span class="here">الأعلى لسنه</span>':""}</td><td><span class="ltr">${fmt(lim)}</span></td><td class="${ok?(soft?"warn":"yes"):"no"}">${ok?(soft?"مسموح بتخفيض السن":"مسموح"):"السن لا يسمح"}</td></tr>`}).join("");
  res.textContent=best?best[1]:"أصغر من سن القبول لرياض الأطفال";res.classList.toggle("bad",!best);
  const wy=document.getElementById("ageWhy");let wt="";
  {const ref=new Date(Date.UTC(2026,9,1)),db=new Date(v+"T00:00:00Z");let y=ref.getUTCFullYear()-db.getUTCFullYear(),m=ref.getUTCMonth()-db.getUTCMonth();if(ref.getUTCDate()<db.getUTCDate())m--;if(m<0){y--;m+=12}
@@ -819,11 +847,24 @@ tb.addEventListener("keydown",e=>{const k={ArrowLeft:1,ArrowRight:-1,Home:"h",En
 const M=[["KG1","s.kg01"],["KG2","s.kg02"],["الأول الابتدائي","s.prim01"],["الثاني الابتدائي","s.prim02"],["الثالث الابتدائي","s.prim03"],["الرابع الابتدائي","s.prim04"],["الخامس الابتدائي","s.prim05"],["السادس الابتدائي","s.prim06"],["الأول الإعدادي","s.prep01"],["الثاني الإعدادي","s.prep02"],["الثالث الإعدادي","s.prep03"],["الأول الثانوي","s.than01"],["الثاني الثانوي","s.than02"]].map(m=>[m[0],m[1]+"@support.emis.edu.eg"]);
 M.push(["الدعم الفني للمنصة","support@stuabroad.moe.edu.eg"]);
 document.getElementById("mails").innerHTML=M.map(m=>`<div class="card mail-row"><div><b>${m[0]}</b><br><code>${m[1]}</code></div><button type="button" class="copy" data-m="${m[1]}">نسخ</button></div>`).join("");
+let toastT=0;
+function toast(m){let e=$("toast");if(!e){e=document.createElement("p");e.id="toast";e.className="toast no-print";e.setAttribute("role","status");document.body.appendChild(e)}e.textContent=m;e.hidden=false;clearTimeout(toastT);toastT=setTimeout(()=>{e.hidden=true},2200)}
+document.addEventListener("click",e=>{const b=e.target.closest("[data-copy],[data-copy-el]");if(!b)return;const name=b.dataset.copyName||"النص",txt=b.dataset.copy||(($(b.dataset.copyEl)||{}).textContent||"").trim(),old=b.textContent;
+ const done=()=>{toast("تم نسخ "+name);b.textContent="تم النسخ";setTimeout(()=>{b.textContent=old},1600)},fail=()=>{toast("تعذّر النسخ، انسخ "+name+" يدوياً");};
+ try{navigator.clipboard.writeText(txt).then(done).catch(fail)}catch(x){fail()}});
 document.getElementById("mails").addEventListener("click",e=>{const b=e.target.closest(".copy");if(!b)return;try{navigator.clipboard.writeText(b.dataset.m).then(()=>{b.textContent="تم النسخ";setTimeout(()=>b.textContent="نسخ",1500)}).catch(()=>{b.textContent="انسخه يدوياً"})}catch(err){b.textContent="انسخه يدوياً"}});
 document.getElementById("natBody").innerHTML=NAT.map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td></tr>`).join("");
 document.getElementById("natNote").textContent=NATN;
 document.getElementById("ret").innerHTML=RET.map(r=>`<details class="fold"><summary>${r[0]}</summary><div class="fb"><ul>${r[1].map(x=>`<li>${x}</li>`).join("")}</ul><p class="note">البند ${r[2]} في الكتيّب (ص${r[3]})</p></div></details>`).join("");
-document.getElementById("faqList").innerHTML=FAQ.map(f=>`<details class="fold"><summary>${f[0]}</summary><div class="fb"><p style="margin:.2em 0 .6em">${f[1]} <span class="pg">(ص${f[2]})</span></p></div></details>`).join("");
+const nrm=s=>{let n="",m=[];for(let i=0;i<s.length;i++){let c=s[i];if(/[\u064B-\u065F\u0670\u0640]/.test(c))continue;c=c.replace(/[أإآٱ]/,"ا").replace("ى","ي").replace("ة","ه");n+=c.toLowerCase();m.push(i)}return{n,m}};
+function hl(s,toks){if(!toks.length)return esc(s);const {n,m}=nrm(s),rg=[];toks.forEach(k=>{let i=0;while((i=n.indexOf(k,i))>=0){rg.push([m[i],m[i+k.length-1]+1]);i+=k.length}});if(!rg.length)return esc(s);
+ rg.sort((x,y)=>x[0]-y[0]);const mg=[];rg.forEach(r=>{const l=mg[mg.length-1];if(l&&r[0]<=l[1])l[1]=Math.max(l[1],r[1]);else mg.push(r.slice())});
+ let o="",p=0;mg.forEach(r=>{o+=esc(s.slice(p,r[0]))+"<mark>"+esc(s.slice(r[0],r[1]))+"</mark>";p=r[1]});return o+esc(s.slice(p))}
+function paintFaq(){const q=($("faqQ")||{value:""}).value,toks=nrm(q.trim()).n.split(/\s+/).filter(x=>x.length>=2),L=$("faqList"),cnt=$("faqCount");
+ const rows=FAQ.filter(f=>{if(!toks.length)return true;const h=nrm(f[0]+" "+f[1]).n;return toks.every(k=>h.includes(k))});
+ L.innerHTML=rows.map(f=>`<details class="fold"${toks.length?" open":""}><summary>${hl(f[0],toks)}</summary><div class="fb"><p style="margin:.2em 0 .6em">${hl(f[1],toks)} <span class="pg">(ص${f[2]})</span></p></div></details>`).join("");
+ cnt.textContent=toks.length?(rows.length?"عُثر على "+rows.length+(rows.length===1?" سؤال":rows.length===2?" سؤالان":rows.length<=10?" أسئلة":" سؤالاً")+".":"لا توجد نتائج. جرّب كلمة أخرى، أو راجع الكتيّب مباشرة."):""}
+paintFaq();if($("faqQ"))$("faqQ").addEventListener("input",paintFaq);
 const cd=document.getElementById("cd");
 const dword=n=>n===1?"باقي يوم واحد":n===2?"باقي يومان":"باقي "+n+(n<=10?" أيام":" يوماً");
 function ksaToday(){try{return new Intl.DateTimeFormat("en-CA",{timeZone:"Asia/Riyadh"}).format(new Date())}catch(e){return new Date(Date.now()+3*36e5).toISOString().slice(0,10)}}
@@ -835,7 +876,10 @@ function tick(){const today=ksaToday(),e=DL.find(x=>x[0]>=today);let sr,v;
   sr=(n===0?"اليوم: "+e[1]:dword(n)+" على "+e[1])+"، "+dtxt(e[0]);
   v=`<span class="cd-k">الموعد القادم</span>`+(n===0?`<span class="cd-w">اليوم</span>`:`<span class="cd-n">${n}</span><span class="cd-u">${u}</span>`)+`<span class="cd-t">${e[1]}</span><span class="cd-d">${dtxt(e[0])}</span>`}
  const html=`<span class="sr">${sr}</span><div aria-hidden="true">${v}</div>`;
- if(cd.dataset.k!==html){cd.dataset.k=html;cd.innerHTML=html}}
+
+ if(cd.dataset.k!==html){cd.dataset.k=html;cd.innerHTML=html}markPast(today)}
+function markPast(today){document.querySelectorAll("[data-end]").forEach(el=>{const gone=el.dataset.end<today;el.classList.toggle("past",gone);let b=el.querySelector(".gone");
+  if(gone&&!b){b=document.createElement("span");b.className="gone";b.textContent="انتهى الموعد";(el.matches("tr")?el.lastElementChild:el).appendChild(b)}else if(!gone&&b)b.remove()})}
 const thm=document.getElementById("thm"),mq=window.matchMedia("(prefers-color-scheme: dark)");
 const isDark=()=>document.documentElement.dataset.theme?document.documentElement.dataset.theme==="dark":mq.matches;
 function thLabel(){thm.querySelector(".sr").textContent=isDark()?"الوضع الفاتح":"الوضع الداكن";thm.dataset.dark=isDark()?"1":"";thm.setAttribute("aria-pressed",isDark())}
@@ -1011,6 +1055,7 @@ function initPdf(){if(!$("pdfApp"))return;
   else if(a==="rot"){pItems[i].rot=(pItems[i].rot+90)%360;pdfPaint(["rot",i])}
   else if(a==="del"){try{pItems[i].bm.close()}catch(x){}pItems.splice(i,1);pdfPaint(pItems.length?["del",Math.min(i,pItems.length-1)]:null);if(!pItems.length)$("pdfIn").focus()}
   $("pdfRes").hidden=true})}
+(function(){const d=$("danger");if(d)d.innerHTML='<h3>أخطاء تُلغي الامتحان أو تحجب النتيجة</h3><ul>'+DANGER.map(x=>"<li>"+esc(x[0])+' <span class="pg">(ص'+x[1]+")</span></li>").join("")+'</ul><p class="more">هذه خلاصة من الكتيّب، وللنص الكامل راجع الكتيّب الرسمي.</p>'})();
 paintTalk();initBoard();initCounter();initCorr();initFont();initPdf();
 }
 </script>
