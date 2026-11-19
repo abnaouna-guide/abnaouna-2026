@@ -6,7 +6,7 @@
 <title>دليل أبناؤنا في الخارج 2026/2027</title>
 <meta name="description" content="دليل مبسّط لتسجيل امتحانات أبناؤنا في الخارج 2026/2027: المستندات المطلوبة حسب الصف والحالة، وحاسبة السن، والمواعيد. مبادرة فردية غير حكومية.">
 <meta name="theme-color" content="#0b4f5c">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://gc.zgo.at; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://abnaouna.goatcounter.com; connect-src https://abnaouna.goatcounter.com; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://gc.zgo.at; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://abnaouna.goatcounter.com; connect-src https://abnaouna.goatcounter.com https://dbeubyijcafytupnoswm.supabase.co; object-src 'none'; base-uri 'none'; form-action 'none'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <link rel="icon" type="image/png" href="icon.png"><link rel="apple-touch-icon" href="icon.png">
 <!-- معاينة واتساب: og:url وog:image بعنوان الدومين. غيّرهما إن تغيّر الدومين -->
@@ -303,6 +303,32 @@ footer a{color:#fff}
 .rules2{padding-inline-start:1.2em;margin:0 0 14px}.rules2 li{margin:0 0 10px}
 @media(max-width:599px){.talk-cta .btn{justify-self:stretch}.notice{padding:10px 12px;font-size:15px;margin-bottom:14px}.notice::before{width:22px;height:22px;font-size:14px}}
 
+/* لوحة النقاش داخل الموقع */
+.board{margin:0 0 22px}
+.pform{display:grid;gap:4px;background:var(--bg);border:1px solid var(--line);border-radius:16px;padding:16px;margin:0 0 18px}
+.pform h3{margin:0 0 6px}.pform label{margin:10px 0 4px}
+.pform input,.pform select,.pform textarea{width:100%;font:inherit;font-size:17px;padding:10px 12px;min-height:48px;border:1.5px solid var(--line);border-radius:12px;background:var(--card);color:var(--ink)}
+.pform textarea{min-height:110px;resize:vertical;line-height:1.6}
+.pform .meta{display:flex;justify-content:space-between;gap:8px;color:var(--mute);font-size:14px;margin:2px 0 0}
+.pform .err{color:var(--bad);font-weight:700;margin:6px 0 0}
+.pform .okmsg{color:var(--ok);font-weight:700;margin:6px 0 0}
+.pform .btn{margin-top:10px;justify-self:start}
+.hp{position:absolute;inset-inline-start:-9999px;width:1px;height:1px;overflow:hidden}
+.post{background:var(--bg);border:1px solid var(--line);border-radius:16px;padding:14px 16px;margin:0 0 10px}
+.post .ph2{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;margin:0 0 6px}
+.post .nick{font-weight:700}
+.post .pk{background:var(--soft);color:var(--brand);border-radius:999px;padding:1px 10px;font-size:13px;font-weight:700}
+.post .pd{color:var(--mute);font-size:14px}
+.post .pb{margin:0 0 8px;white-space:pre-wrap;overflow-wrap:anywhere}
+.post .pa{display:flex;gap:8px;flex-wrap:wrap}
+.post .pa button{min-height:44px;min-width:56px;padding:4px 14px;border-radius:999px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);font:700 14px var(--fb);cursor:pointer}
+.post .pa button[disabled]{opacity:.6;cursor:default}
+.reps{margin:10px 0 0;padding-inline-start:14px;border-inline-start:3px solid var(--acc);display:grid;gap:8px}
+.reps .post{margin:0;background:var(--card)}
+.rform{margin-top:10px}
+.bnote{color:var(--mute);font-size:15px}
+@media(max-width:599px){.pform{padding:14px 12px}.post{padding:12px}.pform .btn{justify-self:stretch}}
+
 /* طباعة A4: الترويسة وقائمة المستندات وطريقة الإرسال فقط */
 @page{size:A4;margin:16mm}
 @media print{
@@ -429,6 +455,7 @@ body{background:#fff;color:#000;font-size:13pt;line-height:1.6;padding:0}
 <div class="view" id="v-talk" hidden><section class="blk" id="talk"><h2>اقتراحاتكم ونقاش الأولياء</h2>
 <p class="lede">مجموعة خاصة بهذا الموقع: شاركونا اقتراحاتكم وما وجدتموه ناقصاً أو خاطئاً لنطوّره، وتبادلوا فيها خبراتكم حول التسجيل والامتحانات. الموقع مبادرة فردية وليس تابعاً لأي جهة حكومية.</p>
 <div class="card talk-cta" id="talkCta"></div>
+<div class="board no-print" id="board" hidden></div>
 <h3>آداب النقاش</h3>
 <ul class="rules2">
 <li><b>لا تنشر بيانات شخصية:</b> أرقام الجلوس أو الهويات أو صور الشهادات أو بيانات حسابك على المنصة.</li>
@@ -518,6 +545,9 @@ const LS_KIDS="abnaouna2026.kids.v1";
 const GC_CODE="abnaouna";
 /* مجموعة الاقتراحات والنقاش الخاصة بالموقع: [اسم المجموعة، رابط الدعوة]. رابط واتساب https://chat.whatsapp.com/... أو تيليجرام https://t.me/... بلا معلمات بعد الرابط. فارغة = يظهر "سيُضاف قريباً". */
 const GROUPS=[];
+/* نقاش الموقع (Supabase): اكتب رابط مشروعك ومفتاحه العام (publishable/anon) بعد إنشائه. لا تضع هنا أبداً مفتاح service_role. فارغ = لا نقاش داخلي. */
+const SB_URL="https://dbeubyijcafytupnoswm.supabase.co";
+const SB_KEY="sb_publishable_EGXvdp2hexHt5oSvqvTTkA_C5huuEVX";
 const STAGES=[["رياض الأطفال",[["kg1","KG1"],["kg2","KG2"]]],["الابتدائي",[["p1","الأول"],["p2","الثاني"],["p3","الثالث"],["p4","الرابع"],["p5","الخامس"],["p6","السادس"]]],["الإعدادي",[["m1","الأول"],["m2","الثاني"],["m3","الثالث"]]],["الثانوي",[["s1","الأول","عام أو بكالوريا"],["s2","الثاني","العام"]]]];
 const MODES=[["t1","الفصل الدراسي الأول"],["t2","الفصل الدراسي الثاني"],["r2","الدور الثاني"]];
 const BD="أصل شهادة ميلاد الطالب (الرقم القومي)";
@@ -754,12 +784,60 @@ function route(first){const id=decodeURIComponent(location.hash.slice(1))||"docs
  const t=$(id);if(t&&id!==v&&SEC2V[id])t.scrollIntoView({block:"start"});else window.scrollTo(0,0);
  if(!first){const h=document.querySelector("#v-"+v+" h2");if(h){h.tabIndex=-1;h.focus({preventScroll:true})}}}
 window.addEventListener("hashchange",()=>route(false));route(true);
-function paintTalk(){const c=$("talkCta");if(!c)return;const re=/^https:\/\/(chat\.whatsapp\.com|wa\.me|t\.me|telegram\.me)\/[A-Za-z0-9_+\-]+$/,L=GROUPS.filter(g=>re.test(g[1]));
- c.innerHTML=L.length?L.map(g=>`<div class="grp"><p><b>${esc(g[0])}</b></p><p class="note">شاركنا اقتراحك أو ما وجدته ناقصاً أو خاطئاً في الموقع.</p><a class="btn" href="${g[1]}" target="_blank" rel="noopener noreferrer" aria-label="انضم إلى المجموعة: ${esc(g[0])} (يفتح في نافذة جديدة)">انضم إلى المجموعة</a></div>`).join(""):`<p><b>مجموعة الاقتراحات والنقاش</b></p><p class="note">سيُضاف رابط الانضمام قريباً.</p>`}
+function paintTalk(){const c=$("talkCta");if(!c)return;c.hidden=false;const re=/^https:\/\/(chat\.whatsapp\.com|wa\.me|t\.me|telegram\.me)\/[A-Za-z0-9_+\-]+$/,L=GROUPS.filter(g=>re.test(g[1]));
+ c.innerHTML=L.length?L.map(g=>`<div class="grp"><p><b>${esc(g[0])}</b></p><p class="note">شاركنا اقتراحك أو ما وجدته ناقصاً أو خاطئاً في الموقع.</p><a class="btn" href="${g[1]}" target="_blank" rel="noopener noreferrer" aria-label="انضم إلى المجموعة: ${esc(g[0])} (يفتح في نافذة جديدة)">انضم إلى المجموعة</a></div>`).join(""):(SBOK?"":`<p><b>مجموعة الاقتراحات والنقاش</b></p><p class="note">سيُضاف رابط الانضمام قريباً.</p>`);if(!L.length&&SBOK)c.hidden=true}
 function initCounter(){if(!GC_CODE||!/^[a-z0-9-]+$/.test(GC_CODE))return;
  const s=document.createElement("script");s.async=true;s.src="https://gc.zgo.at/count.js";s.dataset.goatcounter="https://"+GC_CODE+".goatcounter.com/count";document.head.appendChild(s);
  fetch("https://"+GC_CODE+".goatcounter.com/counter/TOTAL.json").then(r=>r.ok?r.json():null).then(j=>{if(j&&j.count)document.querySelectorAll(".vis").forEach(e=>{e.querySelector("b").textContent=j.count;e.hidden=false})}).catch(()=>{})}
-paintTalk();initCounter();
+
+/* ===== النقاش داخل الموقع ===== */
+const SBOK=/^https:\/\/[a-z0-9]{20}\.supabase\.co$/.test(SB_URL)&&/^[A-Za-z0-9._-]{20,}$/.test(SB_KEY);
+const LS_NICK="abnaouna2026.nick.v1",LS_LAST="abnaouna2026.last.v1",LS_REP="abnaouna2026.reported.v1";
+const KINDS={idea:"اقتراح",question:"سؤال",tip:"تجربة أو نصيحة"};
+let posts=[],bState="idle",replyTo=null;
+const lsGet=k=>{try{return localStorage.getItem(k)}catch(e){return null}};
+const lsSet=(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}};
+async function sb(path,opt){const r=await fetch(SB_URL+"/rest/v1/"+path,Object.assign({headers:{apikey:SB_KEY,"Content-Type":"application/json"}},opt||{}));if(!r.ok)throw new Error("http "+r.status);return r.status===204?null:r.json()}
+function reportedSet(){try{return new Set(JSON.parse(lsGet(LS_REP)||"[]"))}catch(e){return new Set()}}
+function pdate(s){try{return new Date(s).toLocaleDateString("ar-EG",{day:"numeric",month:"long"})}catch(e){return ""}}
+function postHtml(p,isReply,rep){const done=rep.has(p.id);
+ return `<article class="post" id="p-${esc(p.id)}"><div class="ph2"><span class="nick">${esc(p.nickname)}</span>${isReply?"":`<span class="pk">${esc(KINDS[p.kind]||"اقتراح")}</span>`}<span class="pd">${pdate(p.created_at)}</span></div><p class="pb">${esc(p.body)}</p><div class="pa">${isReply?"":`<button type="button" data-bact="reply" data-id="${esc(p.id)}" aria-expanded="${replyTo===p.id}">رد</button>`}<button type="button" data-bact="report" data-id="${esc(p.id)}"${done?" disabled":""}>${done?"تم الإبلاغ":"إبلاغ"}</button></div>`+(isReply?"":"")+`</article>`}
+function formHtml(parent){const nick=esc(lsGet(LS_NICK)||""),id=parent?"r":"p";
+ return `<form class="pform${parent?" rform":""}" data-form="${parent||"new"}" novalidate>${parent?"":`<h3>شاركنا اقتراحك أو سؤالك</h3>`}<label for="${id}n">الاسم المستعار (لا تكتب اسمك الحقيقي)</label><input id="${id}n" name="nick" maxlength="20" autocomplete="off" value="${nick}">${parent?"":`<label for="pk">نوع المشاركة</label><select id="pk" name="kind"><option value="idea">اقتراح لتطوير الموقع</option><option value="question">سؤال</option><option value="tip">تجربة أو نصيحة</option></select>`}<label for="${id}b">${parent?"ردّك":"مشاركتك"}</label><textarea id="${id}b" name="body" maxlength="600" rows="${parent?3:4}"></textarea><div class="meta"><span>لا تكتب بياناتك الشخصية أو روابط أو أرقام هواتف</span><span><span class="cnt">0</span>/600</span></div><div class="hp" aria-hidden="true"><input name="hp" tabindex="-1" autocomplete="off"></div><p class="err" role="alert" hidden></p><p class="okmsg" role="status" hidden></p><div class="pa"><button class="btn" type="submit">${parent?"إرسال الرد":"إرسال"}</button>${parent?`<button class="btn sec" type="button" data-bact="cancel">إلغاء</button>`:""}</div></form>`}
+function paintList(){const L=$("plist");if(!L)return;
+ if(bState==="loading"){L.innerHTML='<p class="bnote">جارٍ تحميل المشاركات…</p>';return}
+ if(bState==="error"){L.innerHTML='<p class="bnote">تعذّر تحميل المشاركات الآن.</p><button type="button" class="reset" data-bact="reload">إعادة المحاولة</button>';return}
+ const top=posts.filter(p=>!p.parent_id);if(!top.length){L.innerHTML='<p class="bnote">لا توجد مشاركات بعد. كن أول من يشارك.</p>';return}
+ const rep=reportedSet();
+ L.innerHTML=top.map(p=>{const rs=posts.filter(r=>r.parent_id===p.id).reverse();
+  return postHtml(p,false,rep).replace(/<\/article>$/,(rs.length?`<div class="reps">${rs.map(r=>postHtml(r,true,rep)).join("")}</div>`:"")+(replyTo===p.id?formHtml(p.id):"")+"</article>")}).join("")}
+async function loadPosts(){if(bState!=="ok"){bState="loading";paintList()}try{posts=await sb("posts?select=id,parent_id,kind,nickname,body,created_at&status=eq.approved&order=created_at.desc&limit=300");bState="ok"}catch(e){bState="error"}paintList()}
+async function submitForm(form){const parent=form.dataset.form==="new"?null:form.dataset.form,q=n=>form.querySelector("[name="+n+"]"),err=form.querySelector(".err"),ok=form.querySelector(".okmsg"),btn=form.querySelector("button[type=submit]");
+ err.hidden=true;ok.hidden=true;const nick=q("nick").value.trim(),body=q("body").value.trim(),kind=q("kind")?q("kind").value:"idea";let m="";
+ if(nick.length<2||nick.length>20)m="اكتب اسماً مستعاراً من حرفين إلى 20 حرفاً (وليس اسمك الحقيقي).";
+ else if(body.length<3||body.length>600)m="اكتب مشاركة من 3 إلى 600 حرف.";
+ else if(Date.now()-(+lsGet(LS_LAST)||0)<30000)m="انتظر نصف دقيقة قبل إرسال مشاركة أخرى.";
+ if(m){err.textContent=m;err.hidden=false;return}
+ if(q("hp")&&q("hp").value){ok.textContent="تم استلام مشاركتك.";ok.hidden=false;q("body").value="";return}
+ btn.disabled=true;
+ try{const st=await sb("rpc/submit_post",{method:"POST",body:JSON.stringify({p_nickname:nick,p_body:body,p_kind:kind,p_parent:parent})});
+  lsSet(LS_NICK,nick);lsSet(LS_LAST,String(Date.now()));
+  const msg=st==="approved"?"تم نشر مشاركتك. شكراً لك.":"تم استلام مشاركتك وستظهر بعد مراجعتها.";
+  if(parent){replyTo=null;$("pstatus").textContent=msg}else{q("body").value="";form.querySelector(".cnt").textContent="0";ok.textContent=msg;ok.hidden=false;$("pstatus").textContent=msg}
+  if(st==="approved")await loadPosts();else paintList()}
+ catch(e){err.textContent="تعذّر الإرسال الآن. حاول بعد قليل.";err.hidden=false}
+ btn.disabled=false}
+function initBoard(){const b=$("board");if(!b||!SBOK)return;b.hidden=false;
+ b.innerHTML=`<h3>ما يقوله أولياء الأمور</h3><p class="bnote">تُراجَع بعض المشاركات قبل ظهورها. وما يُكتب هنا رأي شخصي وليس معلومة رسمية.</p><p class="sr" id="pstatus" role="status"></p>${formHtml(null)}<div id="plist" aria-live="polite"></div>`;
+ b.addEventListener("submit",e=>{e.preventDefault();submitForm(e.target)});
+ b.addEventListener("input",e=>{if(e.target.name==="body"){const c=e.target.closest("form").querySelector(".cnt");if(c)c.textContent=e.target.value.length}});
+ b.addEventListener("click",async e=>{const x=e.target.closest("[data-bact]");if(!x)return;const a=x.dataset.bact,id=x.dataset.id;
+  if(a==="reload")loadPosts();
+  else if(a==="reply"){replyTo=replyTo===id?null:id;paintList();if(replyTo){const f=document.querySelector("#p-"+CSS.escape(id)+" .rform [name=body]");f&&f.focus()}}
+  else if(a==="cancel"){const pid=replyTo;replyTo=null;paintList();const bt=document.querySelector("#p-"+CSS.escape(pid)+" [data-bact=reply]");bt&&bt.focus()}
+  else if(a==="report"){x.disabled=true;x.textContent="جارٍ الإبلاغ…";try{await sb("rpc/submit_report",{method:"POST",body:JSON.stringify({p_post:id})});const s=reportedSet();s.add(id);lsSet(LS_REP,JSON.stringify([...s]));x.textContent="تم الإبلاغ";$("pstatus").textContent="شكراً، سنراجع هذه المشاركة."}catch(err){x.disabled=false;x.textContent="إبلاغ";$("pstatus").textContent="تعذّر الإبلاغ الآن."}}});
+ loadPosts()}
+paintTalk();initBoard();initCounter();
 }
 </script>
 </body>
