@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>دليل أبناؤنا في الخارج 2026/2027</title>
-<meta name="description" content="دليل مبسّط لتسجيل امتحانات أبناؤنا في الخارج 2026/2027: المستندات المطلوبة حسب الصف والحالة، وحاسبة السن، والمواعيد.">
+<meta name="description" content="دليل مبسّط لتسجيل امتحانات أبناؤنا في الخارج 2026/2027: المستندات المطلوبة حسب الصف والحالة، وحاسبة السن، والمواعيد. مبادرة فردية غير حكومية.">
 <meta name="theme-color" content="#0b4f5c">
 <link rel="icon" type="image/png" href="icon.png"><link rel="apple-touch-icon" href="icon.png">
 <!-- معاينة واتساب: og:url وog:image بعنوان الدومين. غيّرهما إن تغيّر الدومين -->
@@ -60,7 +60,7 @@ footer .btn.sec{border-color:rgba(255,255,255,.75);color:#fff}
 .app{display:block}
 .side{display:contents}
 .brand,.side-foot{display:none}
-.menu{position:fixed;inset-inline:0;bottom:0;z-index:40;display:grid;grid-template-columns:repeat(5,1fr);background:var(--card);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom)}
+.menu{position:fixed;inset-inline:0;bottom:0;z-index:40;display:grid;grid-template-columns:repeat(6,1fr);background:var(--card);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom)}
 .menu a{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-height:64px;padding:8px 2px;color:var(--mute);text-decoration:none;font-size:14px;font-weight:700}
 .menu svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .menu a[aria-current=page]{color:var(--brand)}
@@ -286,6 +286,21 @@ footer a{color:#fff}
  #ageBody td.yes{background:var(--okbg)}#ageBody td.warn{background:var(--accbg);color:var(--accink)}#ageBody td.no{background:var(--badbg)}
 }
 
+/* تنويه، استرجاع البيانات، العدّاد، صفحة النقاش */
+[hidden]{display:none!important}
+.notice{display:flex;gap:10px;align-items:flex-start;background:var(--accbg);color:var(--accink);border-radius:14px;padding:12px 16px;margin:0 0 16px;line-height:1.55;font-size:16px}
+.notice::before{content:"\2139";flex:none;display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--accink);color:var(--accbg);font:700 15px var(--fh)}
+.restore{display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:space-between;background:var(--soft);border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin:0 0 16px}
+.restore p{margin:0}.restore .kact{margin:0}
+.foot-note{margin:12px 0 0;font-size:15px;line-height:1.6;opacity:.95}
+.vis b{font-family:var(--fh)}
+.talk-cta{margin:0 0 20px;display:grid;gap:10px}
+.talk-cta p{margin:0}
+.talk-cta .btn{justify-self:start}
+.grp{display:grid;gap:8px;padding-bottom:14px;border-bottom:1px dashed var(--line)}.grp:last-child{border-bottom:0;padding-bottom:0}
+.rules2{padding-inline-start:1.2em;margin:0 0 14px}.rules2 li{margin:0 0 10px}
+@media(max-width:599px){.talk-cta .btn{justify-self:stretch}.notice{padding:10px 12px;font-size:15px;margin-bottom:14px}.notice::before{width:22px;height:22px;font-size:14px}}
+
 /* طباعة A4: الترويسة وقائمة المستندات وطريقة الإرسال فقط */
 @page{size:A4;margin:16mm}
 @media print{
@@ -309,17 +324,18 @@ body{background:#fff;color:#000;font-size:13pt;line-height:1.6;padding:0}
 <div class="app">
 <aside class="side" aria-label="القائمة الرئيسية">
 <div class="brand"><span class="logo" aria-hidden="true">أ</span><div><b>لوحة أولياء الأمور</b><small>أبناؤنا في الخارج</small></div></div>
-<nav class="menu" aria-label="التنقل الرئيسي"><a href="#docs" data-v="docs"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="3" width="7.5" height="9" rx="1.5"/><rect x="13.5" y="3" width="7.5" height="5" rx="1.5"/><rect x="13.5" y="11" width="7.5" height="10" rx="1.5"/><rect x="3" y="15" width="7.5" height="6" rx="1.5"/></svg><span class="lf">لوحة المتابعة</span><span class="ls">اللوحة</span></a><a href="#age" data-v="age"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 11h1M12 11h1M8 15h1M12 15h1"/></svg><span class="lf">حاسبة السن</span><span class="ls">السن</span></a><a href="#dates" data-v="dates"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M8 3v4M16 3v4"/></svg><span class="lf">المواعيد</span><span class="ls">المواعيد</span></a><a href="#faq" data-v="faq"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 5h14v10h-8l-4 4v-4H5z"/><path d="M10 9.5a2 2 0 1 1 3 1.7c-.6.4-1 .8-1 1.3M12 14h.01"/></svg><span class="lf">الأسئلة</span><span class="ls">الأسئلة</span></a><a href="#more" data-v="more"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="6" cy="12" r="1.4"/><circle cx="12" cy="12" r="1.4"/><circle cx="18" cy="12" r="1.4"/></svg><span class="lf">المزيد</span><span class="ls">المزيد</span></a></nav>
+<nav class="menu" aria-label="التنقل الرئيسي"><a href="#docs" data-v="docs"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="3" width="7.5" height="9" rx="1.5"/><rect x="13.5" y="3" width="7.5" height="5" rx="1.5"/><rect x="13.5" y="11" width="7.5" height="10" rx="1.5"/><rect x="3" y="15" width="7.5" height="6" rx="1.5"/></svg><span class="lf">لوحة المتابعة</span><span class="ls">اللوحة</span></a><a href="#age" data-v="age"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 11h1M12 11h1M8 15h1M12 15h1"/></svg><span class="lf">حاسبة السن</span><span class="ls">السن</span></a><a href="#dates" data-v="dates"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M8 3v4M16 3v4"/></svg><span class="lf">المواعيد</span><span class="ls">المواعيد</span></a><a href="#faq" data-v="faq"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 5h14v10h-8l-4 4v-4H5z"/><path d="M10 9.5a2 2 0 1 1 3 1.7c-.6.4-1 .8-1 1.3M12 14h.01"/></svg><span class="lf">الأسئلة</span><span class="ls">الأسئلة</span></a><a href="#talk" data-v="talk"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 5h10v7H8l-3 3v-3H4z"/><path d="M10 15h5l4 3v-3h1v-6h-3"/></svg><span class="lf">نقاش الأولياء</span><span class="ls">النقاش</span></a><a href="#more" data-v="more"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="6" cy="12" r="1.4"/><circle cx="12" cy="12" r="1.4"/><circle cx="18" cy="12" r="1.4"/></svg><span class="lf">المزيد</span><span class="ls">المزيد</span></a></nav>
 <p class="side-foot">تبسيط لكتيّب الإدارة المركزية للامتحانات 2026/2027. عند أي اختلاف يُرجع إلى الكتيّب والمنصة.</p>
 </aside>
 <div class="col">
 <header class="appbar"><h1>دليل أبناؤنا في الخارج 2026/2027</h1><button type="button" class="thm" id="thm">الوضع الداكن</button></header>
 <main class="content" id="main">
-<div class="view" id="v-docs"><div class="dash">
+<div class="view" id="v-docs"><div class="notice no-print" role="note"><span><b>مجهود فردي للمساعدة فقط</b>، وليست تابعة لأي جهة حكومية ولا علاقة لها بوزارة التربية والتعليم أو السفارة. المرجع الرسمي: الكتيّب والمنصة.</span></div><div class="dash">
 <div class="w w-next next" id="cd" role="status" aria-label="الموعد القادم"></div>
 <section class="w w-ready" id="wReady" aria-label="جاهزية الأوراق"></section>
-<section class="w w-stats"><h2>أرقام أساسية</h2><div class="stat"><b>نوفمبر 2026</b><span>فتح التسجيل على المنصة</span></div><div class="stat"><b>150 دولار</b><span>رسوم كل طالب، لأي صف</span></div></section>
+<section class="w w-stats"><h2>أرقام أساسية</h2><div class="stat"><b>نوفمبر 2026</b><span>فتح التسجيل على المنصة</span></div><div class="stat"><b>150 دولار</b><span>رسوم كل طالب، لأي صف</span></div><div class="stat vis" hidden><b></b><span>زائراً زار هذه الصفحة</span></div></section>
 <section class="w w-main" id="docs"><h2>مستندات ابنك المطلوبة</h2>
+<div class="restore no-print" id="restore" hidden></div>
 <ol class="stepper no-print" id="stepper" aria-label="خطوات اختيار حالة ابنك"></ol>
 <div id="wiz" class="no-print"></div>
 <div id="resultwrap" hidden><div class="resum no-print" id="resum"></div><div class="sheet" id="sheet"></div></div>
@@ -327,7 +343,7 @@ body{background:#fff;color:#000;font-size:13pt;line-height:1.6;padding:0}
 </section>
 <section class="w w-kids no-print"><h2>أبنائي</h2><div id="kids"></div><div id="addkid"></div><div class="kact" id="kact"></div></section>
 <section class="w w-time no-print"><h2>المواعيد القادمة</h2><ul class="tl" id="tl"></ul></section>
-<section class="w w-quick no-print"><h2>اختصارات</h2><div class="quick"><a href="#age">حاسبة السن</a><a href="#faq">الأسئلة الشائعة</a><a href="#refund">الاسترداد والرسوم</a><a href="#contact">التواصل مع مشرف الصف</a></div><div class="qa"><button type="button" class="btn sec js-ics">أضف المواعيد إلى التقويم</button><a class="btn sec" id="waTop" href="https://wa.me/?text=" target="_blank" rel="noopener" aria-label="شارك الدليل على واتساب (يفتح في نافذة جديدة)">شارك الدليل على واتساب</a></div></section>
+<section class="w w-quick no-print"><h2>اختصارات</h2><div class="quick"><a href="#age">حاسبة السن</a><a href="#faq">الأسئلة الشائعة</a><a href="#refund">الاسترداد والرسوم</a><a href="#talk">نقاش أولياء الأمور</a><a href="#contact">التواصل مع مشرف الصف</a></div><div class="qa"><button type="button" class="btn sec js-ics">أضف المواعيد إلى التقويم</button><a class="btn sec" id="waTop" href="https://wa.me/?text=" target="_blank" rel="noopener" aria-label="شارك الدليل على واتساب (يفتح في نافذة جديدة)">شارك الدليل على واتساب</a></div></section>
 </div></div>
 
 <div class="view" id="v-age" hidden><section class="blk" id="age">
@@ -408,6 +424,19 @@ body{background:#fff;color:#000;font-size:13pt;line-height:1.6;padding:0}
 </ol>
 </section></div>
 
+<div class="view" id="v-talk" hidden><section class="blk" id="talk"><h2>النقاش وتبادل الآراء</h2>
+<p class="lede">مساحة يتبادل فيها أولياء الأمور خبراتهم وأسئلتهم حول التسجيل والامتحانات. المجموعة أنشأها أحد أولياء الأمور وهي <b>مستقلة</b>: لا يديرها هذا الموقع، ولا تتبع أي جهة حكومية.</p>
+<div class="card talk-cta" id="talkCta"></div>
+<h3>آداب النقاش</h3>
+<ul class="rules2">
+<li><b>لا تنشر بيانات شخصية:</b> أرقام الجلوس أو الهويات أو صور الشهادات أو بيانات حسابك على المنصة.</li>
+<li><b>الدفع عبر المنصة فقط:</b> رسوم الامتحان (150 دولاراً) تُسدَّد عبر المنصة الإلكترونية أثناء التسجيل (ص16)، فلا تدفع لأي شخص أو جهة تعدك بخدمة.</li>
+<li><b>اذكر مصدر المعلومة:</b> إن استشهدت بالكتيّب فاذكر رقم الصفحة ليسهل التحقق.</li>
+<li><b>الرأي اجتهاد شخصي:</b> ما يُكتب في النقاش ليس معلومة رسمية، وللتأكد راجع الكتيّب أو بريد مشرف الصف.</li>
+<li><b>الاحترام أولاً:</b> بلا إساءة ولا إعلانات تجارية.</li>
+</ul>
+<p class="note">للأسئلة الرسمية تواصل مع مشرف الصف: <a href="#contact">بريد مشرفي الصفوف</a>.</p>
+</section></div>
 <div class="view" id="v-more" hidden><nav class="more-nav" aria-label="أقسام صفحة المزيد"><a href="#subjects">المواد ونظام الامتحان</a><a href="#secondary">الثانوي: عام أم بكالوريا</a><a href="#national">المواد القومية للدولية</a><a href="#return">العودة إلى مصر</a><a href="#contact">التواصل</a><a href="#news">مستجدات السعودية</a></nav><section class="blk" id="subjects">
 <h2>المواد وطريقة الامتحان لكل مرحلة</h2>
 <p style="max-width:70ch">من الرابع الابتدائي حتى الثاني الثانوي: الامتحان إلكتروني تفاعلي على المنصة. الصفوف الأولى من الابتدائي: تحميل ورقة الأسئلة، حلها، ثم رفع الإجابة PDF. الطلاب معفون من أعمال السنة والأنشطة.</p>
@@ -467,6 +496,8 @@ body{background:#fff;color:#000;font-size:13pt;line-height:1.6;padding:0}
 </main>
 <footer><div class="wrap">
 المصدر الأساسي: إعلان "تعليمات وشروط التقدم لأداء امتحانات أبناؤنا في الخارج 2026/2027"، الإدارة المركزية للامتحانات، وزارة التربية والتعليم والتعليم الفني. هذه الصفحة تبسيط للتيسير؛ عند أي اختلاف يُرجع إلى الكتيّب الرسمي والمنصة <a href="https://sabroad.emis.gov.eg" class="ltr">sabroad.emis.gov.eg</a>.
+<p class="foot-note"><b>تنويه:</b> هذه الصفحة مجهود فردي للمساعدة فقط، وليست تابعة لأي جهة حكومية ولا علاقة لها بوزارة التربية والتعليم أو السفارة أو الإدارة المركزية للامتحانات.</p>
+<p class="vis foot-note" hidden>عدد الزوار: <b></b>. يُحصى الزوار بعدّاد مجهول (GoatCounter) بلا ملفات تعريف ارتباط ولا بيانات شخصية.</p>
 <div class="wa-row"><a class="btn sec" id="waFoot" href="https://wa.me/?text=" target="_blank" rel="noopener" aria-label="شارك الدليل على واتساب (يفتح في نافذة جديدة)">شارك الدليل على واتساب</a></div>
 </div></footer>
 </div>
@@ -479,6 +510,10 @@ const LS_KEY="abnaouna2026.checks.v1";
 const LS_THEME="abnaouna2026.theme.v1";
 const LS_SEL="abnaouna2026.sel.v1";
 const LS_KIDS="abnaouna2026.kids.v1";
+/* عدّاد الزوار (GoatCounter): اكتب كود موقعك هنا (مثل "abnaouna") بعد إنشائه في goatcounter.com. فارغ = بلا عدّاد. */
+const GC_CODE="abnaouna";
+/* مجموعات النقاش: [اسم المجموعة، رابط الدعوة]. رابط واتساب https://chat.whatsapp.com/... أو تيليجرام https://t.me/... بلا أي معلمات بعد الرابط. أضف سطراً لكل مجموعة. فارغ = يظهر "سيُضاف قريباً". */
+const GROUPS=[["أولياء أمور رياض الأطفال والأول والثاني الابتدائي","https://chat.whatsapp.com/Lo0Yhin0H4K39GOxzkuT46"]];
 const STAGES=[["رياض الأطفال",[["kg1","KG1"],["kg2","KG2"]]],["الابتدائي",[["p1","الأول"],["p2","الثاني"],["p3","الثالث"],["p4","الرابع"],["p5","الخامس"],["p6","السادس"]]],["الإعدادي",[["m1","الأول"],["m2","الثاني"],["m3","الثالث"]]],["الثانوي",[["s1","الأول","عام أو بكالوريا"],["s2","الثاني","العام"]]]];
 const MODES=[["t1","الفصل الدراسي الأول"],["t2","الفصل الدراسي الثاني"],["r2","الدور الثاني"]];
 const BD="أصل شهادة ميلاد الطالب (الرقم القومي)";
@@ -558,7 +593,7 @@ function ldChecks(){try{return JSON.parse(localStorage.getItem(LS_KEY))||{}}catc
 function svChecks(o){try{localStorage.setItem(LS_KEY,JSON.stringify(o))}catch(e){}}
 
 /* ملفات الأبناء: لكل ابن صفه وحالته وعلاماته */
-let kids={active:"k1",list:[{id:"k1",name:"ابني",g:null,m:"t1",c:0,done:false}]},step=1,addOpen=false,delAsk=false;
+let kids={active:"k1",list:[{id:"k1",name:"ابني",g:null,m:"t1",c:0,done:false}]},step=1,addOpen=false,delAsk=false,restored=false,wipeAsk=false;
 const kid=()=>kids.list.find(k=>k.id===kids.active)||kids.list[0];
 const gOk=g=>G.some(x=>x[0]===g),mOk=m=>MODES.some(x=>x[0]===m);
 function svKids(){try{localStorage.setItem(LS_KIDS,JSON.stringify(kids))}catch(e){}}
@@ -566,7 +601,7 @@ function ldKids(){let o=null;try{o=JSON.parse(localStorage.getItem(LS_KIDS))}cat
  const L=o&&Array.isArray(o.list)?o.list.filter(k=>k&&typeof k.id==="string"&&typeof k.name==="string"):[];
  if(L.length){kids={active:o.active,list:L.map(k=>({id:k.id,name:k.name.slice(0,20),g:gOk(k.g)?k.g:null,m:mOk(k.m)?k.m:"t1",c:Math.max(0,+k.c||0),done:!!k.done&&gOk(k.g)}))};if(!kids.list.some(k=>k.id===kids.active))kids.active=kids.list[0].id;return}
  try{const s=JSON.parse(localStorage.getItem(LS_SEL));if(s&&gOk(s.g)&&mOk(s.m)){const k=kids.list[0];k.g=s.g;k.m=s.m;k.c=Math.max(0,+s.c||0);k.done=true}}catch(e){}}
-function ldDeep(){try{const u=new URLSearchParams(location.search);if(!u.has("g"))return;const g=u.get("g"),m=u.get("m")||"t1";if(!gOk(g)||!mOk(m))return;const k=kid();k.g=g;k.m=m;k.c=Math.max(0,+u.get("c")||0);k.done=true}catch(e){}}
+function ldDeep(){try{const u=new URLSearchParams(location.search);if(!u.has("g"))return;const g=u.get("g"),m=u.get("m")||"t1";if(!gOk(g)||!mOk(m))return;const k=kid();k.g=g;k.m=m;k.c=Math.max(0,+u.get("c")||0);k.done=true;restored=false}catch(e){}}
 const ckKey=()=>kid().id+"|"+gS.value+(mS.value==="t1"?"":"|"+mS.value)+"|"+(+cS.value||0);
 function prog(){const b=sh.querySelectorAll(".chk input"),n=[...b].filter(x=>x.checked).length,p=$("prog"),q=$("pProg");
  b.forEach(x=>x.closest(".chk").dataset.done=x.checked?"1":"0");
@@ -590,15 +625,18 @@ const gname=g=>{const x=G.find(y=>y[0]===g);return x?x[1]:""};
 function kidStat(k){if(!k.g||!k.done)return{n:0,t:0,p:0,known:false};const L=catsFor(k.g,k.m),c=L[k.c]||L[0],key=k.id+"|"+k.g+(k.m==="t1"?"":"|"+k.m)+"|"+k.c,n=(ldChecks()[key]||[]).length,t=c[1].length;return{n:Math.min(n,t),t,p:t?Math.round(100*Math.min(n,t)/t):0,known:true}}
 function paintKidRows(){const k=kid();
  $("kids").innerHTML=kids.list.map(x=>{const s=kidStat(x),sub=x.g?gname(x.g)+(x.done?"":" — اختر الحالة"):"لم يُحدَّد الصف بعد";return `<button type="button" class="krow" data-act="kid" data-v="${x.id}" aria-pressed="${x.id===kids.active}"><span class="kn">${esc(x.name)}</span><span class="kp">${s.known?s.p+"%":""}</span><span class="ks">${esc(sub)}</span><span class="mini" style="--p:${s.p}%"><i></i></span></button>`}).join("");
- $("kact").innerHTML=(kids.list.length<8?`<button type="button" class="kbtn" data-act="addopen">+ إضافة ابن آخر</button>`:"")+(kids.list.length>1?(delAsk?`<button type="button" class="kbtn del" data-act="delyes">تأكيد حذف ملف ${esc(k.name)}</button><button type="button" class="kbtn" data-act="delno">إلغاء</button>`:`<button type="button" class="kbtn del" data-act="delask">حذف ملف ${esc(k.name)}</button>`):"");
+ $("kact").innerHTML=(kids.list.length<8?`<button type="button" class="kbtn" data-act="addopen">+ إضافة ابن آخر</button>`:"")+(kids.list.length>1?(delAsk?`<button type="button" class="kbtn del" data-act="delyes">تأكيد حذف ملف ${esc(k.name)}</button><button type="button" class="kbtn" data-act="delno">إلغاء</button>`:`<button type="button" class="kbtn del" data-act="delask">حذف ملف ${esc(k.name)}</button>`):"")+`<button type="button" class="kbtn" data-act="wipeask">مسح كل بياناتي</button>`;
  }
 function paintKids(){paintKidRows();
  $("addkid").innerHTML=addOpen?`<form class="addkid" id="addform" novalidate><label for="kn">اسم الابن (مثل: أحمد)</label><input id="kn" maxlength="20" autocomplete="off"><button class="btn" type="submit">إضافة</button><button type="button" class="btn sec" data-act="addcancel">إلغاء</button><p class="err" id="knerr" role="alert" hidden>أدخل اسم الابن لإضافته.</p></form>`:""}
 function paintWidgets(){paintKidRows();let N=0,T=0;kids.list.forEach(k=>{const s=kidStat(k);if(s.known){N+=s.n;T+=s.t}});const p=T?Math.round(100*N/T):0;
  $("wReady").innerHTML=`<div class="donut" style="--p:${p}" aria-hidden="true"><span>${p}%</span></div><div><h2>جاهزية الأوراق</h2><p>${T?N+" من "+T+" مستنداً جاهزاً"+(kids.list.length>1?" لكل الأبناء":""):"اختر صف ابنك وحالته لتبدأ."}</p></div>`;
  const today=ksaToday();$("tl").innerHTML=DL.filter(e=>e[0]>=today).slice(0,4).map(e=>{const n=Math.round((Date.parse(e[0])-Date.parse(today))/864e5),chip=e[2]?"فبراير 2027":n===0?"اليوم":n===1?"غداً":"باقي "+n+(n<=10?" أيام":" يوماً");return `<li><b>${e[1]}</b><span class="tm"><small>${e[2]||dtxt(e[0])}</small><span class="chip2${n<=14&&!e[2]?" hot":""}">${chip}</span></span></li>`}).join("")||`<li><small>${DL_END}</small></li>`}
+function paintRestore(){const r=$("restore");if(!r)return;
+ if(wipeAsk){r.hidden=false;r.innerHTML=`<p><b>مسح كل بياناتك من هذا الجهاز؟</b> سيُمسح الأبناء وعلامات المستندات المحفوظة، ولا يمكن التراجع.</p><div class="kact"><button type="button" class="kbtn del" data-act="wipeyes">نعم، امسح كل شيء</button><button type="button" class="kbtn" data-act="wipeno">إلغاء</button></div>`;return}
+ r.hidden=!restored;r.innerHTML=restored?`<p>استرجعنا آخر قائمة حفظتها على هذا الجهاز.</p><div class="kact"><button type="button" class="kbtn" data-act="wipeask">ابدأ من جديد</button></div>`:""}
 function paint(keep){const k=kid(),gn=k.g?G.find(x=>x[0]===k.g)[1]:"",mn=MODES.find(m=>m[0]===k.m)[1];
- paintKids();
+ paintKids();paintRestore();
  const labs=["الصف","الحالة","المستندات"],vals=[gn,k.done?catsFor(k.g,k.m)[k.c][0]:"",k.done?"جاهزة":""];
  $("stepper").innerHTML=[1,2,3].map(n=>{const reach=n===1||(n===2&&!!k.g)||(n===3&&k.done),cls=n===step?"on":(reach&&n<step?"ok":"");return `<li class="${cls}"><button type="button" data-act="step" data-v="${n}"${n===step?' aria-current="step"':""}${reach?"":" disabled"}><b>${n}. ${labs[n-1]}</b><small>${esc(vals[n-1])}</small></button></li>`}).join("");
  let w="";
@@ -611,6 +649,11 @@ function paint(keep){const k=kid(),gn=k.g?G.find(x=>x[0]===k.g)[1]:"",mn=MODES.f
  if(keep){const e=document.querySelector(keep);e&&e.focus()}}
 function focusPane(){const st=$("stepper");st.scrollIntoView({block:"start"});const t=$("wt")||$("rt");t&&t.focus({preventScroll:true})}
 $("v-docs").addEventListener("click",e=>{const b=e.target.closest("[data-act]");if(!b)return;const k=kid(),a=b.dataset.act,v=b.dataset.v;
+ if(a==="wipeask"){wipeAsk=true;paint('[data-act="wipeno"]');$("restore").scrollIntoView({block:"center"});return}
+ if(a==="wipeno"){wipeAsk=false;paint();return}
+ if(a==="wipeyes"){try{localStorage.removeItem(LS_KIDS);localStorage.removeItem(LS_KEY);localStorage.removeItem(LS_SEL)}catch(err){}
+  kids={active:"k1",list:[{id:"k1",name:"ابني",g:null,m:"t1",c:0,done:false}]};step=1;addOpen=false;delAsk=false;wipeAsk=false;restored=false;apply();focusPane();return}
+ restored=false;wipeAsk=false;
  if(a==="grade"){k.g=v;k.c=0;k.done=false;gS.value=v;fillCats();svKids();step=2;paint();focusPane()}
  else if(a==="mode"){k.m=v;k.c=0;k.done=false;mS.value=v;fillCats();svKids();paint('[data-act="mode"][data-v="'+v+'"]')}
  else if(a==="case"){k.c=+v;k.done=true;cS.value=v;svKids();step=3;paint();focusPane()}
@@ -623,8 +666,8 @@ $("v-docs").addEventListener("click",e=>{const b=e.target.closest("[data-act]");
  else if(a==="delyes"){const id=k.id,o=ldChecks();Object.keys(o).forEach(x=>{if(x.startsWith(id+"|"))delete o[x]});svChecks(o);kids.list=kids.list.filter(x=>x.id!==id);kids.active=kids.list[0].id;delAsk=false;svKids();apply();focusPane()}});
 $("v-docs").addEventListener("submit",e=>{if(e.target.id!=="addform")return;e.preventDefault();const n=$("kn").value.trim().slice(0,20);
  if(!n){$("knerr").hidden=false;$("kn").focus();return}
- const id="k"+Date.now().toString(36);kids.list.push({id,name:n,g:null,m:"t1",c:0,done:false});kids.active=id;addOpen=false;svKids();apply();focusPane()});
-ldKids();ldDeep();svKids();apply();
+ restored=false;const id="k"+Date.now().toString(36);kids.list.push({id,name:n,g:null,m:"t1",c:0,done:false});kids.active=id;addOpen=false;svKids();apply();focusPane()});
+ldKids();restored=kids.list.some(k=>!!k.g);ldDeep();svKids();apply();
 
 
 const dob=document.getElementById("dob"),nE=document.getElementById("nEg"),nO=document.getElementById("nOt");let eg=true;
@@ -699,14 +742,20 @@ document.querySelectorAll("#ics,.js-ics").forEach(el=>el.addEventListener("click
 ["waTop","waFoot"].forEach(id=>{document.getElementById(id).href="https://wa.me/?text="+encodeURIComponent(WA+"\n"+location.href.split(/[?#]/)[0])});
 
 
-const VIEWS=["docs","age","dates","faq","more"];
-const SEC2V={docs:"docs",age:"age",dates:"dates",steps:"dates",refund:"dates",faq:"faq",rules:"faq",more:"more",subjects:"more",secondary:"more",national:"more","return":"more",contact:"more",news:"more"};
+const VIEWS=["docs","age","dates","faq","talk","more"];
+const SEC2V={docs:"docs",age:"age",dates:"dates",steps:"dates",refund:"dates",faq:"faq",rules:"faq",talk:"talk",more:"more",subjects:"more",secondary:"more",national:"more","return":"more",contact:"more",news:"more"};
 function route(first){const id=decodeURIComponent(location.hash.slice(1))||"docs",v=SEC2V[id]||"docs";
  VIEWS.forEach(x=>{$("v-"+x).hidden=x!==v});document.body.dataset.view=v;
  document.querySelectorAll(".menu a").forEach(a=>{if(a.dataset.v===v)a.setAttribute("aria-current","page");else a.removeAttribute("aria-current")});
  const t=$(id);if(t&&id!==v&&SEC2V[id])t.scrollIntoView({block:"start"});else window.scrollTo(0,0);
  if(!first){const h=document.querySelector("#v-"+v+" h2");if(h){h.tabIndex=-1;h.focus({preventScroll:true})}}}
 window.addEventListener("hashchange",()=>route(false));route(true);
+function paintTalk(){const c=$("talkCta");if(!c)return;const re=/^https:\/\/(chat\.whatsapp\.com|wa\.me|t\.me|telegram\.me)\/[A-Za-z0-9_+\-]+$/,L=GROUPS.filter(g=>re.test(g[1]));
+ c.innerHTML=L.length?L.map(g=>`<div class="grp"><p><b>مجموعة ${esc(g[0])}</b></p><p class="note">أنشأها أحد أولياء الأمور، وهي مستقلة عن هذا الموقع.</p><a class="btn" href="${g[1]}" target="_blank" rel="noopener noreferrer" aria-label="انضم إلى المجموعة: ${esc(g[0])} (يفتح في نافذة جديدة)">انضم إلى المجموعة</a></div>`).join(""):`<p><b>مجموعة النقاش</b></p><p class="note">سيُضاف رابط الانضمام قريباً.</p>`}
+function initCounter(){if(!GC_CODE||!/^[a-z0-9-]+$/.test(GC_CODE))return;
+ const s=document.createElement("script");s.async=true;s.src="https://gc.zgo.at/count.js";s.dataset.goatcounter="https://"+GC_CODE+".goatcounter.com/count";document.head.appendChild(s);
+ fetch("https://"+GC_CODE+".goatcounter.com/counter/TOTAL.json").then(r=>r.ok?r.json():null).then(j=>{if(j&&j.count)document.querySelectorAll(".vis").forEach(e=>{e.querySelector("b").textContent=j.count;e.hidden=false})}).catch(()=>{})}
+paintTalk();initCounter();
 }
 </script>
 </body>
