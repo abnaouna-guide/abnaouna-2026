@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>دليل أبناؤنا في الخارج 2026/2027</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=Readex+Pro:wght@500;700&display=swap" rel="stylesheet">
+<style>
+/* VOICE: هادئ ورسمي وواضح، كمكتب شؤون طلبة منظم يجيب ولي الأمر مباشرة
+   IDEA: ملف تقديم مدرسي بألسنة تبويب، يُفتح على ورقة "ما المطلوب لابني؟"
+   PICTURE: المرشد التفاعلي نفسه: اختر الصف والحالة فتظهر قائمة المستندات وطريقة إرسالها
+   COLOUR and TYPE: أبيض، حبر أسود، أحمر العلم المصري سائد، ذهبي خفيف للتنبيه؛ Readex Pro للعناوين و IBM Plex Sans Arabic للنص
+   LAYOUT: شريط مواعيد بعرض الصفحة، ثم المرشد، ثم أقسام بعناوين تقول الخلاصة */
+:root{color-scheme:light dark;
+--bg:light-dark(#ffffff,#121212);--ink:light-dark(#1b1b1b,#efefef);--mute:light-dark(#5d5d5d,#b0b0b0);
+--red:light-dark(#b3141c,#ff5a5f);--redbg:light-dark(#b3141c,#7a0d12);--soft:light-dark(#f6f3f3,#1d1b1b);
+--line:light-dark(#e3dcdc,#333);--gold:light-dark(#8a6400,#e5b84a);--goldbg:light-dark(#fff6dc,#2b2414);--ok:light-dark(#1f6b3a,#6fd39a)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.7 "IBM Plex Sans Arabic",Tahoma,sans-serif;overflow-x:clip}
+h1,h2,h3{font-family:"Readex Pro","IBM Plex Sans Arabic",sans-serif;line-height:1.2;text-wrap:balance;margin:0 0 .4em}
+h1{font-size:clamp(28px,5vw,46px)}h2{font-size:clamp(22px,3vw,30px)}h3{font-size:18px}
+.band{padding:clamp(28px,4vw,56px) max(5vw,16px)}.wrap{max-width:1240px;margin:0 auto}
+header.band{background:var(--redbg);color:#fff;padding-bottom:24px}
+header p{margin:0;opacity:.92;max-width:62ch}
+.dates{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:1px;background:rgba(255,255,255,.25);margin-top:22px;border-radius:10px;overflow:hidden}
+.dates div{background:var(--redbg);padding:12px 14px}.dates b{display:block;font:700 20px "Readex Pro",sans-serif;white-space:nowrap}.dates span{font-size:14px;opacity:.9}
+nav.scroll{display:flex;gap:6px;overflow-x:auto;padding:10px max(5vw,16px);border-bottom:1px solid var(--line);background:var(--bg)}
+nav a{flex:none;color:var(--ink);text-decoration:none;padding:8px 14px;border-radius:999px;background:var(--soft);font-size:15px}
+nav a:hover,nav a:focus-visible{background:var(--red);color:#fff}
+@media(min-width:900px){nav.scroll{position:sticky;top:0;z-index:5}}
+.finder{display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr);gap:24px;align-items:start}
+@media(max-width:800px){.finder{grid-template-columns:minmax(0,1fr)}}
+label{display:block;font-weight:600;margin:14px 0 6px}
+select,input[type=date]{width:100%;font:inherit;font-size:16px;padding:10px 12px;min-height:44px;border:1.5px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink)}
+select:focus-visible,input:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.seg{display:flex;gap:6px;flex-wrap:wrap}.seg button{flex:1;min-height:44px;font:inherit;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);border-radius:8px;cursor:pointer;padding:6px 10px}
+.seg button[aria-pressed=true]{background:var(--red);border-color:var(--red);color:#fff}
+.sheet{border:1.5px solid var(--line);border-top:6px solid var(--red);border-radius:12px;padding:20px;background:var(--bg);box-shadow:0 10px 30px -18px rgba(0,0,0,.35)}
+.sheet ol{padding-inline-start:1.3em;margin:.4em 0 1em}.sheet li{margin:.35em 0}
+.how{display:flex;gap:10px;align-items:flex-start;padding:12px 14px;border-radius:8px;margin:12px 0;font-weight:500}
+.how.mail{background:var(--goldbg);color:var(--ink)}.how.up{background:var(--soft)}
+.tag{display:inline-block;font-size:13px;font-weight:600;padding:2px 10px;border-radius:999px;background:var(--soft);color:var(--red);margin-bottom:6px}
+.note{color:var(--mute);font-size:14px}
+.sheet .chk{display:flex;gap:12px;align-items:flex-start;min-height:44px;margin:0;padding:8px 0;font-weight:400;cursor:pointer}
+.chk input{flex:none;width:24px;height:24px;margin:2px 0 0;accent-color:var(--red);cursor:pointer}
+.chk input:checked+span{color:var(--mute)}
+.acts{display:flex;gap:8px;flex-wrap:wrap}.reset.prt{background:var(--red);border-color:var(--red);color:#fff;font-weight:600}
+.pr-only{display:none}
+@page{size:A4;margin:16mm}
+@media print{
+:root{color-scheme:light}
+body{background:#fff;color:#000;font-size:13pt;line-height:1.6}
+header.band,nav.scroll,section.band:not(#docs),footer,#docs h2,#docs .finder>div:first-child,.no-print{display:none!important}
+#docs{background:#fff!important;padding:0}.finder{display:block}
+.sheet{border:0;box-shadow:none;padding:0;background:#fff}
+.pr-only{display:block}
+.ph{border-bottom:2px solid #000;padding-bottom:8pt;margin-bottom:12pt}.ph h1{font-size:20pt;margin:0 0 8pt}.ph p{margin:2pt 0}.ph .pp{font-weight:700;font-size:15pt;margin-top:8pt}
+.sheet ol{list-style:none;padding:0;margin:0 0 12pt}.sheet li{break-inside:avoid;border-bottom:1px solid #bbb;margin:0}
+.sheet .chk{min-height:0;padding:7pt 0;gap:10pt;color:#000}.chk input{display:none}.chk input:checked+span{color:#000}
+.chk::before{content:"\2610";font-size:17pt;line-height:1;flex:none}.chk[data-done="1"]::before{content:"\2713";font-weight:700}
+.how{border:1px solid #000;background:#fff!important;color:#000;break-inside:avoid}
+.pf{margin-top:18pt;padding-top:6pt;border-top:1px solid #000;font-size:11pt}
+}
+.cd{margin-top:16px;padding:12px 16px;border-radius:10px;background:rgba(0,0,0,.25);font:700 clamp(17px,2.6vw,22px)/1.5 "Readex Pro",sans-serif}
+.wa-row{margin-top:16px}
+.wa{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:8px 20px;border-radius:999px;background:#fff;color:#b3141c;border:2px solid #fff;font-weight:600;text-decoration:none}
+.wa:hover{background:#fbeaea}
+footer .wa-row{margin-top:12px}.wa.wa-s{background:var(--bg);color:var(--red);border:1.5px solid var(--line);font-size:14px;font-weight:500;padding:6px 16px}
+.how.info{background:var(--soft)}
+.fold{border:1px solid var(--line);border-radius:10px;background:var(--bg);margin:0 0 8px;max-width:860px}
+.fold summary{min-height:44px;padding:10px 14px;cursor:pointer;font-weight:600;display:flex;align-items:center;gap:10px;list-style:none}
+.fold summary::-webkit-details-marker{display:none}
+.fold summary::after{content:"+";margin-inline-start:auto;font:700 22px/1 "Readex Pro",sans-serif;color:var(--red)}
+.fold[open] summary::after{content:"\2212"}
+.fold summary:focus-visible{outline:3px solid var(--gold);outline-offset:2px;border-radius:10px}
+.fold .fb{padding:0 16px 12px}.fold .pg{color:var(--mute);white-space:nowrap}.fold .fb ul{margin:.2em 0 .6em;padding-inline-start:1.2em}.fold .fb li{margin:.35em 0}
+.reset{min-height:44px;font:inherit;font-size:14px;padding:6px 14px;border-radius:8px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer}
+section.band:nth-of-type(even){background:var(--soft)}
+.steps{counter-reset:s;list-style:none;padding:0;display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr))}
+.steps li{counter-increment:s;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:14px 16px 14px 14px;position:relative;padding-inline-start:54px}
+.steps li::before{content:counter(s);position:absolute;inset-inline-start:14px;top:14px;width:28px;height:28px;border-radius:50%;background:var(--red);color:#fff;display:grid;place-items:center;font:700 15px "Readex Pro"}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+.tabs button{min-height:44px;font:inherit;padding:6px 14px;border-radius:8px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer}
+.tabs button[aria-selected=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:16px}
+.card{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:16px}
+.card ul{margin:.3em 0;padding-inline-start:1.2em}
+table{border-collapse:collapse;width:100%;font-size:15px}th,td{padding:9px 10px;border-bottom:1px solid var(--line);text-align:start}th{font-weight:600;color:var(--mute)}
+.yes{color:var(--ok);font-weight:600}.no{color:var(--mute)}.warn{color:var(--gold);font-weight:600}
+.result{font:700 clamp(22px,3.5vw,30px) "Readex Pro",sans-serif;color:var(--red);margin:6px 0}
+.rules{columns:2 320px;column-gap:32px;padding-inline-start:1.2em}.rules li{break-inside:avoid;margin-bottom:10px}
+.mail-row{display:flex;justify-content:space-between;gap:8px;align-items:center;flex-wrap:wrap}
+.mail-row code{direction:ltr;font-size:14px}
+.copy{min-height:44px;font:inherit;font-size:14px;padding:4px 12px;border-radius:6px;border:1px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer}
+a{color:var(--red)}
+.ltr{direction:ltr;unicode-bidi:embed;white-space:nowrap}
+footer{padding:28px max(5vw,16px);font-size:14px;color:var(--mute);border-top:1px solid var(--line)}
+pre,.scroll{overflow-x:auto}.scroll a{flex:none}code{overflow-wrap:anywhere}html{scroll-padding-top:72px;scroll-behavior:smooth}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+@media(max-width:600px){table{font-size:13px}.stack thead{display:none}.stack tr{display:grid;padding-block:10px}.stack td{display:flow-root;border:0;padding:3px 0;padding-inline-start:8em;text-align:start}.stack td::before{content:attr(data-l);float:inline-start;width:7.5em;margin-inline-start:-8em;white-space:normal;color:var(--mute)}.stack td:empty{display:none}}
+</style><script>new MutationObserver(()=>{for(const c of document.querySelectorAll('.stack td:not([data-l])')){let i=0,p=c;while(p=p.previousElementSibling)i+=p.colSpan;c.dataset.l=c.closest('table').rows[0].cells[i]?.textContent||''}}).observe(document,{childList:true,subtree:true})</script></head>
+<body>
+
+<header class="band"><div class="wrap">
+<h1>امتحانات أبناؤنا في الخارج 2026/2027: كل ما يحتاجه ولي الأمر في صفحة واحدة</h1>
+<p>تبسيط لكتيّب وزارة التربية والتعليم المصرية (24 صفحة) لتسجيل الطلاب المصريين بالخارج من رياض الأطفال حتى الصف الثاني الثانوي.</p>
+<div class="dates">
+<div><b>نوفمبر 2026</b><span>فتح التسجيل على المنصة</span></div>
+<div><b>150 دولار</b><span>رسوم كل طالب، لأي صف</span></div>
+<div><b>السبت 9 يناير 2027</b><span>امتحانات الفصل الدراسي الأول</span></div>
+<div><b>السبت 22 مايو 2027</b><span>امتحانات الفصل الدراسي الثاني</span></div>
+<div><b>السبت 17 يوليو 2027</b><span>الدور الثاني وتحديد المستوى</span></div>
+</div>
+<div class="cd" id="cd" role="status"></div>
+<div class="wa-row"><a class="wa" id="waTop" href="https://wa.me/?text=" target="_blank" rel="noopener">شارك الدليل على واتساب</a></div>
+</div></header>
+
+<nav class="scroll" aria-label="أقسام الصفحة">
+<a href="#docs">المستندات المطلوبة</a><a href="#age">حاسبة السن</a><a href="#steps">خطوات التسجيل</a><a href="#subjects">المواد ونظام الامتحان</a><a href="#secondary">الثانوي: عام أم بكالوريا</a><a href="#national">المواد القومية للدولية</a><a href="#refund">الاسترداد</a><a href="#rules">تنبيهات مهمة</a><a href="#return">العودة إلى مصر</a><a href="#faq">أسئلة شائعة</a><a href="#contact">التواصل</a><a href="#news">مستجدات السعودية</a>
+</nav>
+
+<section class="band" id="docs"><div class="wrap">
+<h2>ما المستندات المطلوبة لابنك؟ اختر الصف والحالة</h2>
+<div class="finder">
+<div>
+<label for="grade">الصف المتقدم إليه</label>
+<select id="grade"></select>
+<label for="mode">نوع التقدم</label>
+<select id="mode"></select>
+<label for="cat">حالة الطالب</label>
+<select id="cat"></select>
+<p class="note">في كل الحالات: صورة شخصية حديثة، ومستندات كل طالب في ملف PDF مستقل لا يزيد حجمه عن 2 ميجا، وطباعة استمارة التقدم.</p>
+</div>
+<div class="sheet" id="sheet" aria-live="polite"></div>
+</div>
+</div></section>
+
+<section class="band" id="age"><div class="wrap">
+<h2>هل يسمح سن ابنك بالصف الذي تريده؟</h2>
+<p class="note" style="max-width:70ch">بحسب جدول الكتيّب: يُقبل الطالب في الصف إذا كان مولوداً في التاريخ المذكور أو قبله. التسجيل المخالف لشرط السن لا يحق معه استرداد أي مصروفات.</p>
+<div class="finder">
+<div>
+<label for="dob">تاريخ ميلاد الطالب</label>
+<input type="date" id="dob" value="2019-09-15">
+<label id="natl">الجنسية</label>
+<div class="seg" role="group" aria-labelledby="natl">
+<button type="button" id="nEg" aria-pressed="true">مصري</button>
+<button type="button" id="nOt" aria-pressed="false">غير مصري</button>
+</div>
+<p class="note" id="ageNote"></p>
+</div>
+<div class="sheet">
+<div class="tag">أعلى صف يسمح به السن</div>
+<div class="result" id="ageRes"></div>
+<table class="stack"><thead><tr><th>الصف</th><th>مولود في أو قبل</th><th>الحالة</th></tr></thead><tbody id="ageBody"></tbody></table>
+</div>
+</div>
+</div></section>
+
+<section class="band" id="steps"><div class="wrap">
+<h2>خطوات التسجيل: حساب واحد لولي الأمر لكل الأبناء</h2>
+<ol class="steps">
+<li>أنشئ حساباً على المنصة الإلكترونية: <a href="https://sabroad.emis.gov.eg" class="ltr">sabroad.emis.gov.eg</a></li>
+<li>حدّد عدد الأبناء المتقدمين من نفس الحساب.</li>
+<li>ادفع 150 دولاراً لكل طالب عبر المنصة أثناء التسجيل.</li>
+<li>املأ الاستمارة الإلكترونية بدقة من واقع شهادة الميلاد.</li>
+<li>ارفع صورة حديثة ومستندات كل طالب (PDF لا يزيد حجمه عن 2 ميجا)، واطبع الاستمارة وأرفقها بأصول المستندات.</li>
+<li>الطلاب الجدد فقط: أرسل الأصول بالبريد إلى إدارة أبناؤنا في الخارج (العنوان في قسم التواصل).</li>
+<li>تابع المنصة لمعرفة رقم الجلوس وأي رسائل أو مستندات إضافية، وتابع بريد مشرف الصف.</li>
+</ol>
+<p class="note">أي اختلاف بين الصور المرفوعة والأصول المرسلة، أو عدم اتباع الشروط، مسؤولية ولي الأمر وحده، ويحق للإدارة إلغاء التقدم والامتحان.</p>
+</div></section>
+
+<section class="band" id="subjects"><div class="wrap">
+<h2>المواد وطريقة الامتحان لكل مرحلة</h2>
+<p style="max-width:70ch">من الرابع الابتدائي حتى الثاني الثانوي: الامتحان إلكتروني تفاعلي على المنصة. الصفوف الأولى من الابتدائي: تحميل ورقة الأسئلة، حلها، ثم رفع الإجابة PDF. الطلاب معفون من أعمال السنة والأنشطة.</p>
+<div class="tabs" role="tablist" id="tabs"></div>
+<div id="tabPanel" role="tabpanel"></div>
+<p class="note">المواد التي يشترط فيها 70% للنجاح: التربية الدينية. الرسوب في مادة يعني دوراً ثانياً، وتكرار الرسوب يعني إعادة العام.</p>
+</div></section>
+
+<section class="band" id="secondary"><div class="wrap">
+<h2>الصف الأول الثانوي: اختر بين الثانوية العامة والبكالوريا المصرية</h2>
+<div class="cols">
+<div class="card"><h3>الثانوية العامة</h3><ul>
+<li>الأول والثاني الثانوي عبر أبناؤنا في الخارج، والثالث (الشهادة) داخل مصر.</li>
+<li>الشهادة امتحان واحد في نهاية الثالث الثانوي.</li>
+<li>الشعبة (علمي أو أدبي) تُحدّد في الصف الثاني عبر الاستمارة.</li>
+<li>فرصة امتحان واحدة لكل مادة، والدور الثاني بنصف الدرجة (50%).</li>
+</ul></div>
+<div class="card"><h3>البكالوريا المصرية (اختيارية ومجانية)</h3><ul>
+<li>عبر أبناؤنا في الخارج للصف الأول الثانوي فقط، ثم الثاني والثالث داخل مصر.</li>
+<li>المجموع محسوب على الصفين الثاني والثالث.</li>
+<li>فرص امتحان متعددة لكل مادة بكامل الدرجة.</li>
+<li>لا يجوز التحويل منها أو إليها أثناء سنوات الدراسة.</li>
+</ul></div>
+<div class="card"><h3>من مدارس دولية؟</h3><ul>
+<li>للبكالوريا: الدبلومة البريطانية أو الأمريكية أو IB أو شهادة النيل، مع اجتياز امتحانات الصف التاسع.</li>
+<li>بشرط 50% على الأقل من المجموع، والنجاح في مواد الهوية القومية، و70% في التربية الدينية.</li>
+<li>الطالب حر في اختيار النظام ولا إجبار على نظام بعينه.</li>
+</ul></div>
+</div>
+</div></section>
+
+<section class="band" id="national"><div class="wrap">
+<h2>طلاب المدارس الدولية: المواد القومية المطلوبة لكل صف</h2>
+<p style="max-width:70ch">يُسمح للمقيدين بنظام دولي في مدرسة تطبق مناهج ذات طبيعة خاصة بأداء امتحانات المواد القومية فقط عبر أبناؤنا في الخارج، على النحو الآتي (ص22).</p>
+<table class="stack" style="max-width:820px"><thead><tr><th>الصف</th><th>المواد</th></tr></thead><tbody id="natBody"></tbody></table>
+<p class="note" id="natNote" style="max-width:70ch"></p>
+</div></section>
+
+<section class="band" id="refund"><div class="wrap">
+<h2>استرداد الرسوم: لا يُقبل أي طلب بعد هذه المواعيد</h2>
+<table class="stack" style="max-width:720px"><thead><tr><th>الامتحان</th><th>آخر موعد لطلب الاسترداد</th></tr></thead><tbody>
+<tr><td>الفصل الدراسي الأول</td><td>31 ديسمبر 2026</td></tr>
+<tr><td>الفصل الدراسي الثاني</td><td>30 أبريل 2027</td></tr>
+<tr><td>الدور الثاني</td><td>9 يوليو 2027</td></tr>
+</tbody></table>
+<p style="max-width:70ch">النموذج موجود على المنصة. يُرسل بعد استيفاء بياناته ومرفقاته مع كل إيصالات السداد إلى <code class="ltr">Financial@moe.edu.eg</code> فقط. طلب الاسترداد يُلغي تقدم الطالب للامتحان.</p>
+</div></section>
+
+<section class="band" id="rules"><div class="wrap">
+<h2>تنبيهات مهمة قبل التقديم</h2>
+<ol class="rules">
+<li>المتقدمون يُعتبرون "طلاب منازل"، وتُطبق عليهم شروط القبول بالمدارس المصرية عند العودة.</li>
+<li>لا يجوز أداء الامتحان من أكثر من جهة في نفس العام، ويُلغى الامتحان الأخير إن ثبت ذلك.</li>
+<li>الامتحانات للمقيمين خارج مصر فقط؛ من يؤديها من داخل مصر تُلغى نتيجته.</li>
+<li>تُحجب النتيجة إن لم تُرسل أصول المستندات المطلوبة بالبريد.</li>
+<li>الشهادة التي مضى عليها أكثر من عامين تحتاج امتحان تحديد مستوى في المديرية التعليمية.</li>
+<li>الشهادات العربية والأجنبية غير المعادلة لا تُقبل إلا بعد تحديد مستوى، حتى لو عودلت في بلد الإقامة.</li>
+<li>لا تُقبل شهادات مسابقات حفظ القرآن الكريم للتحويل.</li>
+<li>لا يُعتد بشهادة القيد أو الرسوب أو بيان المدرسة؛ المطلوب أصل بيان نجاح معتمد من الإدارة أو المديرية.</li>
+<li>طلاب اللغات يمتحنون العلوم والرياضيات بلغتهم الأجنبية الأولى (إنجليزي أو فرنسي)، ومن يمتحنها بالعربية يُحسب على النظام العربي.</li>
+<li>الطالب المتغيب لظروف السفر يُجمّد قيده بالمدرسة ولا يُصعّد لصف أعلى.</li>
+<li>الدور الثاني لمن رسب في مادة أو تغيب بعذر مقبول، بشرط أن يكون قد تقدم للدور الأول.</li>
+<li>من أدى الفصل الأول في مصر يمكنه التقدم للفصل الثاني عبر أبناؤنا في الخارج (والعكس) بالتسجيل خلال فبراير 2027.</li>
+</ol>
+</div></section>
+
+<section class="band" id="return"><div class="wrap">
+<h2>العودة إلى مصر: ماذا يحدث لقيد ابنك؟</h2>
+<p class="note" style="max-width:70ch">تخص هذه الأحكام الطلاب المصريين العائدين من الخارج المقيدين بنظام أبناؤنا في الخارج. صياغة مبسطة للبنود 14 إلى 23 من الكتيّب (ص18–20)؛ عند أي اختلاف يُرجع إلى الكتيّب. اختر حالة ابنك لتفتح.</p>
+<div id="ret"></div>
+</div></section>
+
+<section class="band" id="faq"><div class="wrap">
+<h2>أسئلة شائعة وإجاباتها من الكتيّب</h2>
+<p class="note" style="max-width:70ch">رقم الصفحة بين قوسين بحسب ترقيم الكتيّب المطبوع، لتتحقق من الإجابة بنفسك.</p>
+<div id="faqList"></div>
+</div></section>
+
+<section class="band" id="contact"><div class="wrap">
+<h2>التواصل: بريد موحّد لمشرف كل صف</h2>
+<div class="cols" id="mails"></div>
+<div class="card" style="margin-top:16px">
+<h3>عنوان إرسال الأصول بالبريد (للطلاب الجدد فقط)</h3>
+<p style="margin:0">الإدارة المركزية للامتحانات، إدارة أبناؤنا في الخارج: 16 ش أمين سامي، متفرع من شارع قصر العيني، بجوار عمارات العرايس، المنيرة، السيدة زينب، القاهرة.</p>
+<p class="note" style="margin:.4em 0 0">هاتف <span class="ltr">27940016</span> · فاكس <span class="ltr">27920041</span> · بريد الإدارة <span class="ltr">sonsabroad@moe.edu.gov</span> (كما ورد في الكتيّب؛ للاستفسار يُفضّل بريد مشرف الصف) · يُفضّل الاحتفاظ برقم تتبع الشحنة.</p>
+</div>
+</div></section>
+
+<section class="band" id="news"><div class="wrap">
+<h2>مستجد خاص بالمقيمين في السعودية: حل مشكلة رياض الأطفال</h2>
+<div class="card" style="max-width:820px">
+<p style="margin-top:0">أعلن المكتب الثقافي التعليمي بسفارة مصر في السعودية (أكتوبر 2026) أن الطلاب القادمين من أنظمة دولية أو مدارس لغات خاصة، ولم يدرسوا رياض الأطفال أو درسوا عاماً واحداً منها فقط، يمكنهم الالتحاق بالتعليم المصري دون شرط العامين.</p>
+<ul>
+<li>بشرط استيفاء قواعد القبول والتحويل المعتادة.</li>
+<li>مع اختبار تحديد مستوى، ومطابقة السن للصف، ومعادلة الشهادة للصف المتقدم إليه.</li>
+<li>طلاب أبناؤنا في الخارج الذين لم يدرسوا رياض الأطفال (لعدم تدريسها حينها) يُعامَلون كما في مدارس مصر.</li>
+</ul>
+<p class="note">يتوافق هذا مع الكتيّب (صفحة 4): هذه الحالات تُعرض على إدارة أبناؤنا في الخارج لفحصها. المصدر: <a href="https://www.masrawy.com/news/education-universityeducation/details/2026/10/8/3059698">مصراوي، 8 أكتوبر 2026</a>.</p>
+</div>
+</div></section>
+
+<footer><div class="wrap">
+المصدر الأساسي: إعلان "تعليمات وشروط التقدم لأداء امتحانات أبناؤنا في الخارج 2026/2027"، الإدارة المركزية للامتحانات، وزارة التربية والتعليم والتعليم الفني. هذه الصفحة تبسيط للتيسير؛ عند أي اختلاف يُرجع إلى الكتيّب الرسمي والمنصة <a href="https://sabroad.emis.gov.eg" class="ltr">sabroad.emis.gov.eg</a>.
+<div class="wa-row"><a class="wa wa-s" id="waFoot" href="https://wa.me/?text=" target="_blank" rel="noopener">شارك الدليل على واتساب</a></div>
+</div></footer>
+
+<script>
+{
+const G=[["kg1","KG1 المستوى الأول رياض أطفال","2023-04-01","2022-10-01"],["kg2","KG2 المستوى الثاني رياض أطفال","2022-04-01","2021-10-01"],["p1","الأول الابتدائي","2021-04-01","2020-10-01"],["p2","الثاني الابتدائي","2020-04-01"],["p3","الثالث الابتدائي","2019-04-01"],["p4","الرابع الابتدائي","2018-04-01"],["p5","الخامس الابتدائي","2017-04-01"],["p6","السادس الابتدائي","2016-04-01"],["m1","الأول الإعدادي","2015-04-01"],["m2","الثاني الإعدادي","2014-04-01"],["m3","الثالث الإعدادي","2013-04-01"],["s1","الأول الثانوي (عام أو بكالوريا)","2012-04-01"],["s2","الثاني الثانوي العام","2011-04-01"]];
+const LS_KEY="abnaouna2026.checks.v1";
+const MODES=[["t1","الفصل الدراسي الأول"],["t2","الفصل الدراسي الثاني"],["r2","الدور الثاني"]];
+const BD="أصل شهادة ميلاد الطالب (الرقم القومي)";
+const INFO={t:"info",x:"لم يحدد الكتيّب (ص15) هل تُرفع هذه المستندات على المنصة أم تُرسل بالبريد؛ راجع المنصة أو بريد مشرف الصف."};
+const MD={
+ t2:["كل الحالات",["أصل بيان نتيجة الفصل الدراسي الأول معتمد من إدارة شئون الطلاب بالإدارة أو المديرية التعليمية المختصة، بالإضافة إلى بيان النجاح للعام السابق",BD],INFO],
+ r2:["كل الحالات",["أصل بيان نتيجة الدور الأول معتمد من إدارة شئون الطلاب بالإدارة أو المديرية التعليمية المختصة، بالإضافة إلى بيان النجاح للعام السابق",BD],INFO]};
+const R2LANG="تدرج دراسي (لطلاب المدارس الخاصة لغات المتقدمين للدور الثاني حتى السادس الابتدائي فقط)";
+const EX=[["مصري كان يدرس في دولة لا تُدرَّس فيها لغة أجنبية ثانية","يجوز إعفاؤه من الامتحان في اللغة الأجنبية الثانية، بشرط أن يكون قد اجتاز بنجاح الصف المناظر للأول الثانوي العام المصري في دولته التي لا تُدرَّس فيها لغة أجنبية ثانية، وأن يتقدم لامتحانات أبناؤنا في الخارج في الصف الثاني الثانوي."],["طالب دمج من ذوي الإعاقة البسيطة (الإعاقة الذهنية البسيطة، متلازمة داون، الشلل الدماغي، اضطراب طيف التوحد)","يجوز إعفاؤه من دراسة اللغة الأجنبية الثانية إن رغب الطالب، بعد كتابة إقرار معتمد من ولي الأمر سواء برغبة الطالب في الإعفاء أو في أداء اللغة الأجنبية الثانية، طبقاً للقرار رقم 252 لسنة 2015."]];
+const NAT=[["الأول والثاني الابتدائي","ملف التقييم (عن طريق تقديمه باللغة العربية)"],["الثالث الابتدائي","اللغة العربية، التربية الدينية"],["من الرابع الابتدائي حتى الثالث الإعدادي","اللغة العربية، التربية الدينية، الدراسات الاجتماعية"],["الأول الثانوي","اللغة العربية، التربية الدينية، التاريخ، التربية الوطنية"],["الثاني الثانوي: الشعبة الأدبية","اللغة العربية، التربية الدينية، التاريخ، الجغرافيا، التربية الوطنية"],["الثاني الثانوي: الشعبة العلمية","اللغة العربية، التربية الدينية، التربية الوطنية"]];
+const NATN="علماً بأن مواد الثاني الثانوي مواد نجاح ورسوب. يُشترط عند التقدم إحضار أصل بيان قيد في الصف المتقدم له من المدرسة الدولية التابعة للدولة المقيم بها، وصورة طبق الأصل من الشهادة الدولية لآخر صف دراسي حاصل عليه الطالب، وأصل بيان نجاح في المواد القومية في آخر صف دراسي معتمد من الإدارة التعليمية.";
+const RET=[
+["عاد وهو في مرحلة التعليم الأساسي (حتى الثالث الإعدادي)",["يُلحق بمدرسة من مدارس التعليم الأساسي في محافظته كطالب منتظم، لأن هذه المرحلة إلزامية على ولي الأمر وعلى الدولة.","تُطبَّق عليه شروط وقواعد القبول بالمدارس المصرية."],14,"18–19"],
+["عاد بشهادة نجاح من أبناؤنا في الخارج، أو بنتيجة «اجتاز» في الفصل الأول",["يُلحق بمدارس مصر وفقاً للصف الحاصل عليه (صفوف النقل).","لا يُعقد له امتحان تحديد مستوى."],15,"19"],
+["أنهى الفصل الأول بصفوف النقل بنتيجة «اجتاز» ويريد إكمال الفصل الثاني في مصر",["يؤدي امتحانات الفصل الثاني.","تُحسب له الدرجة الكلية للمادة على الفصل الثاني وحده: أي أن درجته في الفصل الثاني تُضرب في 2 لتصبح 100% من درجة المادة."],16,"19"],
+["أنهى الفصل الأول بشهادة إتمام التعليم الأساسي (الثالث الإعدادي) بنتيجة «اجتاز» ويريد إكمال الفصل الثاني في مصر",["يُعقد له امتحان تكميلي بمنهج الفصل الأول.","تُحسب الدرجة الكلية للمادة على اختبارين تحريريين: الاختبار التكميلي للفصل الأول، واختبار نهاية الفصل الثاني."],17,"19"],
+["عاد بعد انتهاء الفصل الأول وكان متغيباً عن امتحاناته",["يُعقد له اختبار تكميلي للفصل الأول مع المتخلفين.","إن تغيب عن مادة أو أكثر، يُعقد له اختبار تكميلي في هذا الجزء في نهاية العام الدراسي بعد اختبار الفصل الثاني، ويحصل على درجة الاختبار."],18,"19"],
+["تغيب عن مدرسته بسبب السفر وقُيِّد على نظام أبناؤنا في الخارج",["يُجمَّد قيده بالمدرسة ولا يُصعَّد إلى صف أعلى.","تُطبَّق عليه أحكام القرار الوزاري رقم 284 لسنة 2014 الخاص بإلحاق المصريين العائدين من الخارج.","الإدارة التعليمية المختصة (قسم شئون الطلبة والامتحانات)، لا المدرسة، هي التي تلحقه بعد بحث حالته، بكتاب إلحاق موجه إلى المدرسة المطلوبة التي تسمح كثافتها العددية، مع مراعاة شروط وقواعد القبول في المرحلة."],19,"19"],
+["أدى الدور الأول عبر أبناؤنا ويؤدي بعض مواد الدور الثاني في مصر",["تستخرج المديرية أو الإدارة التعليمية التي أدى الطالب الدور الثاني بها نتيجته كاملة، بما فيها نتيجة مواد الدور الأول."],20,"19"],
+["عاد من الأول أو الثاني الثانوي العام بنتيجة «اجتاز»",["يُلحق كطالب منتظم بمدارس مصر الرسمية في الثانوي العام إن استوفى شروط القبول الخاصة بالمجموع الكلي حينها (حسب تنسيق محافظته). وهم الحاصلون على شهادة الثالث الإعدادي بدرجات من داخل مصر، أو ببيان تحديد مستوى مدوّن به درجات من الإدارة التعليمية، أو بشهادة عربية معادلة بمثيلتها في مصر، ولهم مجموع اعتباري.","إن لم يستوف شروط القبول بالمجموع الكلي، يُلحق كطالب منازل في الثانوي العام بمدارس مصر الرسمية الحكومية.","وإن حصل على شهادة الثالث الإعدادي بنتيجة «اجتاز» عبر أبناؤنا وأدى امتحانات الأول أو الثاني الثانوي بنتيجة «اجتاز» (في الفصل الأول أو نهاية العام)، يُلحق كطالب منازل في الصف التالي بالثانوي العام بمدارس مصر الرسمية.","في كل الأحوال تُطبَّق عليه شروط وقواعد القبول بالمدارس المصرية عند عودته."],21,"19–20"],
+["عاد من مدارس المسار المصري بالخارج",["لا يُجرى له امتحان تحديد مستوى (للحاصل على شهادة الثالث الإعدادي أو أي صف دراسي بمدارس المسار المصري).","يُسكَّن كطالب منتظم وتُطبَّق عليه شروط وقواعد القبول بالمدارس المصرية، لأن تلك المدارس مصرح لها بتدريس المنهج المصري من وزارة التربية والتعليم والتعليم الفني."],22,"20"],
+["حاصل على شهادة الثالث الإعدادي (اجتاز) عبر أبناؤنا ويريد الثانوي في العام نفسه",["يُجرى له امتحان تحديد مستوى إن رغب في الالتحاق في العام نفسه بمدارس التعليم الثانوي المختلفة أو مدارس المتفوقين الثانوية كطالب منتظم.","مع مراعاة الضوابط العامة المنظمة لإجراء امتحان تحديد المستوى."],23,"20"]];
+const FAQ=[
+["هل أرسل الأوراق بالبريد أم يكفي الرفع على المنصة؟","يختلف بحسب الحالة. تُرسل كل الأصول بالبريد للطلاب الجدد في KG1 والأول الابتدائي (لغات أو عربي)، ولأصحاب الشهادات الأجنبية أو الدولية المعادلة وشهادات تحديد المستوى وطلاب الأزهر وحالات الدمج في باقي الصفوف. أما من لديهم شهادات من مدارس داخل مصر ومسجّل لهم نتيجة على موقع الوزارة فيكفي رفع المستندات على المنصة؛ وإن اختلفت نتيجة العام الماضي على موقع الوزارة عن المرفوع، تُطلب منك المستندات ورقياً بالبريد. وطلاب أبناؤنا في الخارج والمسار المصري في العام الماضي يكتفون بالرفع.","11"],
+["ماذا لو تأخرت عن موعد الاسترداد؟","لا يحق لولي الأمر تقديم طلب الاسترداد بعد المواعيد المحددة (31 ديسمبر 2026 للفصل الأول، و30 أبريل 2027 للفصل الثاني، و9 يوليو 2027 للدور الثاني)، وتقع المسؤولية كاملة على ولي الأمر. وطلب الاسترداد يُلغي تقدم الطالب للامتحان.","16"],
+["هل يمكن أن يمتحن ابني الفصل الأول في مصر والثاني هنا؟","نعم. من أدى امتحانات الفصل الأول في مدارس مصر يمكنه التقدم لامتحانات الفصل الثاني عبر أبناؤنا في الخارج (والعكس) بالتسجيل على المنصة خلال شهر فبراير 2027. ويُطلب لذلك أصل بيان نتيجة الفصل الأول معتمداً من إدارة شئون الطلاب بالإدارة أو المديرية، وبيان نجاح العام السابق، وأصل شهادة الميلاد.","7 و8 و15"],
+["ماذا لو كان سن ابني أقل بشهور من سن الصف؟","للطلاب المصريين فقط يجوز النزول بالسن نصف عام في KG1 (3.5 سنة) وKG2 (4.5 سنة) والأول الابتدائي (5.5 سنة)، مع أخذ إقرار من ولي الأمر بإلحاق الطالب بمدارس خاصة عند العودة إلى مصر. يُحسب سن القبول لرياض الأطفال والأول الابتدائي في أول أكتوبر 2026، ولباقي الصفوف راجع جدول تواريخ الميلاد في حاسبة السن (ص17). والتسجيل المخالف لشرط السن لا يحق لولي الأمر معه المطالبة باسترداد أي مصروفات.","3 و4 و17"],
+["هل يمكن تغيير الشعبة في الثاني الثانوي؟","تُدوَّن الشعبة (علمي أو أدبي) في الاستمارة عند التقدم، ولا يحق تغييرها إلا بطلب رسمي للجنة النظام والمراقبة عن طريق البريد الإلكتروني لمشرف الصف، قبل أداء امتحان الفصل الدراسي الأول.","10"],
+["ماذا يحدث إن امتحن ابني من داخل مصر؟","الامتحانات للطلاب المقيمين خارج البلاد. وإن ثبت أن الطالب أدّاها من داخل مصر يُصرف النظر عن نتيجته ولا يُعتد بها. كما لا يجوز أداء الامتحان من أكثر من جهة في العام الدراسي نفسه، ويُلغى الامتحان الأخير إن ثبت ذلك.","18"],
+["كم الرسوم وكيف تُدفع؟","150 دولاراً أمريكياً لكل طالب في أي صف دراسي (من الأول رياض الأطفال حتى الثاني الثانوي العام)، تُسدَّد عبر المنصة الإلكترونية أثناء عملية التسجيل.","16"],
+["متى يُفتح التسجيل ومتى الامتحانات؟","يُفتح الموقع للتسجيل خلال نوفمبر 2026. الفصل الدراسي الأول يبدأ السبت 9 يناير 2027، والثاني السبت 22 مايو 2027، والدور الثاني وتحديد المستوى السبت 17 يوليو 2027، وفق الجداول التي تعلنها الإدارة على المنصة.","3 و16"],
+["هل في رياض الأطفال امتحان؟","لا، بل ملف تقييم أداء لكل فصل دراسي يُحمَّل من المنصة، وينفذ الطفل أنشطته بنفسه وبخط يده، ثم يرفعه ولي الأمر حسب حالة الطفل (عربي أو لغات). لا يصدر أي إخطار نجاح دون رفع الملف، ومن لم يرفعه في الدور الأول يؤديه ضمن الدور الثاني.","8"],
+["كيف يؤدي ابني الامتحان؟","الامتحانات إلكترونية تفاعلية عبر المنصة لطلاب الصفوف من الرابع الابتدائي حتى الثاني الثانوي العام. أما طلاب الصفوف الأولى من الحلقة الابتدائية فتُجرى الاختبارات بتحميل ورقة الأسئلة والإجابة عليها، ثم إعادة رفع الملف بصيغته النهائية (PDF) عبر المنصة.","8"],
+["ماذا لو رسب ابني في مادة؟","يُعقد له اختبار دور ثانٍ في المقرر الكامل للمادة التي رسب فيها أو تغيب عنها بعذر مقبول، بشرط أن يكون قد تقدم لامتحان الدور الأول. وفي الإعدادي والثانوي، إن استمر عدم اجتيازه يُعد راسباً وعليه إعادة العام الدراسي.","9 و10 و11"],
+["ماذا لو اختلفت الأوراق المرفوعة عن الأصول المرسلة، أو لم أرسل الأصول؟","في حال وجود اختلافات بين صور المستندات المرفوعة والأصول المرسلة، أو عدم اتباع شروط التقدم، تقع المسؤولية كاملة على ولي الأمر، ويحق للإدارة إلغاء التقدم والامتحان. وإن لم تُرسل أصول المستندات المطلوبة بالبريد تُحجب نتائج الطلاب.","16 و18"]];
+const WA="دليل مبسّط لتسجيل امتحانات أبناؤنا في الخارج 2026/2027: المستندات حسب الصف، وحاسبة السن، والمواعيد";
+const AR_D=["الأحد","الاثنين","الثلاثاء","الأربعاء","الخميس","الجمعة","السبت"];
+const AR_M=["يناير","فبراير","مارس","أبريل","مايو","يونيو","يوليو","أغسطس","سبتمبر","أكتوبر","نوفمبر","ديسمبر"];
+/* مواعيد العدّاد مرتبة زمنياً: [آخر يوم في الموعد، الاسم، نص بديل بلا عدّ (اختياري)] */
+const DL=[["2026-12-31","آخر موعد لاسترداد رسوم الفصل الأول"],["2027-01-09","امتحانات الفصل الأول"],["2027-02-28","التسجيل للفصل الثاني لمن امتحن الأول في مصر","خلال فبراير 2027"],["2027-04-30","آخر موعد لاسترداد رسوم الفصل الثاني"],["2027-05-22","امتحانات الفصل الثاني"],["2027-07-09","آخر موعد لاسترداد رسوم الدور الثاني"],["2027-07-17","امتحانات الدور الثاني"]];
+const DL_END="انتهت مواعيد العام 2026/2027";
+const PR={title:"دليل أبناؤنا في الخارج 2026/2027",src:"المصدر: كتيّب أبناؤنا في الخارج 2026/2027 — المنصة:",site:"sabroad.emis.gov.eg"};
+const BC="أصل شهادة الميلاد (الرقم القومي)";
+const UP={t:"up",x:"يكفي الرفع على المنصة، ولا تُرسل أوراق بالبريد."};
+const UPM={t:"up",x:"يكفي الرفع على المنصة. إن اختلفت نتيجة العام الماضي على موقع الوزارة عن المرفوع، ستُطلب منك المستندات ورقياً بالبريد."};
+const MAIL={t:"mail",x:"تُرسل كل الأصول بالبريد إلى الإدارة المركزية للامتحانات مع الاستمارة المطبوعة، بعد الانتهاء من التسجيل على المنصة."};
+const s2x=g=>g==="s2"?["أصل بيان نجاح إتمام مرحلة التعليم الأساسي (الثالث الإعدادي) + بيان نجاح الأول الثانوي"]:[];
+function cats(g){
+ if(g==="kg1")return[
+  ["مصري (طالب جديد)",[BC+"، ولا يشترط اعتمادها من السفارة ولا توثيقها (لا تُسترد)","استمارة التقدم المطبوعة من المنصة"],MAIL],
+  ["غير مصري",["أصل شهادة الميلاد معتمدة وموثقة من السفارة والخارجية (تُسترد نهاية العام)","استمارة التقدم المطبوعة من المنصة"],MAIL]];
+ if(g==="kg2"||g==="p1"){const k=g==="kg2"?"KG1":"KG1 و KG2";return[
+  ["مصري: اجتاز "+k+" بمدرسة داخل مصر ومسجّل له نتيجة",[BC,"أصل بيان اجتياز "+k+" منهج مصري مسجّل على موقع الوزارة"],UPM],
+  ["مصري: اجتاز "+k+" في مدارس المسار المصري أو أبناؤنا في الخارج",["صورة من نتيجة العام الماضي فقط"],UP],
+  ["مصري: شهادة أجنبية أو أزهر أو دمج",[BC,"أصل بيان اجتياز "+k+" معتمد وموثق","استمارة التقدم المطبوعة"],MAIL],
+  ["غير مصري",["أصل شهادة الميلاد غير المصرية معتمدة وموثقة من السفارة (تُسترد نهاية العام)","بيان اجتياز "+k+" (منهج مصري أو أجنبي معتمد وموثق)","استمارة التقدم المطبوعة"],MAIL]];}
+ const i=G.findIndex(x=>x[0]===g);const L=[
+  ["آخر صف درسه كان داخل مصر",["أصل بيان نجاح آخر صف، معتمد من شئون الطلبة بالإدارة أو المديرية (مدرسة رسمية أو خاصة مرخصة)",BC,...s2x(g),"مدارس دولية داخل مصر: صورة ترخيص المدرسة المعادلة، وإلا شهادة اجتياز تحديد مستوى","مدارس لغات: البيان يوضح اسم المدرسة ونوعها ودرجة المستوى الرفيع واللغة الثانية ومسماها"],UPM],
+  ["آخر صف من مدرسة خارج مصر (شهادة مناظرة)",["أصل شهادة نجاح آخر صف مصدّقة من التعليم والخارجية في تلك الدولة والسفارة المصرية أو المكتب الثقافي",BC,...s2x(g)],MAIL],
+  ["درس العام الماضي بنظام أبناؤنا في الخارج أو مدارس المسار المصري",["صورة الإخطار أو المستخرج أو النتيجة المعلنة على المنصة","صورة واضحة من شهادة الميلاد (الرقم القومي)"],UP],
+  ["مدرسة دولية غير معادلة، ويتقدم في كل المواد",["أصل شهادة اجتياز تحديد المستوى في كل المواد معتمدة من الإدارة أو المديرية (من أدّاه عبر أبناؤنا: صورة النتيجة فقط)","صورة الشهادة الدولية لآخر صف",BC,...s2x(g)],MAIL],
+  ["مدرسة دولية، ويتقدم للمواد القومية فقط",["أصل بيان قيد في الصف من المدرسة الدولية","صورة الشهادة الدولية المعتمدة لآخر صف","أصل بيان نجاح المواد القومية لآخر صف معتمد من الإدارة التعليمية",BC],MAIL],
+  ["طالب دمج",["أصل بيان نجاح آخر صف موضح به أنه على نظام الدمج أو مختوم بختم الدمج","أصل خطاب الإدارة العامة للتربية الخاصة بتوصيف حالته","صورة تقرير طبي جديد من جهة حكومية مصرية (لبداية كل مرحلة: الأول الابتدائي والأول الثانوي)"],MAIL]];
+ if(i<=10)L.splice(4,0,["محوّل من الأزهر",["صورة طبق الأصل من موافقة الإدارة المركزية للمعاهد الأزهرية على التحويل","أصل بيان نجاح آخر صف","أصل بيان قيد معتمد من الإدارة التعليمية بإحدى مدارس التعليم العام"],MAIL]);
+ return L;}
+const gS=document.getElementById("grade"),mS=document.getElementById("mode"),cS=document.getElementById("cat"),sh=document.getElementById("sheet");
+gS.innerHTML=G.map(g=>`<option value="${g[0]}">${g[1]}</option>`).join("");gS.value="p4";mS.innerHTML=MODES.map(m=>`<option value="${m[0]}">${m[1]}</option>`).join("");
+function catsFor(g,m){if(m==="t1")return cats(g);const x=MD[m],i=G.findIndex(y=>y[0]===g);return[[x[0],x[1].concat(m==="r2"&&i<=7?[R2LANG]:[]),x[2]]]}
+function fillCats(){const c=catsFor(gS.value,mS.value);cS.innerHTML=c.map((x,i)=>`<option value="${i}">${x[0]}</option>`).join("");render()}
+function ldChecks(){try{return JSON.parse(localStorage.getItem(LS_KEY))||{}}catch(e){return{}}}
+function svChecks(o){try{localStorage.setItem(LS_KEY,JSON.stringify(o))}catch(e){}}
+const ckKey=()=>gS.value+(mS.value==="t1"?"":"|"+mS.value)+"|"+(+cS.value||0);
+function prog(){const b=sh.querySelectorAll(".chk input"),n=[...b].filter(x=>x.checked).length,p=document.getElementById("prog"),q=document.getElementById("pProg");
+ b.forEach(x=>x.closest(".chk").dataset.done=x.checked?"1":"0");
+ if(p)p.textContent=n===b.length?"جهّزت كل المستندات ("+n+" من "+b.length+").":"جهّزت "+n+" من "+b.length+" مستندات.";
+ if(q)q.textContent="جهّزت "+n+" من "+b.length}
+function stampDate(){const d=document.getElementById("pDate");if(d)d.textContent=new Date().toLocaleDateString("ar-EG",{day:"numeric",month:"long",year:"numeric"})}
+function printList(){stampDate();window.print()}
+window.addEventListener("beforeprint",stampDate);
+function render(){const c=catsFor(gS.value,mS.value)[+cS.value||0];const mn=MODES.find(m=>m[0]===mS.value)[1];const gn=G.find(x=>x[0]===gS.value)[1];const done=new Set(ldChecks()[ckKey()]||[]);
+ sh.innerHTML=`<div class="pr-only ph"><h1>${PR.title}</h1><p>الصف: <b>${gn}</b></p><p>نوع التقدم: <b>${mn}</b></p><p>الحالة: <b>${c[0]}</b></p><p>تاريخ الطباعة: <b id="pDate"></b></p><p class="pp" id="pProg"></p></div><div class="tag no-print">${gn}</div><h3 class="no-print">${c[0]}</h3><p class="note no-print" style="margin:0">علّم على كل مستند جهّزته، ويُحفظ ذلك على هذا الجهاز.</p><ol>${c[1].map((d,i)=>`<li><label class="chk"><input type="checkbox" data-i="${i}"${done.has(i)?" checked":""}><span>${d}</span></label></li>`).join("")}</ol><p class="note no-print" id="prog" role="status"></p><div class="acts no-print"><button type="button" class="reset" id="rst">مسح العلامات</button><button type="button" class="reset prt" id="prt">طباعة قائمة مستندات ابني</button></div><div class="how ${c[2].t}">${{mail:"✉",up:"⇪"}[c[2].t]||"ℹ"}<span>${c[2].x}</span></div><p class="note no-print">بعد التسجيل: تابع المنصة لرقم الجلوس وأي طلب لمستندات إضافية.</p><p class="pr-only pf">${PR.src} <span class="ltr">${PR.site}</span></p>`;prog();stampDate()}
+sh.addEventListener("change",e=>{if(!e.target.matches(".chk input"))return;const o=ldChecks();
+ o[ckKey()]=[...sh.querySelectorAll(".chk input")].filter(x=>x.checked).map(x=>+x.dataset.i);svChecks(o);prog()});
+sh.addEventListener("click",e=>{if(e.target.closest("#prt")){printList();return}if(!e.target.closest("#rst"))return;const o=ldChecks();delete o[ckKey()];svChecks(o);render();document.getElementById("rst").focus()});
+gS.addEventListener("change",fillCats);mS.addEventListener("change",fillCats);cS.addEventListener("change",render);fillCats();
+
+const dob=document.getElementById("dob"),nE=document.getElementById("nEg"),nO=document.getElementById("nOt");let eg=true;
+function setN(v){eg=v;nE.setAttribute("aria-pressed",v);nO.setAttribute("aria-pressed",!v);age()}
+nE.addEventListener("click",()=>setN(true));nO.addEventListener("click",()=>setN(false));dob.addEventListener("input",age);
+function fmt(d){const [y,m,dd]=d.split("-");return `${+dd}/${+m}/${y}`}
+function age(){const v=dob.value;const body=document.getElementById("ageBody"),res=document.getElementById("ageRes"),nt=document.getElementById("ageNote");
+ if(!v){res.textContent="أدخل تاريخ الميلاد";body.innerHTML="";return}
+ let best=null;body.innerHTML=G.map(g=>{const lim=(!eg&&g[3])?g[3]:g[2];const ok=v<=lim;const soft=eg&&g[3]&&ok&&v>g[3];if(ok)best=g;
+  return `<tr><td>${g[1]}</td><td><span class="ltr">${fmt(lim)}</span></td><td class="${ok?(soft?"warn":"yes"):"no"}">${ok?(soft?"مسموح بتخفيض السن":"مسموح"):"السن لا يسمح"}</td></tr>`}).join("");
+ res.textContent=best?best[1]:"أصغر من سن القبول لرياض الأطفال";
+ nt.textContent=eg?"للمصريين فقط: يجوز النزول بالسن نصف عام في KG1 و KG2 والأول الابتدائي، مع إقرار من ولي الأمر بإلحاق الطالب بمدارس خاصة عند العودة لمصر.":"لغير المصريين يُطبّق السن الأساسي: 4 سنوات لـ KG1، و5 لـ KG2، و6 للأول الابتدائي في أول أكتوبر 2026.";}
+age();
+
+const T=[["رياض الأطفال",`<div class="card"><p style="margin-top:0">لا يوجد امتحان، بل <b>ملف تقييم أداء</b> لكل فصل دراسي يشمل: اللغة العربية، اللغة الأجنبية، متعدد التخصصات، المستوى الرفيع.</p><ul><li>تحمّل الملف من المنصة، وينفّذ الطفل الأنشطة بنفسه وبخط يده.</li><li>يرفعه ولي الأمر حسب حالة الطفل (عربي أو لغات).</li><li>لا يصدر أي إخطار نجاح دون رفع الملف. الطفل معفى من التربية البدنية والصحية.</li><li>من لم يرفع الملف في الدور الأول يؤديه ضمن الدور الثاني.</li></ul></div>`],
+["الأول إلى الثالث الابتدائي",`<div class="card"><p style="margin-top:0">المواد: اللغة العربية، اللغة الإنجليزية، الرياضيات، التربية الدينية، والمستوى الرفيع لطلاب اللغات.</p><p>معفى من: أنشطة التوكاتسو والتربية البدنية. طريقة الامتحان: تحميل الأسئلة ورفع الإجابة PDF. لاستمرار طالب اللغات في KG والأول والثاني الابتدائي يجب أداء ملف التقييم باللغات.</p></div>`],
+["الرابع إلى السادس الابتدائي",`<div class="card"><p style="margin-top:0">المواد: اللغة العربية، اللغة الإنجليزية، الرياضيات، العلوم، الدراسات الاجتماعية، التربية الدينية، تكنولوجيا الاتصال والمعلومات، والمستوى الرفيع (Connect Plus) لطلاب اللغات.</p><p>معفى من: المجالات، التربية الموسيقية، التربية البدنية، التربية الفنية. الامتحان إلكتروني تفاعلي.</p></div>`],
+["الإعدادي",`<div class="card"><p style="margin-top:0">المواد: اللغة العربية، اللغة الأجنبية، الرياضيات، الدراسات الاجتماعية، العلوم، التربية الدينية (70% للنجاح)، التربية الفنية، والمستوى الرفيع واللغة الأجنبية الثانية لطلاب اللغات.</p><p>معفى من: التربية الرياضية، الموسيقية، الكمبيوتر وتكنولوجيا المعلومات، الأنشطة الاختيارية.</p></div>`],
+["الأول الثانوي",`<div class="card"><p style="margin-top:0"><b>داخل المجموع:</b> اللغة العربية، اللغة الأجنبية الأولى، التاريخ، الرياضيات، العلوم المتكاملة، الفلسفة والمنطق.</p><p><b>نجاح ورسوب فقط:</b> التربية الدينية (70%)، اللغة الأجنبية الثانية، البرمجة والذكاء الاصطناعي، المستوى الرفيع للغات.</p><p>معفى من: التربية الرياضية، التربية المهنية، الأنشطة التربوية.</p></div>`],
+["الثاني الثانوي العام",`<div class="cols"><div class="card"><h3>مواد الشعبتين</h3><p>في المجموع: العربية، الأجنبية الأولى، التاريخ. نجاح ورسوب: الدينية (70%)، الأجنبية الثانية، التربية الوطنية، المستوى الرفيع.</p></div><div class="card"><h3>علمي</h3><p>الكيمياء، الفيزياء، الرياضيات (البحتة والتطبيقية).</p></div><div class="card"><h3>أدبي</h3><p>الجغرافيا، علم النفس، الرياضيات.</p></div></div><p class="note">تُحدّد الشعبة في الاستمارة، ولا تُغيَّر إلا بطلب رسمي قبل امتحان الفصل الأول. لا يجوز تغيير اللغة الأجنبية الثانية التي دُرست في الأول الثانوي.</p><h3 style="margin-top:18px">إعفاء من اللغة الأجنبية الثانية (ص21)</h3><div class="cols">${EX.map(e=>`<div class="card"><h3>${e[0]}</h3><p style="margin:0">${e[1]}</p></div>`).join("")}</div>`]];
+const tb=document.getElementById("tabs"),tp=document.getElementById("tabPanel");
+tb.innerHTML=T.map((t,i)=>`<button type="button" role="tab" id="t${i}" aria-selected="${i===0}">${t[0]}</button>`).join("");
+function tab(i){T.forEach((_,j)=>document.getElementById("t"+j).setAttribute("aria-selected",j===i));tp.innerHTML=T[i][1]}
+tb.addEventListener("click",e=>{const b=e.target.closest("button");if(b)tab(+b.id.slice(1))});tab(0);
+
+const M=[["KG1","s.kg01"],["KG2","s.kg02"],["الأول الابتدائي","s.prim01"],["الثاني الابتدائي","s.prim02"],["الثالث الابتدائي","s.prim03"],["الرابع الابتدائي","s.prim04"],["الخامس الابتدائي","s.prim05"],["السادس الابتدائي","s.prim06"],["الأول الإعدادي","s.prep01"],["الثاني الإعدادي","s.prep02"],["الثالث الإعدادي","s.prep03"],["الأول الثانوي","s.than01"],["الثاني الثانوي","s.than02"]].map(m=>[m[0],m[1]+"@support.emis.edu.eg"]);
+M.push(["الدعم الفني للمنصة","support@stuabroad.moe.edu.eg"]);
+document.getElementById("mails").innerHTML=M.map(m=>`<div class="card mail-row"><div><b>${m[0]}</b><br><code>${m[1]}</code></div><button type="button" class="copy" data-m="${m[1]}">نسخ</button></div>`).join("");
+document.getElementById("mails").addEventListener("click",e=>{const b=e.target.closest(".copy");if(!b)return;try{navigator.clipboard.writeText(b.dataset.m).then(()=>{b.textContent="تم النسخ";setTimeout(()=>b.textContent="نسخ",1500)}).catch(()=>{b.textContent="انسخه يدوياً"})}catch(err){b.textContent="انسخه يدوياً"}});
+document.getElementById("natBody").innerHTML=NAT.map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td></tr>`).join("");
+document.getElementById("natNote").textContent=NATN;
+document.getElementById("ret").innerHTML=RET.map(r=>`<details class="fold"><summary>${r[0]}</summary><div class="fb"><ul>${r[1].map(x=>`<li>${x}</li>`).join("")}</ul><p class="note">البند ${r[2]} في الكتيّب (ص${r[3]})</p></div></details>`).join("");
+document.getElementById("faqList").innerHTML=FAQ.map(f=>`<details class="fold"><summary>${f[0]}</summary><div class="fb"><p style="margin:.2em 0 .6em">${f[1]} <span class="pg">(ص${f[2]})</span></p></div></details>`).join("");
+const cd=document.getElementById("cd");
+const dword=n=>n===1?"باقي يوم واحد":n===2?"باقي يومان":"باقي "+n+(n<=10?" أيام":" يوماً");
+function ksaToday(){try{return new Intl.DateTimeFormat("en-CA",{timeZone:"Asia/Riyadh"}).format(new Date())}catch(e){return new Date(Date.now()+3*36e5).toISOString().slice(0,10)}}
+function dtxt(s){const[y,m,d]=s.split("-").map(Number);return AR_D[new Date(Date.UTC(y,m-1,d)).getUTCDay()]+" "+d+" "+AR_M[m-1]+" "+y}
+function tick(){const today=ksaToday(),e=DL.find(x=>x[0]>=today);let s;
+ if(!e)s=DL_END;else if(e[2])s=e[1]+": "+e[2];
+ else{const n=Math.round((Date.parse(e[0])-Date.parse(today))/864e5);s=(n===0?"اليوم: "+e[1]:dword(n)+" على "+e[1])+"، "+dtxt(e[0])}
+ if(cd.textContent!==s)cd.textContent=s}
+tick();setInterval(tick,60000);
+["waTop","waFoot"].forEach(id=>{document.getElementById(id).href="https://wa.me/?text="+encodeURIComponent(WA+"\n"+location.href)});
+}
+</script>
+</body>
+</html>
