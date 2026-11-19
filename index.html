@@ -69,8 +69,18 @@ footer .btn.sec{border-color:rgba(255,255,255,.75);color:#fff}
 .menu a[aria-current=page] svg{background:var(--accbg);color:var(--brand)}
 .appbar{position:sticky;top:0;z-index:30;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px max(16px,3vw);background:var(--bg);border-bottom:1px solid var(--line)}
 .appbar h1{margin:0}
-.thm{flex:none;white-space:nowrap;min-height:44px;padding:6px 16px;border-radius:999px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);font:700 14px var(--fb);cursor:pointer}
-.thm:hover{border-color:var(--brand)}
+.tools{display:flex;gap:8px;align-items:center;flex:none;position:relative}
+.ibtn,.thm{flex:none;display:grid;place-items:center;width:44px;height:44px;padding:0;border-radius:999px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.ibtn .aa{font:700 16px/1 var(--fh)}
+.thm svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.thm .i-sun{display:none}.thm[data-dark="1"] .i-sun{display:block}.thm[data-dark="1"] .i-moon{display:none}
+.fspanel{position:absolute;inset-inline-end:0;top:calc(100% + 8px);z-index:35;width:min(300px,calc((100vw - 24px) / var(--fs,1)));background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px;box-shadow:0 16px 32px -14px rgba(0,0,0,.55)}
+.fs-h{font:600 15px var(--fh);color:var(--mute);margin:0 0 10px}
+.fsopts{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.fsopts button{min-height:52px;border-radius:12px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);font-family:var(--fh);font-weight:700;cursor:pointer;line-height:1}
+.fsopts button[aria-pressed=true]{background:var(--fill);border-color:var(--fill);color:#fff}
+.col{zoom:var(--fs,1)}
+.thm:hover,.ibtn:hover{border-color:var(--brand)}
 .content{padding:18px max(16px,3vw) 8px}
 .view[hidden]{display:none}
 
@@ -167,7 +177,7 @@ footer .btn.sec{border-color:rgba(255,255,255,.75);color:#fff}
 .stepper{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:0 0 20px;padding:0;list-style:none}
 .stepper button{width:100%;min-height:60px;padding:10px 0 4px;border:0;border-top:6px solid var(--line);background:transparent;font:inherit;color:var(--mute);text-align:start;cursor:pointer}
 .stepper button:disabled{cursor:default;opacity:.6}
-.stepper b{display:block;font:600 14px var(--fh);color:inherit;white-space:nowrap}
+.stepper b{display:block;font:600 14px var(--fh);color:inherit;white-space:normal;overflow-wrap:anywhere;line-height:1.25}
 .stepper small{display:block;font-size:14px;line-height:1.3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .stepper .on button{border-top-color:var(--acc);color:var(--ink)}
 .stepper .ok button{border-top-color:var(--brand)}
@@ -263,7 +273,7 @@ footer a{color:#fff}
 .next .cd-t{text-wrap:balance}
 .stat{display:block}.stat b{display:block}.stat span{display:block}
 .tl li{display:block}.tl b{display:block;line-height:1.45;font-size:16px}
-.tl .tm{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:4px}
+.tl .tm{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:4px 8px;margin-top:4px}
 .tl small{font-size:14px}.tl .chip2{grid-column:auto;grid-row:auto}
 .qa{display:grid;gap:8px;margin-top:12px}
 .dates div:nth-child(n+3){box-shadow:none;border-inline-start:5px solid var(--acc);padding-top:14px}
@@ -338,6 +348,26 @@ footer a{color:#fff}
 .bnote{color:var(--mute);font-size:14px}
 @media(max-width:599px){.pform{padding:14px 12px}.post{padding:12px}.pform .btn{justify-self:stretch}}
 
+/* الإبلاغ عن خطأ في المعلومة */
+.corr{margin:14px 0 0;border:1px dashed var(--line);border-radius:14px;background:var(--bg)}
+.corr summary{min-height:48px;padding:10px 14px;cursor:pointer;font-weight:700;color:var(--brand);list-style:none;display:flex;align-items:center}
+.corr summary::-webkit-details-marker{display:none}
+.corr[open] summary{border-bottom:1px dashed var(--line)}
+.cform{display:grid;gap:4px;padding:12px 14px}
+.cform label{margin:0 0 4px}
+.cform textarea{width:100%;font:inherit;font-size:16px;padding:10px 12px;min-height:96px;resize:vertical;line-height:1.6;border:1.5px solid var(--line);border-radius:12px;background:var(--card);color:var(--ink)}
+.cform .meta{color:var(--mute);font-size:14px;margin:2px 0 0}
+.cform .err{color:var(--bad);font-weight:700;margin:6px 0 0}
+.cform .okmsg{color:var(--ok);font-weight:700;margin:6px 0 0}
+.cform .btn{margin-top:8px;justify-self:start}
+.foot-corr .corr{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.35)}
+.foot-corr .corr[open] summary{border-bottom-color:rgba(255,255,255,.3)}
+.foot-corr summary{color:#fff;text-decoration:underline}
+.foot-corr label{color:#fff}.foot-corr .meta{color:#d6e7ea}
+.foot-corr textarea{background:#fff;color:#0f2529;border-color:#fff}
+.foot-corr .err{color:#ffc9c4}.foot-corr .okmsg{color:#bff0d2}
+.foot-corr .btn{background:#fff;border-color:#fff;color:#0b4f5c}
+@media(max-width:599px){.cform .btn{justify-self:stretch}}
 /* عدّاد الزيارات الظاهر في الشريط العلوي */
 .ttl{min-width:0}.ttl h1{margin:0}
 .vis-top{display:inline-flex;align-items:baseline;gap:8px;margin:4px 0 0;padding:2px 14px;border-radius:999px;background:var(--accbg);color:var(--accink);font:700 15px var(--fb)}
@@ -345,6 +375,7 @@ footer a{color:#fff}
 /* طباعة A4: الترويسة وقائمة المستندات وطريقة الإرسال فقط */
 @page{size:A4;margin:16mm}
 @media print{
+.col{zoom:1!important}.tools,.fspanel,.corr{display:none!important}
 :root{color-scheme:light}
 body{background:#fff;color:#000;font-size:13pt;line-height:1.6;padding:0}
 .side,.menu,.appbar,footer,.skip,.view:not(#v-docs),.w:not(.w-main),.w-main>h2,.stepper,#wiz,.resum,.no-print,.bar,.stamp{display:none!important}
@@ -369,7 +400,7 @@ body{background:#fff;color:#000;font-size:13pt;line-height:1.6;padding:0}
 <p class="side-foot">تبسيط لكتيّب الإدارة المركزية للامتحانات 2026/2027. عند أي اختلاف يُرجع إلى الكتيّب والمنصة.</p>
 </aside>
 <div class="col">
-<header class="appbar"><div class="ttl"><h1>دليل أبناؤنا في الخارج 2026/2027</h1><p class="vis vis-top" hidden>عدد الزيارات <b></b></p></div><button type="button" class="thm" id="thm">الوضع الداكن</button></header>
+<header class="appbar"><div class="ttl"><h1>دليل أبناؤنا في الخارج 2026/2027</h1><p class="vis vis-top" hidden>عدد الزيارات <b></b></p></div><div class="tools"><button type="button" class="ibtn" id="fsBtn" aria-expanded="false" aria-controls="fsPanel" aria-label="حجم الخط"><span class="aa" aria-hidden="true">Aa</span></button><button type="button" class="thm" id="thm"><svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg><svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2.5M12 19v2.5M2.5 12H5M19 12h2.5M5.2 5.2L7 7M17 17l1.8 1.8M5.2 18.8L7 17M17 7l1.8-1.8"/></svg><span class="sr">الوضع الداكن</span></button><div class="fspanel" id="fsPanel" hidden><p class="fs-h" id="fsH">حجم الخط</p><div class="fsopts" role="group" aria-labelledby="fsH"></div></div></div></header>
 <main class="content" id="main">
 <div class="view" id="v-docs"><div class="notice no-print" role="note"><span><b>مجهود فردي للمساعدة فقط</b>، وليست تابعة لأي جهة حكومية ولا علاقة لها بوزارة التربية والتعليم أو السفارة. المرجع الرسمي: الكتيّب والمنصة.</span></div><div class="dash">
 <div class="w w-next next" id="cd" role="status" aria-label="الموعد القادم"></div>
@@ -539,6 +570,8 @@ body{background:#fff;color:#000;font-size:13pt;line-height:1.6;padding:0}
 </main>
 <footer><div class="wrap">
 المصدر الأساسي: إعلان "تعليمات وشروط التقدم لأداء امتحانات أبناؤنا في الخارج 2026/2027"، الإدارة المركزية للامتحانات، وزارة التربية والتعليم والتعليم الفني. هذه الصفحة تبسيط للتيسير؛ عند أي اختلاف يُرجع إلى الكتيّب الرسمي والمنصة <a href="https://sabroad.emis.gov.eg" class="ltr">sabroad.emis.gov.eg</a>.
+<p class="foot-note">آخر مراجعة للمعلومات مقابل الكتيّب: <b id="reviewed"></b>. وإن صدر بيان رسمي جديد من الوزارة فهو المرجع.</p>
+<div class="foot-corr" id="footCorr"></div>
 <p class="foot-note"><b>تنويه:</b> هذه الصفحة مجهود فردي للمساعدة فقط، وليست تابعة لأي جهة حكومية ولا علاقة لها بوزارة التربية والتعليم أو السفارة أو الإدارة المركزية للامتحانات.</p>
 <p class="foot-note">تُحمَّل الخطوط من Google Fonts، وقد تسجّل Google عنوان اتصال الزائر عند تحميلها. ولا يحفظ هذا الموقع أي بيانات عنك خارج جهازك.</p>
 <p class="vis foot-note" hidden>عدد الزيارات: <b></b>. تُحصى الزيارات بعدّاد مجهول (GoatCounter) بلا ملفات تعريف ارتباط ولا بيانات شخصية.</p>
@@ -554,6 +587,9 @@ const LS_KEY="abnaouna2026.checks.v1";
 const LS_THEME="abnaouna2026.theme.v1";
 const LS_SEL="abnaouna2026.sel.v1";
 const LS_KIDS="abnaouna2026.kids.v1";
+const LS_FS="abnaouna2026.fs.v1";
+/* تاريخ آخر مراجعة للمعلومات مقابل الكتيّب (YYYY-MM-DD): حدّثه كلما راجعت الكتيّب أو صدر بيان جديد */
+const REVIEWED="2026-11-19";
 /* عدّاد الزوار (GoatCounter): اكتب كود موقعك هنا (مثل "abnaouna") بعد إنشائه في goatcounter.com. فارغ = بلا عدّاد. */
 const GC_CODE="abnaouna";
 /* مجموعة الاقتراحات والنقاش الخاصة بالموقع: [اسم المجموعة، رابط الدعوة]. رابط واتساب https://chat.whatsapp.com/... أو تيليجرام https://t.me/... بلا معلمات بعد الرابط. فارغة = يظهر "سيُضاف قريباً". */
@@ -561,6 +597,8 @@ const GROUPS=[];
 /* نقاش الموقع (Supabase): اكتب رابط مشروعك ومفتاحه العام (publishable/anon) بعد إنشائه. لا تضع هنا أبداً مفتاح service_role. فارغ = لا نقاش داخلي. */
 const SB_URL="https://dbeubyijcafytupnoswm.supabase.co";
 const SB_KEY="sb_publishable_EGXvdp2hexHt5oSvqvTTkA_C5huuEVX";
+const SBOK=/^https:\/\/[a-z0-9]{20}\.supabase\.co$/.test(SB_URL)&&/^[A-Za-z0-9._-]{20,}$/.test(SB_KEY);
+let cN=0;
 const STAGES=[["رياض الأطفال",[["kg1","KG1"],["kg2","KG2"]]],["الابتدائي",[["p1","الأول"],["p2","الثاني"],["p3","الثالث"],["p4","الرابع"],["p5","الخامس"],["p6","السادس"]]],["الإعدادي",[["m1","الأول"],["m2","الثاني"],["m3","الثالث"]]],["الثانوي",[["s1","الأول","عام أو بكالوريا"],["s2","الثاني","العام"]]]];
 const MODES=[["t1","الفصل الدراسي الأول"],["t2","الفصل الدراسي الثاني"],["r2","الدور الثاني"]];
 const BD="أصل شهادة ميلاد الطالب (الرقم القومي)";
@@ -660,7 +698,7 @@ function printList(){stampDate();window.print()}
 window.addEventListener("beforeprint",stampDate);
 function curURL(){return location.href.split(/[?#]/)[0]+"?g="+gS.value+"&m="+mS.value+"&c="+(+cS.value||0)+"#docs"}
 function render(){const c=catsFor(gS.value,mS.value)[+cS.value||0];const mn=MODES.find(m=>m[0]===mS.value)[1];const gn=G.find(x=>x[0]===gS.value)[1];const done=new Set(ldChecks()[ckKey()]||[]);const many=kids.list.length>1,nm=esc(kid().name);
- sh.innerHTML=`<div class="bar" aria-hidden="true"><i></i></div><div class="stamp" aria-hidden="true">مكتمل</div><div class="pr-only ph"><h1>${PR.title}</h1>${many||kid().name!=="ابني"?`<p>الطالب: <b>${nm}</b></p>`:""}<p>الصف: <b>${gn}</b></p><p>نوع التقدم: <b>${mn}</b></p><p>الحالة: <b>${c[0]}</b></p><p>تاريخ الطباعة: <b id="pDate"></b></p><p class="pp" id="pProg"></p></div><p class="always no-print">في كل الحالات: صورة شخصية حديثة، ومستندات كل طالب في ملف PDF مستقل لا يزيد حجمه عن 2 ميجا، وطباعة استمارة التقدم.</p><p class="note no-print" style="margin:0">علّم على كل مستند جهّزته، ويُحفظ ذلك على هذا الجهاز.</p><ol>${c[1].map((d,i)=>`<li><label class="chk"><input type="checkbox" data-i="${i}"${done.has(i)?" checked":""}><span>${d}</span></label></li>`).join("")}</ol><p class="note no-print" id="prog" role="status"></p><div class="acts no-print"><button type="button" class="reset prt" id="prt">${many?"طباعة قائمة "+nm:"طباعة قائمة مستندات ابني"}</button><button type="button" class="reset" id="rst">مسح العلامات</button><button type="button" class="reset" id="cpl">نسخ رابط هذه الحالة</button><a class="reset" id="wsl" target="_blank" rel="noopener" href="https://wa.me/" aria-label="إرسال هذه الحالة على واتساب (يفتح في نافذة جديدة)">إرسال هذه الحالة على واتساب</a></div><p class="note no-print" id="lnk" style="word-break:break-all"></p><div class="how ${c[2].t}">${{mail:"✉",up:"⇪"}[c[2].t]||"ℹ"}<span>${c[2].x}</span></div>${c[3]?`<p class="always no-print">${c[3]}</p>`:""}<p class="note no-print">بعد التسجيل: تابع المنصة لرقم الجلوس وأي طلب لمستندات إضافية.</p><p class="pr-only pf">${PR.src} <span class="ltr">${PR.site}</span></p>`;prog();stampDate();$("wsl").href="https://wa.me/?text="+encodeURIComponent("قائمة مستندات "+gn+" ("+mn+")، "+c[0]+"\n"+curURL())}
+ sh.innerHTML=`<div class="bar" aria-hidden="true"><i></i></div><div class="stamp" aria-hidden="true">مكتمل</div><div class="pr-only ph"><h1>${PR.title}</h1>${many||kid().name!=="ابني"?`<p>الطالب: <b>${nm}</b></p>`:""}<p>الصف: <b>${gn}</b></p><p>نوع التقدم: <b>${mn}</b></p><p>الحالة: <b>${c[0]}</b></p><p>تاريخ الطباعة: <b id="pDate"></b></p><p class="pp" id="pProg"></p></div><p class="always no-print">في كل الحالات: صورة شخصية حديثة، ومستندات كل طالب في ملف PDF مستقل لا يزيد حجمه عن 2 ميجا، وطباعة استمارة التقدم.</p><p class="note no-print" style="margin:0">علّم على كل مستند جهّزته، ويُحفظ ذلك على هذا الجهاز.</p><ol>${c[1].map((d,i)=>`<li><label class="chk"><input type="checkbox" data-i="${i}"${done.has(i)?" checked":""}><span>${d}</span></label></li>`).join("")}</ol><p class="note no-print" id="prog" role="status"></p><div class="acts no-print"><button type="button" class="reset prt" id="prt">${many?"طباعة قائمة "+nm:"طباعة قائمة مستندات ابني"}</button><button type="button" class="reset" id="rst">مسح العلامات</button><button type="button" class="reset" id="cpl">نسخ رابط هذه الحالة</button><a class="reset" id="wsl" target="_blank" rel="noopener" href="https://wa.me/" aria-label="إرسال هذه الحالة على واتساب (يفتح في نافذة جديدة)">إرسال هذه الحالة على واتساب</a></div><p class="note no-print" id="lnk" style="word-break:break-all"></p><div class="how ${c[2].t}">${{mail:"✉",up:"⇪"}[c[2].t]||"ℹ"}<span>${c[2].x}</span></div>${c[3]?`<p class="always no-print">${c[3]}</p>`:""}<p class="note no-print">بعد التسجيل: تابع المنصة لرقم الجلوس وأي طلب لمستندات إضافية.</p>${corrHtml("الحالة: "+gn+" / "+mn+" / "+c[0])}<p class="pr-only pf">${PR.src} <span class="ltr">${PR.site}</span></p>`;prog();stampDate();$("wsl").href="https://wa.me/?text="+encodeURIComponent("قائمة مستندات "+gn+" ("+mn+")، "+c[0]+"\n"+curURL())}
 sh.addEventListener("change",e=>{if(!e.target.matches(".chk input"))return;const o=ldChecks();
  o[ckKey()]=[...sh.querySelectorAll(".chk input")].filter(x=>x.checked).map(x=>+x.dataset.i);svChecks(o);prog()});
 sh.addEventListener("click",e=>{const cp=e.target.closest("#cpl");if(cp){const u=curURL(),fb=()=>{cp.textContent="انسخه يدوياً";$("lnk").innerHTML='<span class="ltr" style="white-space:normal">'+u+'</span>'};try{navigator.clipboard.writeText(u).then(()=>{cp.textContent="تم نسخ الرابط";setTimeout(()=>cp.textContent="نسخ رابط هذه الحالة",1800)}).catch(fb)}catch(err){fb()}return}if(e.target.closest("#prt")){printList();return}if(!e.target.closest("#rst"))return;const o=ldChecks();delete o[ckKey()];svChecks(o);render();$("rst").focus()});
@@ -769,7 +807,7 @@ function tick(){const today=ksaToday(),e=DL.find(x=>x[0]>=today);let sr,v;
  if(cd.dataset.k!==html){cd.dataset.k=html;cd.innerHTML=html}}
 const thm=document.getElementById("thm"),mq=window.matchMedia("(prefers-color-scheme: dark)");
 const isDark=()=>document.documentElement.dataset.theme?document.documentElement.dataset.theme==="dark":mq.matches;
-function thLabel(){thm.textContent=isDark()?"الوضع الفاتح":"الوضع الداكن"}
+function thLabel(){thm.querySelector(".sr").textContent=isDark()?"الوضع الفاتح":"الوضع الداكن";thm.dataset.dark=isDark()?"1":"";thm.setAttribute("aria-pressed",isDark())}
 try{const s=localStorage.getItem(LS_THEME);if(s==="dark"||s==="light")document.documentElement.dataset.theme=s}catch(e){}
 thLabel();mq.addEventListener&&mq.addEventListener("change",thLabel);
 thm.addEventListener("click",()=>{const v=isDark()?"light":"dark";document.documentElement.dataset.theme=v;try{localStorage.setItem(LS_THEME,v)}catch(e){}thLabel()});
@@ -804,7 +842,6 @@ function initCounter(){if(!GC_CODE||!/^[a-z0-9-]+$/.test(GC_CODE))return;
  fetch("https://"+GC_CODE+".goatcounter.com/counter/%2F.json").then(r=>r.ok?r.json():null).then(j=>{if(j&&j.count)document.querySelectorAll(".vis").forEach(e=>{e.querySelector("b").textContent=j.count;e.hidden=false})}).catch(()=>{})}
 
 /* ===== النقاش داخل الموقع ===== */
-const SBOK=/^https:\/\/[a-z0-9]{20}\.supabase\.co$/.test(SB_URL)&&/^[A-Za-z0-9._-]{20,}$/.test(SB_KEY);
 const LS_NICK="abnaouna2026.nick.v1",LS_LAST="abnaouna2026.last.v1",LS_REP="abnaouna2026.reported.v1";
 const KINDS={idea:"اقتراح",question:"سؤال",tip:"تجربة أو نصيحة"};
 const TSTAGES=[["all","عام للجميع"],["kg","رياض الأطفال"],["pri","الابتدائي"],["prep","الإعدادي"],["sec","الثانوي"]];
@@ -859,7 +896,37 @@ function initBoard(){const b=$("board");if(!b||!SBOK)return;b.hidden=false;
   else if(a==="cancel"){const pid=replyTo;replyTo=null;paintList();const bt=document.querySelector("#p-"+CSS.escape(pid)+" [data-bact=reply]");bt&&bt.focus()}
   else if(a==="report"){x.disabled=true;x.textContent="جارٍ الإبلاغ…";try{await sb("rpc/submit_report",{method:"POST",body:JSON.stringify({p_post:id})});const s=reportedSet();s.add(id);lsSet(LS_REP,JSON.stringify([...s]));x.textContent="تم الإبلاغ";$("pstatus").textContent="شكراً، سنراجع هذه المشاركة."}catch(err){x.disabled=false;x.textContent="إبلاغ";$("pstatus").textContent="تعذّر الإبلاغ الآن."}}});
  loadPosts()}
-paintTalk();initBoard();initCounter();
+
+/* ===== الإبلاغ عن خطأ في معلومة ===== */
+const LS_LASTC="abnaouna2026.lastc.v1";
+function corrHtml(ctx){if(!SBOK)return "";const id="c"+(++cN);
+ return `<details class="corr no-print"><summary>هل رأيت معلومة خاطئة أو ناقصة؟ أبلغنا</summary><form class="cform" data-ctx="${esc(ctx)}" novalidate><label for="${id}n">ما الخطأ؟ (اذكر رقم صفحة الكتيّب إن أمكن)</label><textarea id="${id}n" name="note" maxlength="500" rows="3"></textarea><p class="meta">لا تكتب بياناتك الشخصية. يصلنا البلاغ مع اسم الصفحة أو الحالة التي كنت فيها.</p><div class="hp" aria-hidden="true"><input name="hp" tabindex="-1" autocomplete="off"></div><p class="err" role="alert" hidden></p><p class="okmsg" role="status" hidden></p><button class="btn" type="submit">إرسال البلاغ</button></form></details>`}
+document.addEventListener("submit",async e=>{const f=e.target.closest&&e.target.closest("form.cform");if(!f)return;e.preventDefault();
+ const note=f.querySelector("[name=note]").value.trim(),err=f.querySelector(".err"),ok=f.querySelector(".okmsg"),btn=f.querySelector("button[type=submit]");err.hidden=true;ok.hidden=true;
+ if(note.length<3||note.length>500){err.textContent="اكتب بلاغاً من 3 إلى 500 حرف.";err.hidden=false;return}
+ if(Date.now()-(+lsGet(LS_LASTC)||0)<30000){err.textContent="انتظر نصف دقيقة قبل إرسال بلاغ آخر.";err.hidden=false;return}
+ if(f.querySelector("[name=hp]").value){ok.textContent="شكراً، وصلنا بلاغك.";ok.hidden=false;f.querySelector("[name=note]").value="";return}
+ const ctx=f.dataset.ctx==="page"?"الصفحة: "+(decodeURIComponent(location.hash.slice(1))||"docs"):f.dataset.ctx;
+ btn.disabled=true;
+ try{await sb("rpc/submit_correction",{method:"POST",body:JSON.stringify({p_context:ctx.slice(0,300),p_note:note})});lsSet(LS_LASTC,String(Date.now()));f.querySelector("[name=note]").value="";ok.textContent="شكراً، وصلنا بلاغك وسنراجعه.";ok.hidden=false}
+ catch(x){err.textContent="تعذّر إرسال البلاغ الآن. حاول بعد قليل.";err.hidden=false}
+ btn.disabled=false});
+function initCorr(){const c=$("footCorr");if(c)c.innerHTML=corrHtml("page").replace("data-ctx=\"page\"","data-ctx=\"page\"")}
+/* ===== تاريخ المراجعة ===== */
+(function(){const m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(REVIEWED),e=$("reviewed");if(e&&m)e.textContent=(+m[3])+" "+AR_M[+m[2]-1]+" "+m[1]})();
+/* ===== حجم الخط ===== */
+const FSIZES=[[0.92,"صغير",14],[1,"عادي",17],[1.15,"كبير",20],[1.3,"كبير جداً",24]];
+function fsApply(v){document.documentElement.style.setProperty("--fs",v);document.querySelectorAll("#fsPanel [data-fs]").forEach(b=>b.setAttribute("aria-pressed",String(+b.dataset.fs===v)))}
+function initFont(){const btn=$("fsBtn"),pn=$("fsPanel");if(!btn||!pn)return;
+ if(!(window.CSS&&CSS.supports&&CSS.supports("zoom","1.1"))){btn.hidden=true;return}
+ pn.querySelector(".fsopts").innerHTML=FSIZES.map(s=>`<button type="button" data-fs="${s[0]}" aria-pressed="false" aria-label="${s[1]}" style="font-size:${s[2]}px">أ</button>`).join("");
+ let cur=1;const sv=lsGet(LS_FS);if(sv&&FSIZES.some(s=>String(s[0])===sv))cur=+sv;fsApply(cur);
+ const open=o=>{pn.hidden=!o;btn.setAttribute("aria-expanded",String(o));if(o){const b=pn.querySelector("[aria-pressed=true]");b&&b.focus()}};
+ btn.addEventListener("click",()=>open(pn.hidden));
+ pn.addEventListener("click",e=>{const b=e.target.closest("[data-fs]");if(!b)return;cur=+b.dataset.fs;fsApply(cur);lsSet(LS_FS,String(cur))});
+ document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!pn.hidden){open(false);btn.focus()}});
+ document.addEventListener("click",e=>{if(!pn.hidden&&!e.target.closest(".tools"))open(false)})}
+paintTalk();initBoard();initCounter();initCorr();initFont();
 }
 </script>
 </body>
