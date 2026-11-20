@@ -133,7 +133,10 @@ footer .btn.sec{border-color:rgba(255,255,255,.75);color:#fff}
 .quick a,.quick button{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:48px;padding:8px 14px;border-radius:12px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);font:700 15px var(--fb);text-decoration:none;cursor:pointer;text-align:start}
 .quick a::after{content:"\203A";font-size:22px;line-height:1;color:var(--brand)}
 .quick a[target]::after{content:none}
-.w-next{order:1}.w-ready{order:2}.w-kids{order:3}.w-main{order:4}.w-join{order:5}.w-time{order:6}.w-stats{order:7}.w-quick{order:8}
+.w-next{order:1}.w-ready{order:2}.w-kids{order:3}.w-main{order:4}.w-start{order:0}.w-pdf{order:5}.w-join{order:6}.w-time{order:7}.w-stats{order:8}.w-quick{order:9}
+.w-start{display:grid;gap:12px;align-items:center;background:var(--accbg);border-color:var(--acc)}.w-start h2{color:var(--ink);font-size:19px;margin:0 0 4px}.w-start p{margin:0;font-size:16px;line-height:1.7}.w-start[hidden]{display:none}
+.w-pdf h2{color:var(--ink);font-size:18px}.w-pdf p{margin:0 0 12px;font-size:16px;line-height:1.7}.w-pdf{border-inline-start:6px solid var(--brand)}
+@media(min-width:620px){.w-start{grid-template-columns:1fr auto}.w-start{grid-column:1/-1}}
 .w-join{background:var(--accbg);border-color:var(--acc)}.w-join h2{color:var(--ink);font-size:18px}.w-join p{margin:0 0 12px;font-size:16px;line-height:1.7}.jact{display:grid;gap:10px}
 .live{position:sticky;top:68px;z-index:20;display:flex;align-items:center;gap:12px;margin:0 0 12px;padding:8px 12px;border:1px solid var(--line);border-radius:16px;background:var(--card);box-shadow:0 2px 8px rgba(0,0,0,.06)}
 .live .donut{width:56px;height:56px}.live .donut::before{inset:7px}.live .donut span{font-size:14px}
@@ -165,7 +168,7 @@ footer .btn.sec{border-color:rgba(255,255,255,.75);color:#fff}
  .content{padding:22px 28px 8px}
  .dash{grid-template-columns:repeat(12,minmax(0,1fr));gap:16px}
  .w-next{grid-column:span 5}.w-ready{grid-column:span 4}.w-stats{grid-column:span 3}
- .w-main{grid-column:span 8;grid-row:span 4}.w-join{grid-column:span 4;order:9}.live{top:78px}.w-kids{grid-column:span 4}.w-time{grid-column:span 4}.w-quick{grid-column:span 4}}
+ .w-start{grid-column:1/-1}.w-main{grid-column:span 8;grid-row:span 5}.w-pdf{grid-column:span 4;order:9}.w-join{grid-column:span 4;order:10}.live{top:78px}.w-kids{grid-column:span 4}.w-time{grid-column:span 4}.w-quick{grid-column:span 4}}
 
 /* الصفحات الداخلية */
 .blk{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:20px;margin:0 0 16px;scroll-margin-top:84px}
@@ -447,6 +450,7 @@ body{background:#fff;color:#000;font-size:13pt;line-height:1.6;padding:0}
 <header class="appbar"><div class="ttl"><h1>دليل أبناؤنا في الخارج 2026/2027</h1><p class="vis vis-top" hidden>عدد الزيارات <b></b></p></div><div class="tools"><button type="button" class="ibtn" id="fsBtn" aria-expanded="false" aria-controls="fsPanel" aria-label="حجم الخط"><span class="aa" aria-hidden="true">Aa</span></button><button type="button" class="thm" id="thm"><svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg><svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2.5M12 19v2.5M2.5 12H5M19 12h2.5M5.2 5.2L7 7M17 17l1.8 1.8M5.2 18.8L7 17M17 7l1.8-1.8"/></svg><span class="sr">الوضع الداكن</span></button><div class="fspanel" id="fsPanel" hidden><p class="fs-h" id="fsH">حجم الخط</p><div class="fsopts" role="group" aria-labelledby="fsH"></div></div></div></header>
 <main class="content" id="main">
 <div class="view" id="v-docs"><div class="notice no-print" role="note"><span><b>مجهود فردي للمساعدة فقط</b>، وليست تابعة لأي جهة حكومية ولا علاقة لها بوزارة التربية والتعليم أو السفارة. المرجع الرسمي: الكتيّب والمنصة.</span></div><div class="dash">
+<section class="w w-start no-print" id="wStart" hidden><div><h2>ابدأ من هنا</h2><p>اختر صف ابنك وحالته لتعرف المستندات المطلوبة منك، وتتابع ما جهّزته منها.</p></div><a class="btn" href="#docs">اختر صف ابنك</a></section>
 <div class="w w-next next" id="cd" role="status" aria-label="الموعد القادم"></div>
 <section class="w w-ready" id="wReady" aria-label="جاهزية الأوراق"></section>
 <section class="w w-stats"><h2>أرقام أساسية</h2><div class="stat"><b>نوفمبر 2026</b><span>فتح التسجيل على المنصة</span></div><div class="stat"><b>150 دولار</b><span>رسوم كل طالب، لأي صف</span></div><div class="stat vis" hidden><b></b><span>زيارة لهذه الصفحة</span></div></section>
@@ -457,9 +461,10 @@ body{background:#fff;color:#000;font-size:13pt;line-height:1.6;padding:0}
 <div id="resultwrap" hidden><div class="live no-print" id="live" role="status" aria-live="polite"></div><div class="resum no-print" id="resum"></div><div class="sheet" id="sheet"></div></div>
 <div hidden><select id="grade"></select><select id="mode"></select><select id="cat"></select></div>
 </section>
-<section class="w w-kids no-print"><h2>أبنائي</h2><div id="kids"></div><div id="addkid"></div><div class="kact" id="kact"></div></section>
+<section class="w w-kids no-print"><h2>أبنائي</h2><div id="kids"></div><div id="addkid"></div><div class="kact" id="kact"></div><input type="file" id="impf" accept=".json,application/json" hidden></section>
 <section class="w w-time no-print"><h2>المواعيد القادمة</h2><ul class="tl" id="tl"></ul></section>
 <section class="w w-quick no-print"><h2>اختصارات</h2><div class="quick"><a href="#pdftool">جهّز ملف PDF للمستندات</a><a href="#age">حاسبة السن</a><a href="#faq">الأسئلة الشائعة</a><a href="#refund">الاسترداد والرسوم</a><a href="#talk">اقتراحات ونقاش</a><a href="#contact">التواصل مع مشرف الصف</a></div><div class="qa"><button type="button" class="btn sec js-ics">أضف المواعيد إلى التقويم</button><a class="btn sec" id="waTop" href="https://wa.me/?text=" target="_blank" rel="noopener" aria-label="شارك الدليل على واتساب (يفتح في نافذة جديدة)">شارك الدليل على واتساب</a></div></section>
+<section class="w w-pdf no-print" id="wPdf"><h2>ملفاتك أكبر من 2 ميجا؟</h2><p>حوّل صور مستنداتك إلى ملف PDF واحد بحجم مناسب للمنصة. يتم ذلك على جوالك ولا تُرفع صورك لأي موقع.</p><a class="btn" href="#pdftool">جهّز ملف PDF</a></section>
 <section class="w w-join no-print" id="wJoin"><h2>شارك في تطوير الموقع</h2><p>هذا الدليل مجهود فردي يتحسن بمشاركتكم. اقترح ميزة، أو انقل خبرتك لبقية الأهالي، أو بلّغ عن معلومة تخالف الكتيّب الرسمي، أو شارك الدليل مع أولياء أمور آخرين.</p><div class="jact"><a class="btn" href="#talk">اقترح فكرة أو شارك خبرتك</a><a class="btn sec" id="waJoin" href="https://wa.me/?text=" target="_blank" rel="noopener" aria-label="شارك الدليل مع أولياء الأمور على واتساب (يفتح في نافذة جديدة)">شارك الدليل مع أهالٍ آخرين</a></div></section>
 </div></div>
 
@@ -743,6 +748,7 @@ function ldChecks(){try{return JSON.parse(localStorage.getItem(LS_KEY))||{}}catc
 function svChecks(o){try{localStorage.setItem(LS_KEY,JSON.stringify(o))}catch(e){}}
 
 /* ملفات الأبناء: لكل ابن صفه وحالته وعلاماته */
+let pendImp=null,impErr="";
 let kids={active:"k1",list:[{id:"k1",name:"ابني",g:null,m:"t1",c:0,done:false}]},step=1,addOpen=false,delAsk=false,restored=false,wipeAsk=false;
 const kid=()=>kids.list.find(k=>k.id===kids.active)||kids.list[0];
 const gOk=g=>G.some(x=>x[0]===g),mOk=m=>MODES.some(x=>x[0]===m);
@@ -775,15 +781,17 @@ const gname=g=>{const x=G.find(y=>y[0]===g);return x?x[1]:""};
 function kidStat(k){if(!k.g||!k.done)return{n:0,t:0,p:0,known:false};const L=catsFor(k.g,k.m),c=L[k.c]||L[0],key=k.id+"|"+k.g+(k.m==="t1"?"":"|"+k.m)+"|"+k.c,n=(ldChecks()[key]||[]).length,t=c[1].length;return{n:Math.min(n,t),t,p:t?Math.round(100*Math.min(n,t)/t):0,known:true}}
 function paintKidRows(){const k=kid();
  $("kids").innerHTML=kids.list.map(x=>{const s=kidStat(x),sub=x.g?gname(x.g)+(x.done?"":" — اختر الحالة"):"لم يُحدَّد الصف بعد";return `<button type="button" class="krow" data-act="kid" data-v="${x.id}" aria-pressed="${x.id===kids.active}"><span class="kn">${esc(x.name)}</span><span class="kp">${s.known?s.p+"%":""}</span><span class="ks">${esc(sub)}</span><span class="mini" style="--p:${s.p}%"><i></i></span></button>`}).join("");
- $("kact").innerHTML=(kids.list.length<8?`<button type="button" class="kbtn" data-act="addopen">+ إضافة ابن آخر</button>`:"")+(kids.list.length>1?(delAsk?`<button type="button" class="kbtn del" data-act="delyes">تأكيد حذف ملف ${esc(k.name)}</button><button type="button" class="kbtn" data-act="delno">إلغاء</button>`:`<button type="button" class="kbtn del" data-act="delask">حذف ملف ${esc(k.name)}</button>`):"")+`<button type="button" class="kbtn" data-act="wipeask">مسح كل بياناتي</button>`;
+ $("kact").innerHTML=(kids.list.length<8?`<button type="button" class="kbtn" data-act="addopen">+ إضافة ابن آخر</button>`:"")+(kids.list.length>1?(delAsk?`<button type="button" class="kbtn del" data-act="delyes">تأكيد حذف ملف ${esc(k.name)}</button><button type="button" class="kbtn" data-act="delno">إلغاء</button>`:`<button type="button" class="kbtn del" data-act="delask">حذف ملف ${esc(k.name)}</button>`):"")+`<button type="button" class="kbtn" data-act="expo">حفظ نسخة احتياطية</button><button type="button" class="kbtn" data-act="impo">استعادة نسخة</button><button type="button" class="kbtn" data-act="wipeask">مسح كل بياناتي</button>`;
  }
 function paintKids(){paintKidRows();
  $("addkid").innerHTML=addOpen?`<form class="addkid" id="addform" novalidate><label for="kn">اسم الابن (مثل: أحمد)</label><input id="kn" maxlength="20" autocomplete="off"><button class="btn" type="submit">إضافة</button><button type="button" class="btn sec" data-act="addcancel">إلغاء</button><p class="err" id="knerr" role="alert" hidden>أدخل اسم الابن لإضافته.</p></form>`:""}
-function paintWidgets(){paintKidRows();let N=0,T=0;kids.list.forEach(k=>{const s=kidStat(k);if(s.known){N+=s.n;T+=s.t}});const p=T?Math.round(100*N/T):0;
+function paintWidgets(){paintKidRows();$("wStart").hidden=kids.list.some(k=>!!k.g);let N=0,T=0;kids.list.forEach(k=>{const s=kidStat(k);if(s.known){N+=s.n;T+=s.t}});const p=T?Math.round(100*N/T):0;
  $("wReady").innerHTML=`<div class="donut" style="--p:${p}" aria-hidden="true"><span>${p}%</span></div><div><h2>جاهزية الأوراق</h2><p>${T?N+" من "+T+" مستنداً جاهزاً"+(kids.list.length>1?" لكل الأبناء":""):"اختر صف ابنك وحالته لتبدأ."}</p></div>`;
  const today=ksaToday();$("tl").innerHTML=DL.filter(e=>e[0]>=today).slice(0,4).map(e=>{const n=Math.round((Date.parse(e[0])-Date.parse(today))/864e5),chip=e[2]?"فبراير 2027":n===0?"اليوم":n===1?"غداً":"باقي "+n+(n<=10?" أيام":" يوماً");return `<li><b>${e[1]}</b><span class="tm"><small>${e[2]||dtxt(e[0])}</small><span class="chip2${n<=14&&!e[2]?" hot":""}">${chip}</span></span></li>`}).join("")||`<li><small>${DL_END}</small></li>`}
 function paintRestore(){const r=$("restore");if(!r)return;
  if(wipeAsk){r.hidden=false;r.innerHTML=`<p><b>مسح كل بياناتك من هذا الجهاز؟</b> سيُمسح الأبناء وعلامات المستندات المحفوظة، ولا يمكن التراجع.</p><div class="kact"><button type="button" class="kbtn del" data-act="wipeyes">نعم، امسح كل شيء</button><button type="button" class="kbtn" data-act="wipeno">إلغاء</button></div>`;return}
+ if(impErr){r.hidden=false;r.innerHTML=`<p role="alert"><b>تعذّرت الاستعادة:</b> ${esc(impErr)}</p><div class="kact"><button type="button" class="kbtn" data-act="impno">حسناً</button></div>`;return}
+ if(pendImp){r.hidden=false;r.innerHTML=`<p><b>استعادة النسخة الاحتياطية؟</b> تحوي ${pendImp.kids.list.length} من الأبناء (${esc(pendImp.kids.list.map(k=>k.name).join("، "))}). ستحل محل البيانات الموجودة الآن على هذا الجهاز.</p><div class="kact"><button type="button" class="kbtn" data-act="impyes">نعم، استعد النسخة</button><button type="button" class="kbtn" data-act="impno">إلغاء</button></div>`;return}
  r.hidden=!restored;r.innerHTML=restored?`<p>استرجعنا آخر قائمة حفظتها على هذا الجهاز.</p><div class="kact"><button type="button" class="kbtn" data-act="wipeask">ابدأ من جديد</button></div>`:""}
 function paint(keep){const k=kid(),gn=k.g?G.find(x=>x[0]===k.g)[1]:"",mn=MODES.find(m=>m[0]===k.m)[1];
  paintKids();paintRestore();
@@ -799,6 +807,10 @@ function paint(keep){const k=kid(),gn=k.g?G.find(x=>x[0]===k.g)[1]:"",mn=MODES.f
  if(keep){const e=document.querySelector(keep);e&&e.focus()}}
 function focusPane(){const st=$("stepper");st.scrollIntoView({block:"start"});const t=$("wt")||$("rt");t&&t.focus({preventScroll:true})}
 $("v-docs").addEventListener("click",e=>{const b=e.target.closest("[data-act]");if(!b)return;const k=kid(),a=b.dataset.act,v=b.dataset.v;
+ if(a==="expo"){exportKids();return}
+ if(a==="impo"){impErr="";$("impf").value="";$("impf").click();return}
+ if(a==="impno"){pendImp=null;impErr="";paint();return}
+ if(a==="impyes"&&pendImp){const d=pendImp;pendImp=null;kids=d.kids;svKids();svChecks(d.checks);restored=false;wipeAsk=false;delAsk=false;addOpen=false;step=kid().done?3:(kid().g?2:1);apply();toast("تمت استعادة النسخة الاحتياطية");return}
  if(a==="wipeask"){wipeAsk=true;paint('[data-act="wipeno"]');$("restore").scrollIntoView({block:"center"});return}
  if(a==="wipeno"){wipeAsk=false;paint();return}
  if(a==="wipeyes"){try{localStorage.removeItem(LS_KIDS);localStorage.removeItem(LS_KEY);localStorage.removeItem(LS_SEL)}catch(err){}
@@ -817,6 +829,24 @@ $("v-docs").addEventListener("click",e=>{const b=e.target.closest("[data-act]");
 $("v-docs").addEventListener("submit",e=>{if(e.target.id!=="addform")return;e.preventDefault();const n=$("kn").value.trim().slice(0,20);
  if(!n){$("knerr").hidden=false;$("kn").focus();return}
  restored=false;const id="k"+Date.now().toString(36);kids.list.push({id,name:n,g:null,m:"t1",c:0,done:false});kids.active=id;addOpen=false;svKids();apply();focusPane()});
+/* نسخة احتياطية: تصدير واستيراد بيانات الأبناء (ملف على جهازك، بلا إرسال لأي خادم) */
+const BK_APP="abnaouna2026-backup";
+function exportKids(){let blob;try{blob=new Blob([JSON.stringify({app:BK_APP,v:1,saved:new Date().toISOString().slice(0,10),kids,checks:ldChecks()})],{type:"application/json"})}catch(e){toast("تعذّر إنشاء الملف");return}
+ const a=document.createElement("a"),u=URL.createObjectURL(blob);a.href=u;a.download="abnaouna-backup.json";document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),4000);toast("حُفظت النسخة الاحتياطية في ملف")}
+function parseBackup(t){let o;try{o=JSON.parse(t)}catch(e){return null}
+ if(!o||o.app!==BK_APP||o.v!==1||!o.kids||!Array.isArray(o.kids.list))return null;
+ const idOk=x=>typeof x==="string"&&/^[A-Za-z0-9_-]{1,20}$/.test(x),seen=new Set(),L=[];
+ for(const k of o.kids.list.slice(0,8)){if(!k||!idOk(k.id)||seen.has(k.id)||typeof k.name!=="string")return null;const nm=k.name.trim().slice(0,20);if(!nm)return null;seen.add(k.id);
+  L.push({id:k.id,name:nm,g:gOk(k.g)?k.g:null,m:mOk(k.m)?k.m:"t1",c:Math.min(60,Math.max(0,parseInt(k.c,10)||0)),done:!!k.done&&gOk(k.g)})}
+ if(!L.length)return null;
+ const ch={},src=o.checks&&typeof o.checks==="object"&&!Array.isArray(o.checks)?o.checks:{};
+ for(const key of Object.keys(src).slice(0,200)){const m=/^([A-Za-z0-9_-]{1,20})\|[A-Za-z0-9_-]{1,20}(\|[A-Za-z0-9_-]{1,10})?\|\d{1,2}$/.exec(key);if(!m||!seen.has(m[1])||!Array.isArray(src[key]))continue;
+  ch[key]=[...new Set(src[key].filter(n=>Number.isInteger(n)&&n>=0&&n<60))].slice(0,60)}
+ return{kids:{active:seen.has(o.kids.active)?o.kids.active:L[0].id,list:L},checks:ch}}
+$("impf").addEventListener("change",e=>{const f=e.target.files&&e.target.files[0];if(!f)return;
+ if(f.size>200000){impErr="الملف كبير على أن يكون نسخة احتياطية من هذا الموقع.";pendImp=null;paint();return}
+ e.target.value="";const r=new FileReader();r.onload=()=>{const d=parseBackup(String(r.result));if(d){pendImp=d;impErr=""}else{pendImp=null;impErr="الملف ليس نسخة احتياطية صحيحة من هذا الموقع."}paint();$("restore").scrollIntoView({block:"center"})};
+ r.onerror=()=>{impErr="تعذّرت قراءة الملف.";paint()};r.readAsText(f)});
 ldKids();restored=kids.list.some(k=>!!k.g);ldDeep();svKids();apply();
 
 
