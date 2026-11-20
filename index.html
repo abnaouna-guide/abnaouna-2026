@@ -658,7 +658,7 @@ const DANGER=[["أداء الامتحان من داخل مصر: يُصرف ال�
 /* عدّاد الزوار (GoatCounter): اكتب كود موقعك هنا (مثل "abnaouna") بعد إنشائه في goatcounter.com. فارغ = بلا عدّاد. */
 const GC_CODE="abnaouna";
 /* مجموعة الاقتراحات والنقاش الخاصة بالموقع: [اسم المجموعة، رابط الدعوة]. رابط واتساب https://chat.whatsapp.com/... أو تيليجرام https://t.me/... بلا معلمات بعد الرابط. فارغة = يظهر "سيُضاف قريباً". */
-const GROUPS=[];
+const GROUPS=[["مجموعة أبناؤنا في الخارج على واتساب","https://chat.whatsapp.com/ELzCi7FdkjD6RrATrxfd4D"]];
 /* نقاش الموقع (Supabase): اكتب رابط مشروعك ومفتاحه العام (publishable/anon) بعد إنشائه. لا تضع هنا أبداً مفتاح service_role. فارغ = لا نقاش داخلي. */
 const SB_URL="https://dbeubyijcafytupnoswm.supabase.co";
 const SB_KEY="sb_publishable_EGXvdp2hexHt5oSvqvTTkA_C5huuEVX";
@@ -917,7 +917,7 @@ function route(first){const id=decodeURIComponent(location.hash.slice(1))||"docs
  if(!first){const h=document.querySelector("#v-"+v+" h2");if(h){h.tabIndex=-1;h.focus({preventScroll:true})}}}
 window.addEventListener("hashchange",()=>route(false));route(true);
 function paintTalk(){const c=$("talkCta");if(!c)return;c.hidden=false;const re=/^https:\/\/(chat\.whatsapp\.com|wa\.me|t\.me|telegram\.me)\/[A-Za-z0-9_+\-]+$/,L=GROUPS.filter(g=>re.test(g[1]));
- c.innerHTML=L.length?L.map(g=>`<div class="grp"><p><b>${esc(g[0])}</b></p><p class="note">شاركنا اقتراحك أو ما وجدته ناقصاً أو خاطئاً في الموقع.</p><a class="btn" href="${g[1]}" target="_blank" rel="noopener noreferrer" aria-label="انضم إلى المجموعة: ${esc(g[0])} (يفتح في نافذة جديدة)">انضم إلى المجموعة</a></div>`).join(""):(SBOK?"":`<p><b>مجموعة الاقتراحات والنقاش</b></p><p class="note">سيُضاف رابط الانضمام قريباً.</p>`);if(!L.length&&SBOK)c.hidden=true}
+ c.innerHTML=L.length?L.map(g=>`<div class="grp"><p><b>${esc(g[0])}</b></p><p class="note">مجموعة أهلية لأولياء الأمور لتبادل الخبرة والأسئلة، وليست جهة رسمية.</p><a class="btn" href="${g[1]}" target="_blank" rel="noopener noreferrer" aria-label="انضم إلى المجموعة: ${esc(g[0])} (يفتح في نافذة جديدة)">انضم إلى المجموعة</a></div>`).join(""):(SBOK?"":`<p><b>مجموعة الاقتراحات والنقاش</b></p><p class="note">سيُضاف رابط الانضمام قريباً.</p>`);if(!L.length&&SBOK)c.hidden=true}
 function initCounter(){if(!GC_CODE||!/^[a-z0-9-]+$/.test(GC_CODE))return;
  const s=document.createElement("script");s.async=true;s.src="https://gc.zgo.at/count.js";s.dataset.goatcounter="https://"+GC_CODE+".goatcounter.com/count";document.head.appendChild(s);
  fetch("https://"+GC_CODE+".goatcounter.com/counter/%2F.json").then(r=>r.ok?r.json():null).then(j=>{if(j&&j.count)document.querySelectorAll(".vis").forEach(e=>{e.querySelector("b").textContent=j.count;e.hidden=false})}).catch(()=>{})}
